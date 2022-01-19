@@ -118,6 +118,7 @@ functions:
             workflow = Workflow.from_source(swf_content)
 
             self.assertEqual("greeting", workflow.id)
+            self.assertEqual("jq", workflow.expressionLang)
             self.assertEqual("operation", workflow.states[0].type)
             self.assertEqual(True, workflow.states[0].end)
             self.assertTrue(isinstance(workflow.states[0].actions[0], Action))
