@@ -1,16 +1,17 @@
 class End:
-     terminate= None
-     produceEvents= None
-     compensate= None
-     continueAs= None
-     def __init__(self, 
-         terminate= None,
-         produceEvents= None,
-         compensate= None,
-         continueAs= None,
-         **kwargs):
- 
-# duplicated
+    terminate = None
+    produceEvents = None
+    compensate = None
+    continueAs = None
+
+    def __init__(self,
+                 terminate=None,
+                 produceEvents=None,
+                 compensate=None,
+                 continueAs=None,
+                 **kwargs):
+
+        # duplicated
         for local in list(locals()):
             if local in ["self", "kwargs"]:
                 continue
@@ -20,7 +21,6 @@ class End:
             if value == "true":
                 value = True
             # duplicated
-
 
             self.__setattr__(local.replace("_", ""), value)
 

@@ -1,12 +1,13 @@
 class Startdef:
-     stateName= None
-     schedule= None
-     def __init__(self, 
-         stateName= None,
-         schedule= None,
-         **kwargs):
- 
-# duplicated
+    stateName = None
+    schedule = None
+
+    def __init__(self,
+                 stateName=None,
+                 schedule=None,
+                 **kwargs):
+
+        # duplicated
         for local in list(locals()):
             if local in ["self", "kwargs"]:
                 continue
@@ -16,7 +17,6 @@ class Startdef:
             if value == "true":
                 value = True
             # duplicated
-
 
             self.__setattr__(local.replace("_", ""), value)
 

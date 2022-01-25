@@ -1,14 +1,15 @@
 class Authdef:
-     name= None
-     scheme= None
-     properties= None
-     def __init__(self, 
-         name= None,
-         scheme= None,
-         properties= None,
-         **kwargs):
- 
-# duplicated
+    name = None
+    scheme = None
+    properties = None
+
+    def __init__(self,
+                 name=None,
+                 scheme=None,
+                 properties=None,
+                 **kwargs):
+
+        # duplicated
         for local in list(locals()):
             if local in ["self", "kwargs"]:
                 continue
@@ -18,7 +19,6 @@ class Authdef:
             if value == "true":
                 value = True
             # duplicated
-
 
             self.__setattr__(local.replace("_", ""), value)
 

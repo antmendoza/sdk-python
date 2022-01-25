@@ -1,18 +1,19 @@
 class Function:
-     name= None
-     operation= None
-     type= None
-     authRef= None
-     metadata= None
-     def __init__(self, 
-         name= None,
-         operation= None,
-         type= None,
-         authRef= None,
-         metadata= None,
-         **kwargs):
- 
-# duplicated
+    name = None
+    operation = None
+    type = None
+    authRef = None
+    metadata = None
+
+    def __init__(self,
+                 name=None,
+                 operation=None,
+                 type=None,
+                 authRef=None,
+                 metadata=None,
+                 **kwargs):
+
+        # duplicated
         for local in list(locals()):
             if local in ["self", "kwargs"]:
                 continue
@@ -22,7 +23,6 @@ class Function:
             if value == "true":
                 value = True
             # duplicated
-
 
             self.__setattr__(local.replace("_", ""), value)
 

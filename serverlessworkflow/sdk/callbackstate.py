@@ -1,42 +1,43 @@
 class Callbackstate:
-     id= None
-     name= None
-     type= None
-     action= None
-     eventRef= None
-     timeouts= None
-     stateExecTimeout= None
-     actionExecTimeout= None
-     eventTimeout= None
-     eventDataFilter= None
-     stateDataFilter= None
-     onErrors= None
-     transition= None
-     end= None
-     compensatedBy= None
-     usedForCompensation= None
-     metadata= None
-     def __init__(self, 
-         id= None,
-         name= None,
-         type= None,
-         action= None,
-         eventRef= None,
-         timeouts= None,
-         stateExecTimeout= None,
-         actionExecTimeout= None,
-         eventTimeout= None,
-         eventDataFilter= None,
-         stateDataFilter= None,
-         onErrors= None,
-         transition= None,
-         end= None,
-         compensatedBy= None,
-         usedForCompensation= None,
-         metadata= None,
-         **kwargs):
- 
-# duplicated
+    id = None
+    name = None
+    type = None
+    action = None
+    eventRef = None
+    timeouts = None
+    stateExecTimeout = None
+    actionExecTimeout = None
+    eventTimeout = None
+    eventDataFilter = None
+    stateDataFilter = None
+    onErrors = None
+    transition = None
+    end = None
+    compensatedBy = None
+    usedForCompensation = None
+    metadata = None
+
+    def __init__(self,
+                 id=None,
+                 name=None,
+                 type=None,
+                 action=None,
+                 eventRef=None,
+                 timeouts=None,
+                 stateExecTimeout=None,
+                 actionExecTimeout=None,
+                 eventTimeout=None,
+                 eventDataFilter=None,
+                 stateDataFilter=None,
+                 onErrors=None,
+                 transition=None,
+                 end=None,
+                 compensatedBy=None,
+                 usedForCompensation=None,
+                 metadata=None,
+                 **kwargs):
+
+        # duplicated
         for local in list(locals()):
             if local in ["self", "kwargs"]:
                 continue
@@ -46,7 +47,6 @@ class Callbackstate:
             if value == "true":
                 value = True
             # duplicated
-
 
             self.__setattr__(local.replace("_", ""), value)
 

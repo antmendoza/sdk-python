@@ -1,14 +1,15 @@
 class Eventdatafilter:
-     useData= None
-     data= None
-     toStateData= None
-     def __init__(self, 
-         useData= None,
-         data= None,
-         toStateData= None,
-         **kwargs):
- 
-# duplicated
+    useData = None
+    data = None
+    toStateData = None
+
+    def __init__(self,
+                 useData=None,
+                 data=None,
+                 toStateData=None,
+                 **kwargs):
+
+        # duplicated
         for local in list(locals()):
             if local in ["self", "kwargs"]:
                 continue
@@ -18,7 +19,6 @@ class Eventdatafilter:
             if value == "true":
                 value = True
             # duplicated
-
 
             self.__setattr__(local.replace("_", ""), value)
 

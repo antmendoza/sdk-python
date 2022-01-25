@@ -1,18 +1,19 @@
 class Timeouts:
-     workflowExecTimeout= None
-     stateExecTimeout= None
-     actionExecTimeout= None
-     branchExecTimeout= None
-     eventTimeout= None
-     def __init__(self, 
-         workflowExecTimeout= None,
-         stateExecTimeout= None,
-         actionExecTimeout= None,
-         branchExecTimeout= None,
-         eventTimeout= None,
-         **kwargs):
- 
-# duplicated
+    workflowExecTimeout = None
+    stateExecTimeout = None
+    actionExecTimeout = None
+    branchExecTimeout = None
+    eventTimeout = None
+
+    def __init__(self,
+                 workflowExecTimeout=None,
+                 stateExecTimeout=None,
+                 actionExecTimeout=None,
+                 branchExecTimeout=None,
+                 eventTimeout=None,
+                 **kwargs):
+
+        # duplicated
         for local in list(locals()):
             if local in ["self", "kwargs"]:
                 continue
@@ -22,7 +23,6 @@ class Timeouts:
             if value == "true":
                 value = True
             # duplicated
-
 
             self.__setattr__(local.replace("_", ""), value)
 

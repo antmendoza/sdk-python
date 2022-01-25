@@ -1,14 +1,15 @@
 class Basicpropsdef:
-     username= None
-     password= None
-     metadata= None
-     def __init__(self, 
-         username= None,
-         password= None,
-         metadata= None,
-         **kwargs):
- 
-# duplicated
+    username = None
+    password = None
+    metadata = None
+
+    def __init__(self,
+                 username=None,
+                 password=None,
+                 metadata=None,
+                 **kwargs):
+
+        # duplicated
         for local in list(locals()):
             if local in ["self", "kwargs"]:
                 continue
@@ -18,7 +19,6 @@ class Basicpropsdef:
             if value == "true":
                 value = True
             # duplicated
-
 
             self.__setattr__(local.replace("_", ""), value)
 

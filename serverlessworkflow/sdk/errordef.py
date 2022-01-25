@@ -1,14 +1,15 @@
 class Errordef:
-     name= None
-     code= None
-     description= None
-     def __init__(self, 
-         name= None,
-         code= None,
-         description= None,
-         **kwargs):
- 
-# duplicated
+    name = None
+    code = None
+    description = None
+
+    def __init__(self,
+                 name=None,
+                 code=None,
+                 description=None,
+                 **kwargs):
+
+        # duplicated
         for local in list(locals()):
             if local in ["self", "kwargs"]:
                 continue
@@ -18,7 +19,6 @@ class Errordef:
             if value == "true":
                 value = True
             # duplicated
-
 
             self.__setattr__(local.replace("_", ""), value)
 

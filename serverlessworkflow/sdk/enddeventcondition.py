@@ -1,18 +1,19 @@
 class Enddeventcondition:
-     name= None
-     eventRef= None
-     end= None
-     eventDataFilter= None
-     metadata= None
-     def __init__(self, 
-         name= None,
-         eventRef= None,
-         end= None,
-         eventDataFilter= None,
-         metadata= None,
-         **kwargs):
- 
-# duplicated
+    name = None
+    eventRef = None
+    end = None
+    eventDataFilter = None
+    metadata = None
+
+    def __init__(self,
+                 name=None,
+                 eventRef=None,
+                 end=None,
+                 eventDataFilter=None,
+                 metadata=None,
+                 **kwargs):
+
+        # duplicated
         for local in list(locals()):
             if local in ["self", "kwargs"]:
                 continue
@@ -22,7 +23,6 @@ class Enddeventcondition:
             if value == "true":
                 value = True
             # duplicated
-
 
             self.__setattr__(local.replace("_", ""), value)
 

@@ -1,12 +1,13 @@
 class Sleep:
-     before= None
-     after= None
-     def __init__(self, 
-         before= None,
-         after= None,
-         **kwargs):
- 
-# duplicated
+    before = None
+    after = None
+
+    def __init__(self,
+                 before=None,
+                 after=None,
+                 **kwargs):
+
+        # duplicated
         for local in list(locals()):
             if local in ["self", "kwargs"]:
                 continue
@@ -16,7 +17,6 @@ class Sleep:
             if value == "true":
                 value = True
             # duplicated
-
 
             self.__setattr__(local.replace("_", ""), value)
 

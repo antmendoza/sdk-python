@@ -1,34 +1,35 @@
 class Eventbasedswitchstate:
-     id= None
-     name= None
-     type= None
-     stateDataFilter= None
-     timeouts= None
-     stateExecTimeout= None
-     eventTimeout= None
-     eventConditions= None
-     onErrors= None
-     defaultCondition= None
-     compensatedBy= None
-     usedForCompensation= None
-     metadata= None
-     def __init__(self, 
-         id= None,
-         name= None,
-         type= None,
-         stateDataFilter= None,
-         timeouts= None,
-         stateExecTimeout= None,
-         eventTimeout= None,
-         eventConditions= None,
-         onErrors= None,
-         defaultCondition= None,
-         compensatedBy= None,
-         usedForCompensation= None,
-         metadata= None,
-         **kwargs):
- 
-# duplicated
+    id = None
+    name = None
+    type = None
+    stateDataFilter = None
+    timeouts = None
+    stateExecTimeout = None
+    eventTimeout = None
+    eventConditions = None
+    onErrors = None
+    defaultCondition = None
+    compensatedBy = None
+    usedForCompensation = None
+    metadata = None
+
+    def __init__(self,
+                 id=None,
+                 name=None,
+                 type=None,
+                 stateDataFilter=None,
+                 timeouts=None,
+                 stateExecTimeout=None,
+                 eventTimeout=None,
+                 eventConditions=None,
+                 onErrors=None,
+                 defaultCondition=None,
+                 compensatedBy=None,
+                 usedForCompensation=None,
+                 metadata=None,
+                 **kwargs):
+
+        # duplicated
         for local in list(locals()):
             if local in ["self", "kwargs"]:
                 continue
@@ -38,7 +39,6 @@ class Eventbasedswitchstate:
             if value == "true":
                 value = True
             # duplicated
-
 
             self.__setattr__(local.replace("_", ""), value)
 

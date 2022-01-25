@@ -1,22 +1,23 @@
 class Eventdef:
-     name= None
-     source= None
-     type= None
-     kind= None
-     correlation= None
-     dataOnly= None
-     metadata= None
-     def __init__(self, 
-         name= None,
-         source= None,
-         type= None,
-         kind= None,
-         correlation= None,
-         dataOnly= None,
-         metadata= None,
-         **kwargs):
- 
-# duplicated
+    name = None
+    source = None
+    type = None
+    kind = None
+    correlation = None
+    dataOnly = None
+    metadata = None
+
+    def __init__(self,
+                 name=None,
+                 source=None,
+                 type=None,
+                 kind=None,
+                 correlation=None,
+                 dataOnly=None,
+                 metadata=None,
+                 **kwargs):
+
+        # duplicated
         for local in list(locals()):
             if local in ["self", "kwargs"]:
                 continue
@@ -26,7 +27,6 @@ class Eventdef:
             if value == "true":
                 value = True
             # duplicated
-
 
             self.__setattr__(local.replace("_", ""), value)
 

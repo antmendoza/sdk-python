@@ -1,16 +1,17 @@
 class Enddatacondition:
-     name= None
-     condition= None
-     end= None
-     metadata= None
-     def __init__(self, 
-         name= None,
-         condition= None,
-         end= None,
-         metadata= None,
-         **kwargs):
- 
-# duplicated
+    name = None
+    condition = None
+    end = None
+    metadata = None
+
+    def __init__(self,
+                 name=None,
+                 condition=None,
+                 end=None,
+                 metadata=None,
+                 **kwargs):
+
+        # duplicated
         for local in list(locals()):
             if local in ["self", "kwargs"]:
                 continue
@@ -20,7 +21,6 @@ class Enddatacondition:
             if value == "true":
                 value = True
             # duplicated
-
 
             self.__setattr__(local.replace("_", ""), value)
 

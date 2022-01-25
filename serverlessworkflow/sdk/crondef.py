@@ -1,12 +1,13 @@
 class Crondef:
-     expression= None
-     validUntil= None
-     def __init__(self, 
-         expression= None,
-         validUntil= None,
-         **kwargs):
- 
-# duplicated
+    expression = None
+    validUntil = None
+
+    def __init__(self,
+                 expression=None,
+                 validUntil=None,
+                 **kwargs):
+
+        # duplicated
         for local in list(locals()):
             if local in ["self", "kwargs"]:
                 continue
@@ -16,7 +17,6 @@ class Crondef:
             if value == "true":
                 value = True
             # duplicated
-
 
             self.__setattr__(local.replace("_", ""), value)
 

@@ -1,12 +1,13 @@
 class CorrelationDef:
-     contextAttributeName= None
-     contextAttributeValue= None
-     def __init__(self, 
-         contextAttributeName= None,
-         contextAttributeValue= None,
-         **kwargs):
- 
-# duplicated
+    contextAttributeName = None
+    contextAttributeValue = None
+
+    def __init__(self,
+                 contextAttributeName=None,
+                 contextAttributeValue=None,
+                 **kwargs):
+
+        # duplicated
         for local in list(locals()):
             if local in ["self", "kwargs"]:
                 continue
@@ -16,7 +17,6 @@ class CorrelationDef:
             if value == "true":
                 value = True
             # duplicated
-
 
             self.__setattr__(local.replace("_", ""), value)
 

@@ -1,16 +1,17 @@
 class Functionref:
-     refName= None
-     arguments= None
-     selectionSet= None
-     invoke= None
-     def __init__(self, 
-         refName= None,
-         arguments= None,
-         selectionSet= None,
-         invoke= None,
-         **kwargs):
- 
-# duplicated
+    refName = None
+    arguments = None
+    selectionSet = None
+    invoke = None
+
+    def __init__(self,
+                 refName=None,
+                 arguments=None,
+                 selectionSet=None,
+                 invoke=None,
+                 **kwargs):
+
+        # duplicated
         for local in list(locals()):
             if local in ["self", "kwargs"]:
                 continue
@@ -20,7 +21,6 @@ class Functionref:
             if value == "true":
                 value = True
             # duplicated
-
 
             self.__setattr__(local.replace("_", ""), value)
 

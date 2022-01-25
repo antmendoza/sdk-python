@@ -1,12 +1,13 @@
 class Statedatafilter:
-     input= None
-     output= None
-     def __init__(self, 
-         input= None,
-         output= None,
-         **kwargs):
- 
-# duplicated
+    input = None
+    output = None
+
+    def __init__(self,
+                 input=None,
+                 output=None,
+                 **kwargs):
+
+        # duplicated
         for local in list(locals()):
             if local in ["self", "kwargs"]:
                 continue
@@ -16,7 +17,6 @@ class Statedatafilter:
             if value == "true":
                 value = True
             # duplicated
-
 
             self.__setattr__(local.replace("_", ""), value)
 

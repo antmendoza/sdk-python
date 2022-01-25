@@ -1,38 +1,39 @@
 class Eventstate:
-     id= None
-     name= None
-     type= None
-     exclusive= None
-     onEvents= None
-     timeouts= None
-     stateExecTimeout= None
-     actionExecTimeout= None
-     eventTimeout= None
-     stateDataFilter= None
-     onErrors= None
-     transition= None
-     end= None
-     compensatedBy= None
-     metadata= None
-     def __init__(self, 
-         id= None,
-         name= None,
-         type= None,
-         exclusive= None,
-         onEvents= None,
-         timeouts= None,
-         stateExecTimeout= None,
-         actionExecTimeout= None,
-         eventTimeout= None,
-         stateDataFilter= None,
-         onErrors= None,
-         transition= None,
-         end= None,
-         compensatedBy= None,
-         metadata= None,
-         **kwargs):
- 
-# duplicated
+    id = None
+    name = None
+    type = None
+    exclusive = None
+    onEvents = None
+    timeouts = None
+    stateExecTimeout = None
+    actionExecTimeout = None
+    eventTimeout = None
+    stateDataFilter = None
+    onErrors = None
+    transition = None
+    end = None
+    compensatedBy = None
+    metadata = None
+
+    def __init__(self,
+                 id=None,
+                 name=None,
+                 type=None,
+                 exclusive=None,
+                 onEvents=None,
+                 timeouts=None,
+                 stateExecTimeout=None,
+                 actionExecTimeout=None,
+                 eventTimeout=None,
+                 stateDataFilter=None,
+                 onErrors=None,
+                 transition=None,
+                 end=None,
+                 compensatedBy=None,
+                 metadata=None,
+                 **kwargs):
+
+        # duplicated
         for local in list(locals()):
             if local in ["self", "kwargs"]:
                 continue
@@ -42,7 +43,6 @@ class Eventstate:
             if value == "true":
                 value = True
             # duplicated
-
 
             self.__setattr__(local.replace("_", ""), value)
 

@@ -1,40 +1,41 @@
 class Parallelstate:
-     id= None
-     name= None
-     type= None
-     end= None
-     stateDataFilter= None
-     timeouts= None
-     stateExecTimeout= None
-     branchExecTimeout= None
-     branches= None
-     completionType= None
-     numCompleted= None
-     onErrors= None
-     transition= None
-     compensatedBy= None
-     usedForCompensation= None
-     metadata= None
-     def __init__(self, 
-         id= None,
-         name= None,
-         type= None,
-         end= None,
-         stateDataFilter= None,
-         timeouts= None,
-         stateExecTimeout= None,
-         branchExecTimeout= None,
-         branches= None,
-         completionType= None,
-         numCompleted= None,
-         onErrors= None,
-         transition= None,
-         compensatedBy= None,
-         usedForCompensation= None,
-         metadata= None,
-         **kwargs):
- 
-# duplicated
+    id = None
+    name = None
+    type = None
+    end = None
+    stateDataFilter = None
+    timeouts = None
+    stateExecTimeout = None
+    branchExecTimeout = None
+    branches = None
+    completionType = None
+    numCompleted = None
+    onErrors = None
+    transition = None
+    compensatedBy = None
+    usedForCompensation = None
+    metadata = None
+
+    def __init__(self,
+                 id=None,
+                 name=None,
+                 type=None,
+                 end=None,
+                 stateDataFilter=None,
+                 timeouts=None,
+                 stateExecTimeout=None,
+                 branchExecTimeout=None,
+                 branches=None,
+                 completionType=None,
+                 numCompleted=None,
+                 onErrors=None,
+                 transition=None,
+                 compensatedBy=None,
+                 usedForCompensation=None,
+                 metadata=None,
+                 **kwargs):
+
+        # duplicated
         for local in list(locals()):
             if local in ["self", "kwargs"]:
                 continue
@@ -44,7 +45,6 @@ class Parallelstate:
             if value == "true":
                 value = True
             # duplicated
-
 
             self.__setattr__(local.replace("_", ""), value)
 

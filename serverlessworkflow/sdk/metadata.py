@@ -1,8 +1,8 @@
 class Metadata:
-     def __init__(self, 
-         **kwargs):
- 
-# duplicated
+    def __init__(self,
+                 **kwargs):
+
+        # duplicated
         for local in list(locals()):
             if local in ["self", "kwargs"]:
                 continue
@@ -12,7 +12,6 @@ class Metadata:
             if value == "true":
                 value = True
             # duplicated
-
 
             self.__setattr__(local.replace("_", ""), value)
 

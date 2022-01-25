@@ -1,16 +1,17 @@
 class Subflowref:
-     workflowId= None
-     version= None
-     onParentComplete= None
-     invoke= None
-     def __init__(self, 
-         workflowId= None,
-         version= None,
-         onParentComplete= None,
-         invoke= None,
-         **kwargs):
- 
-# duplicated
+    workflowId = None
+    version = None
+    onParentComplete = None
+    invoke = None
+
+    def __init__(self,
+                 workflowId=None,
+                 version=None,
+                 onParentComplete=None,
+                 invoke=None,
+                 **kwargs):
+
+        # duplicated
         for local in list(locals()):
             if local in ["self", "kwargs"]:
                 continue
@@ -20,7 +21,6 @@ class Subflowref:
             if value == "true":
                 value = True
             # duplicated
-
 
             self.__setattr__(local.replace("_", ""), value)
 

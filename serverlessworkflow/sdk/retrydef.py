@@ -1,22 +1,23 @@
 class Retrydef:
-     name= None
-     delay= None
-     maxDelay= None
-     increment= None
-     multiplier= None
-     maxAttempts= None
-     jitter= None
-     def __init__(self, 
-         name= None,
-         delay= None,
-         maxDelay= None,
-         increment= None,
-         multiplier= None,
-         maxAttempts= None,
-         jitter= None,
-         **kwargs):
- 
-# duplicated
+    name = None
+    delay = None
+    maxDelay = None
+    increment = None
+    multiplier = None
+    maxAttempts = None
+    jitter = None
+
+    def __init__(self,
+                 name=None,
+                 delay=None,
+                 maxDelay=None,
+                 increment=None,
+                 multiplier=None,
+                 maxAttempts=None,
+                 jitter=None,
+                 **kwargs):
+
+        # duplicated
         for local in list(locals()):
             if local in ["self", "kwargs"]:
                 continue
@@ -26,7 +27,6 @@ class Retrydef:
             if value == "true":
                 value = True
             # duplicated
-
 
             self.__setattr__(local.replace("_", ""), value)
 

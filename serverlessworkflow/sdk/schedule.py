@@ -1,14 +1,15 @@
 class Schedule:
-     interval= None
-     cron= None
-     timezone= None
-     def __init__(self, 
-         interval= None,
-         cron= None,
-         timezone= None,
-         **kwargs):
- 
-# duplicated
+    interval = None
+    cron = None
+    timezone = None
+
+    def __init__(self,
+                 interval=None,
+                 cron=None,
+                 timezone=None,
+                 **kwargs):
+
+        # duplicated
         for local in list(locals()):
             if local in ["self", "kwargs"]:
                 continue
@@ -18,7 +19,6 @@ class Schedule:
             if value == "true":
                 value = True
             # duplicated
-
 
             self.__setattr__(local.replace("_", ""), value)
 

@@ -1,18 +1,19 @@
-class Branch :
-     name= None
-     timeouts= None
-     actionExecTimeout= None
-     branchExecTimeout= None
-     actions= None
-     def __init__(self, 
-         name= None,
-         timeouts= None,
-         actionExecTimeout= None,
-         branchExecTimeout= None,
-         actions= None,
-         **kwargs):
- 
-# duplicated
+class Branch:
+    name = None
+    timeouts = None
+    actionExecTimeout = None
+    branchExecTimeout = None
+    actions = None
+
+    def __init__(self,
+                 name=None,
+                 timeouts=None,
+                 actionExecTimeout=None,
+                 branchExecTimeout=None,
+                 actions=None,
+                 **kwargs):
+
+        # duplicated
         for local in list(locals()):
             if local in ["self", "kwargs"]:
                 continue
@@ -22,7 +23,6 @@ class Branch :
             if value == "true":
                 value = True
             # duplicated
-
 
             self.__setattr__(local.replace("_", ""), value)
 

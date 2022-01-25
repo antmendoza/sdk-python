@@ -1,12 +1,13 @@
 class Bearerpropsdef:
-     token= None
-     metadata= None
-     def __init__(self, 
-         token= None,
-         metadata= None,
-         **kwargs):
- 
-# duplicated
+    token = None
+    metadata = None
+
+    def __init__(self,
+                 token=None,
+                 metadata=None,
+                 **kwargs):
+
+        # duplicated
         for local in list(locals()):
             if local in ["self", "kwargs"]:
                 continue
@@ -16,7 +17,6 @@ class Bearerpropsdef:
             if value == "true":
                 value = True
             # duplicated
-
 
             self.__setattr__(local.replace("_", ""), value)
 

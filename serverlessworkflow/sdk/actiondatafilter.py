@@ -1,16 +1,17 @@
 class Actiondatafilter:
-     fromStateData= None
-     useResults= None
-     results= None
-     toStateData= None
-     def __init__(self, 
-         fromStateData= None,
-         useResults= None,
-         results= None,
-         toStateData= None,
-         **kwargs):
- 
-# duplicated
+    fromStateData = None
+    useResults = None
+    results = None
+    toStateData = None
+
+    def __init__(self,
+                 fromStateData=None,
+                 useResults=None,
+                 results=None,
+                 toStateData=None,
+                 **kwargs):
+
+        # duplicated
         for local in list(locals()):
             if local in ["self", "kwargs"]:
                 continue
@@ -20,7 +21,6 @@ class Actiondatafilter:
             if value == "true":
                 value = True
             # duplicated
-
 
             self.__setattr__(local.replace("_", ""), value)
 

@@ -1,14 +1,15 @@
 class Transition:
-     nextState= None
-     produceEvents= None
-     compensate= None
-     def __init__(self, 
-         nextState= None,
-         produceEvents= None,
-         compensate= None,
-         **kwargs):
- 
-# duplicated
+    nextState = None
+    produceEvents = None
+    compensate = None
+
+    def __init__(self,
+                 nextState=None,
+                 produceEvents=None,
+                 compensate=None,
+                 **kwargs):
+
+        # duplicated
         for local in list(locals()):
             if local in ["self", "kwargs"]:
                 continue
@@ -18,7 +19,6 @@ class Transition:
             if value == "true":
                 value = True
             # duplicated
-
 
             self.__setattr__(local.replace("_", ""), value)
 

@@ -1,20 +1,21 @@
 class Eventref:
-     triggerEventRef= None
-     resultEventRef= None
-     resultEventTimeout= None
-     data= None
-     contextAttributes= None
-     invoke= None
-     def __init__(self, 
-         triggerEventRef= None,
-         resultEventRef= None,
-         resultEventTimeout= None,
-         data= None,
-         contextAttributes= None,
-         invoke= None,
-         **kwargs):
- 
-# duplicated
+    triggerEventRef = None
+    resultEventRef = None
+    resultEventTimeout = None
+    data = None
+    contextAttributes = None
+    invoke = None
+
+    def __init__(self,
+                 triggerEventRef=None,
+                 resultEventRef=None,
+                 resultEventTimeout=None,
+                 data=None,
+                 contextAttributes=None,
+                 invoke=None,
+                 **kwargs):
+
+        # duplicated
         for local in list(locals()):
             if local in ["self", "kwargs"]:
                 continue
@@ -24,7 +25,6 @@ class Eventref:
             if value == "true":
                 value = True
             # duplicated
-
 
             self.__setattr__(local.replace("_", ""), value)
 

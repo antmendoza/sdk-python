@@ -1,16 +1,17 @@
 class Onevents:
-     eventRefs= None
-     actionMode= None
-     actions= None
-     eventDataFilter= None
-     def __init__(self, 
-         eventRefs= None,
-         actionMode= None,
-         actions= None,
-         eventDataFilter= None,
-         **kwargs):
- 
-# duplicated
+    eventRefs = None
+    actionMode = None
+    actions = None
+    eventDataFilter = None
+
+    def __init__(self,
+                 eventRefs=None,
+                 actionMode=None,
+                 actions=None,
+                 eventDataFilter=None,
+                 **kwargs):
+
+        # duplicated
         for local in list(locals()):
             if local in ["self", "kwargs"]:
                 continue
@@ -20,7 +21,6 @@ class Onevents:
             if value == "true":
                 value = True
             # duplicated
-
 
             self.__setattr__(local.replace("_", ""), value)
 

@@ -1,12 +1,13 @@
 class Defaultconditiondef:
-     transition= None
-     end= None
-     def __init__(self, 
-         transition= None,
-         end= None,
-         **kwargs):
- 
-# duplicated
+    transition = None
+    end = None
+
+    def __init__(self,
+                 transition=None,
+                 end=None,
+                 **kwargs):
+
+        # duplicated
         for local in list(locals()):
             if local in ["self", "kwargs"]:
                 continue
@@ -16,7 +17,6 @@ class Defaultconditiondef:
             if value == "true":
                 value = True
             # duplicated
-
 
             self.__setattr__(local.replace("_", ""), value)
 

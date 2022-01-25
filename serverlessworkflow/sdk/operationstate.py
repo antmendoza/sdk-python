@@ -64,7 +64,6 @@ class Operationstate:
             self.__setattr__(k.replace("_", ""), value)
             # duplicated
 
-
     @staticmethod
     def load_actions(value):
         return [Action(**action) for action in value]
