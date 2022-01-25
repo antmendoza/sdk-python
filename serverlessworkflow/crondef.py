@@ -1,13 +1,12 @@
-from serverlessworkflow.sdk.state import State
-
-
-class InjectState(State):
-
-    data: dict
-
-    def __init__(self, data: dict = None,
-                 **kwargs):
-        # duplicated
+class Crondef:
+     expression= None
+     validUntil= None
+     def __init__(self, 
+         expression= None,
+         validUntil= None,
+         **kwargs):
+ 
+# duplicated
         for local in list(locals()):
             if local in ["self", "kwargs"]:
                 continue
@@ -17,6 +16,7 @@ class InjectState(State):
             if value == "true":
                 value = True
             # duplicated
+
 
             self.__setattr__(local.replace("_", ""), value)
 
@@ -28,5 +28,3 @@ class InjectState(State):
 
             self.__setattr__(k.replace("_", ""), value)
             # duplicated
-
-

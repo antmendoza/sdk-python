@@ -2,7 +2,50 @@ import os
 import re
 from os import listdir
 
-from serverlessworkflow.tools.property_py import PropertyPy
+
+class PropertyPy:
+    def __init__(self, raw_name: str):
+        self.raw_name = raw_name
+
+    @property
+    def property_name(self):
+        return self.raw_name.split(":")[0].strip().replace("?", "")
+
+    @property
+    def property_type(self):
+       # txt = re.search('export class (.+?) {', line).group(1)
+        return self.raw_name.split(":")[1].strip().replace(";", "")
+
+    def __repr__(self):
+        return str({
+            "raw_name": self.raw_name
+        })
+
+
+constructor_body="""
+# duplicated
+        for local in list(locals()):
+            if local in ["self", "kwargs"]:
+                continue
+            value = locals().get(local)
+            if not value:
+                continue
+            if value == "true":
+                value = True
+            # duplicated
+
+
+            self.__setattr__(local.replace("_", ""), value)
+
+        # duplicated
+        for k in kwargs.keys():
+            value = kwargs[k]
+            if value == "true":
+                value = True
+
+            self.__setattr__(k.replace("_", ""), value)
+            # duplicated
+"""
 
 
 class ClassPy:
@@ -12,23 +55,30 @@ class ClassPy:
 
 
     def write(self):
-        file = open("../"+self.class_name+".py", "w")
+
+        propert: PropertyPy
+        properties = [prop for prop in self.properties if prop.property_name != "sourceModel"]
+
+        file = open("../"+re.sub(r'(?<!^)(?=[A-Z])', '_', self.class_name).lower()+".py", "w")
         file.write("class "+self.class_name+":")
         file.write("\n ")
+        for propert in properties:
+            file.write("    "+propert.property_name +"= None")
+            file.write("\n ")
 
 
         file.write("    def __init__(self, " )
         file.write("\n ")
-        propert: PropertyPy
-        properties = [prop for prop in self.properties if prop.property_name != "sourceModel"]
         for propert in properties:
-            file.write("        "+propert.property_name +": None,")
+            file.write("        "+propert.property_name +"= None,")
             file.write("\n ")
-        file.write("        ):" )
+        file.write("        **kwargs):" )
         file.write("\n ")
         for propert in properties:
-            file.write("        self."+propert.property_name +"="+propert.property_name)
-            file.write("\n ")
+            #file.write("        self."+propert.property_name +"="+propert.property_name)
+            #file.write("\n ")
+            pass
+        file.write(constructor_body)
 
 
 def method_name(file):
