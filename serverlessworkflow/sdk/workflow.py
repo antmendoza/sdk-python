@@ -40,8 +40,8 @@ class Workflow:
                  functions: [] = None,
                  **kwargs):
 
-        self.default_values = {'expressionLang': 'jq'}
-        self.initial_values = {}
+        self._default_values = {'expressionLang': 'jq'}
+        self._initial_values = {}
 
         # duplicated
         for local in list(locals()):
@@ -50,16 +50,17 @@ class Workflow:
             final_value = locals().get(local)
             initial_value = locals().get(local)
             if not final_value:
-                if self.default_values.get(local):
-                    final_value = self.default_values.get(local)
+                if self._default_values.get(local):
+                    final_value = self._default_values.get(local)
             if final_value == "true":
                 final_value = True
             # duplicated
 
             if local == 'states' and final_value:
                 final_value = Workflow.load_states(final_value)
+                
 
-            self.initial_values[local] = initial_value
+            self._initial_values[local] = initial_value
 
             if final_value is not None:
                 self.__setattr__(local.replace("_", ""), final_value)
@@ -76,11 +77,11 @@ class Workflow:
     def to_json(self) -> str:
 
         deepcopy = copy.deepcopy(self)
-        delattr(deepcopy, 'initial_values')
-        delattr(deepcopy, 'default_values')
+        delattr(deepcopy, '_initial_values')
+        delattr(deepcopy, '_default_values')
 
-        for k in self.default_values.keys():
-            if self.initial_values.get(k) is None:
+        for k in self._default_values.keys():
+            if self._initial_values.get(k) is None:
                 delattr(deepcopy, k)
 
         return json.dumps(deepcopy,
@@ -89,17 +90,14 @@ class Workflow:
 
     def to_yaml(self):
         deepcopy = copy.deepcopy(self)
-        delattr(deepcopy, 'initial_values')
-        delattr(deepcopy, 'default_values')
+        delattr(deepcopy, '_initial_values')
+        delattr(deepcopy, '_default_values')
 
-        for k in self.default_values.keys():
-            if self.initial_values.get(k) is None:
+        for k in self._default_values.keys():
+            if self._initial_values.get(k) is None:
                 delattr(deepcopy, k)
 
-        def noop(self_, *args, **kw):
-            pass
-
-        yaml.emitter.Emitter.process_tag = noop
+        yaml.emitter.Emitter.process_tag = lambda x: None
         return yaml.dump(deepcopy,
                          sort_keys=False,
                          # , default_flow_style=False,
