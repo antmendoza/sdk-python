@@ -1,16 +1,20 @@
+from serverlessworkflow.sdk.action import Action
+
+
+class BranchTimeout:
+    actionExecTimeout: str = None  # ActionExecTimeout
+    branchExecTimeout: str = None  # BranchExecTimeout
+
+
 class Branch:
-    name = None
-    timeouts = None
-    actionExecTimeout = None
-    branchExecTimeout = None
-    actions = None
+    name: str = None
+    timeouts: BranchTimeout = None
+    actions: [Action] = None
 
     def __init__(self,
-                 name=None,
-                 timeouts=None,
-                 actionExecTimeout=None,
-                 branchExecTimeout=None,
-                 actions=None,
+                 name: str = None,
+                 timeouts: BranchTimeout = None,
+                 actions: [Action] = None,
                  **kwargs):
 
         # duplicated

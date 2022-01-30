@@ -13,10 +13,15 @@ class PropertyPy:
 
     @property
     def property_type(self):
-       # txt = re.search('export class (.+?) {', line).group(1)
-        return self.raw_name.split(":")[1].strip().replace(";", "")
+        # txt = re.search('export class (.+?) {', line).group(1)
+        result = self.raw_name
+        result = result.split(":")[1].strip().replace(";", "")
+        if "*/" in self.raw_name:
+            result = self.raw_name[self.raw_name.index("*/")+2:]
+        return result.replace(";","")
 
-    def __repr__(self):
+
+def __repr__(self):
         return str({
             "raw_name": self.raw_name
         })
@@ -56,29 +61,57 @@ class ClassPy:
 
     def write(self):
 
-        propert: PropertyPy
+        property: PropertyPy
         properties = [prop for prop in self.properties if prop.property_name != "sourceModel"]
 
-        file = open("../"+re.sub(r'(?<!^)(?=[A-Z])', '_', self.class_name).lower()+".py", "w")
+        file = open("./output/"+re.sub(r'(?<!^)(?=[A-Z])', '_', self.class_name).lower()+".py", "w")
         file.write("class "+self.class_name+":")
         file.write("\n ")
-        for propert in properties:
-            file.write("    "+propert.property_name +"= None")
+        for property in properties:
+            file.write("    "+property.property_name + " : " +
+                       self.propertyType(property.property_type) + " = None")
             file.write("\n ")
 
 
         file.write("    def __init__(self, " )
         file.write("\n ")
-        for propert in properties:
-            file.write("        "+propert.property_name +"= None,")
+        for property in properties:
+            file.write("        " + property.property_name + " : " +
+                       self.propertyType(property.property_type) + " = None,")
             file.write("\n ")
         file.write("        **kwargs):" )
         file.write("\n ")
-        for propert in properties:
+        for property in properties:
             #file.write("        self."+propert.property_name +"="+propert.property_name)
             #file.write("\n ")
             pass
         file.write(constructor_body)
+
+    def propertyType(self, property_type: str):
+
+
+        #result = property_type.lower();
+        result = property_type;
+
+
+        result = result.replace("string", "str")
+        result = result.replace("boolean", "bool")
+
+        if "|" in property_type:
+            result = result.replace("|", ",")
+            result = "Union[" + result + "]"
+
+
+
+        if "[]]"  in property_type:
+            result = result.removeprefix("[")
+            result = result[:result.index(",")]
+            result = "["+result+"]"
+        elif "[]" in property_type:
+            result = result.removesuffix("[]")
+            result = "[" + result + "]"
+
+        return result
 
 
 def method_name(file):
@@ -121,6 +154,11 @@ examples_dir = os.path.join(os.path.dirname(__file__), './classes')
 examples = listdir(examples_dir)
 for example in examples:
     with open(examples_dir + "/" + example, "r") as swf_file:
+        print(swf_file.name)
+        if not swf_file.name.endswith("action.ts"):
+            # continue
+            pass
+
         classPy = method_name(swf_file)
         classPy.write()
 

@@ -1,32 +1,44 @@
+from typing import Union
+
+from serverlessworkflow.sdk.defaultconditiondef import Defaultconditiondef
+from serverlessworkflow.sdk.enddeventcondition import Enddeventcondition
+from serverlessworkflow.sdk.error import Error
+from serverlessworkflow.sdk.metadata import Metadata
+from serverlessworkflow.sdk.state_exec_timeout import StateExecTimeout
+from serverlessworkflow.sdk.statedatafilter import Statedatafilter
+from serverlessworkflow.sdk.transitioneventcondition import Transitioneventcondition
+
+
+class EventBasedSwitchStateTimeouts:
+    stateExecTimeout: StateExecTimeout = None
+    eventTimeout: str = None  # EventTimeout
+
+
 class Eventbasedswitchstate:
-    id = None
-    name = None
-    type = None
-    stateDataFilter = None
-    timeouts = None
-    stateExecTimeout = None
-    eventTimeout = None
-    eventConditions = None
-    onErrors = None
-    defaultCondition = None
-    compensatedBy = None
-    usedForCompensation = None
-    metadata = None
+    id: str = None
+    name: str = None
+    type: str = None
+    stateDataFilter: Statedatafilter = None
+    timeouts: EventBasedSwitchStateTimeouts = None
+    eventConditions: Union[Transitioneventcondition, Enddeventcondition] = None  # Eventcondition
+    onErrors: [Error] = None
+    defaultCondition: Defaultconditiondef = None
+    compensatedBy: str = None
+    usedForCompensation: bool = None
+    metadata: Metadata = None
 
     def __init__(self,
-                 id=None,
-                 name=None,
-                 type=None,
-                 stateDataFilter=None,
-                 timeouts=None,
-                 stateExecTimeout=None,
-                 eventTimeout=None,
-                 eventConditions=None,
-                 onErrors=None,
-                 defaultCondition=None,
-                 compensatedBy=None,
-                 usedForCompensation=None,
-                 metadata=None,
+                 id: str = None,
+                 name: str = None,
+                 type: 'switch' = None,
+                 stateDataFilter: Statedatafilter = None,
+                 timeouts: EventBasedSwitchStateTimeouts = None,
+                 eventConditions: Union[Transitioneventcondition, Enddeventcondition] = None,  # Eventcondition
+                 onErrors: [Error] = None,
+                 defaultCondition: Defaultconditiondef = None,
+                 compensatedBy: str = None,
+                 usedForCompensation: bool = None,
+                 metadata: Metadata = None,
                  **kwargs):
 
         # duplicated

@@ -1,20 +1,32 @@
+from enum import Enum
+from typing import Union, List
+
+from serverlessworkflow.sdk.correlation_def import CorrelationDef
+from serverlessworkflow.sdk.metadata import Metadata
+
+
+class Kind(Enum):
+    CONSUMED = "consumed"
+    PRODUCED = "produced"
+
+
 class Eventdef:
-    name = None
-    source = None
-    type = None
-    kind = None
-    correlation = None
-    dataOnly = None
-    metadata = None
+    name: str = None
+    source: str = None
+    type: str = None
+    kind: Kind = None
+    correlation: Union[CorrelationDef, List[CorrelationDef]] = None
+    dataOnly: bool = None
+    metadata: Metadata = None
 
     def __init__(self,
-                 name=None,
-                 source=None,
-                 type=None,
-                 kind=None,
-                 correlation=None,
-                 dataOnly=None,
-                 metadata=None,
+                 name: str = None,
+                 source: str = None,
+                 type: str = None,
+                 kind: Kind = None,
+                 correlation: Union[CorrelationDef, List[CorrelationDef]] = None,  # CorrelationDefs
+                 dataOnly: bool = None,
+                 metadata: Metadata = None,
                  **kwargs):
 
         # duplicated

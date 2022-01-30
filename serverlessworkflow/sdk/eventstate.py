@@ -1,36 +1,47 @@
+from typing import Union
+
+from serverlessworkflow.sdk.end import End
+from serverlessworkflow.sdk.error import Error
+from serverlessworkflow.sdk.metadata import Metadata
+from serverlessworkflow.sdk.onevents import Onevents
+from serverlessworkflow.sdk.state_exec_timeout import StateExecTimeout
+from serverlessworkflow.sdk.statedatafilter import Statedatafilter
+from serverlessworkflow.sdk.transition import Transition
+
+
+class EventStateTimeouts:
+    stateExecTimeout: StateExecTimeout = None
+    actionExecTimeout: str = None  # ActionExecTimeout
+    eventTimeout: str = None  # EventTimeout
+
+
 class Eventstate:
-    id = None
-    name = None
-    type = None
-    exclusive = None
-    onEvents = None
-    timeouts = None
-    stateExecTimeout = None
-    actionExecTimeout = None
-    eventTimeout = None
-    stateDataFilter = None
-    onErrors = None
-    transition = None
-    end = None
-    compensatedBy = None
-    metadata = None
+    id: str = None
+    name: str = None
+    type: 'event' = None
+    exclusive: bool = None
+    onEvents: [Onevents] = None
+    timeouts: EventStateTimeouts = None
+    stateDataFilter: Statedatafilter = None
+    onErrors: [Error] = None
+    transition: Union[str, Transition] = None
+    end: Union[bool, End] = None
+    compensatedBy: str = None
+    metadata: Metadata = None
 
     def __init__(self,
-                 id=None,
-                 name=None,
-                 type=None,
-                 exclusive=None,
-                 onEvents=None,
-                 timeouts=None,
-                 stateExecTimeout=None,
-                 actionExecTimeout=None,
-                 eventTimeout=None,
-                 stateDataFilter=None,
-                 onErrors=None,
-                 transition=None,
-                 end=None,
-                 compensatedBy=None,
-                 metadata=None,
+                 id: str = None,
+                 name: str = None,
+                 type: 'event' = None,
+                 exclusive: bool = None,
+                 onEvents: [Onevents] = None,
+                 timeouts: EventStateTimeouts = None,
+                 stateDataFilter: Statedatafilter = None,
+                 onErrors: [Error] = None,
+                 transition: Union[str, Transition] = None,
+                 end: Union[bool, End] = None,
+                 compensatedBy: str = None,
+                 metadata: Metadata = None,
                  **kwargs):
 
         # duplicated

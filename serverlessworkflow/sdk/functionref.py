@@ -1,14 +1,19 @@
+from typing import Dict
+
+from serverlessworkflow.sdk.enums import Invoke
+
+
 class Functionref:
-    refName = None
-    arguments = None
-    selectionSet = None
-    invoke = None
+    refName: str = None
+    arguments: Dict[str, Dict] = None
+    selectionSet: str = None
+    invoke: Invoke = None
 
     def __init__(self,
-                 refName=None,
-                 arguments=None,
-                 selectionSet=None,
-                 invoke=None,
+                 refName: str = None,
+                 arguments: Dict[str, Dict] = None,
+                 selectionSet: str = None,
+                 invoke: Invoke = None,
                  **kwargs):
 
         # duplicated

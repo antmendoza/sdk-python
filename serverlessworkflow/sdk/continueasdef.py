@@ -1,14 +1,19 @@
+from typing import Union, Dict
+
+from serverlessworkflow.sdk.workflow_exec_timeout import WorkflowExecTimeout
+
+
 class Continueasdef:
-    workflowId = None
-    version = None
-    data = None
-    workflowExecTimeout = None
+    workflowId: str = None
+    version: str = None
+    data: Union[str, Dict[str, Dict]] = None
+    workflowExecTimeout: WorkflowExecTimeout = None
 
     def __init__(self,
-                 workflowId=None,
-                 version=None,
-                 data=None,
-                 workflowExecTimeout=None,
+                 workflowId: str = None,
+                 version: str = None,
+                 data: Union[str, Dict[str, Dict]] = None,
+                 workflowExecTimeout: WorkflowExecTimeout = None,
                  **kwargs):
 
         # duplicated

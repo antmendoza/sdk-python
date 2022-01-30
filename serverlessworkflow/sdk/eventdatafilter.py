@@ -1,12 +1,12 @@
 class Eventdatafilter:
-    useData = None
-    data = None
-    toStateData = None
+    useData: bool = None
+    data: str = None
+    toStateData: str = None
 
     def __init__(self,
-                 useData=None,
-                 data=None,
-                 toStateData=None,
+                 useData: bool = None,
+                 data: str = None,
+                 toStateData: str = None,
                  **kwargs):
 
         # duplicated

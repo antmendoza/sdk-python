@@ -132,3 +132,4 @@ dmypy.json
 .idea
 .vscode
 *.iml
+/serverlessworkflow/tools/output/

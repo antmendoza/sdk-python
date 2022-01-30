@@ -1,16 +1,23 @@
+from typing import Union
+
+from serverlessworkflow.sdk.end import End
+from serverlessworkflow.sdk.eventdatafilter import Eventdatafilter
+from serverlessworkflow.sdk.metadata import Metadata
+
+
 class Enddeventcondition:
-    name = None
-    eventRef = None
-    end = None
-    eventDataFilter = None
-    metadata = None
+    name: str = None
+    eventRef: str = None
+    end: Union[bool, End] = None
+    eventDataFilter: Eventdatafilter = None
+    metadata: Metadata = None
 
     def __init__(self,
-                 name=None,
-                 eventRef=None,
-                 end=None,
-                 eventDataFilter=None,
-                 metadata=None,
+                 name: str = None,
+                 eventRef: str = None,
+                 end: Union[bool, End] = None,
+                 eventDataFilter: Eventdatafilter = None,
+                 metadata: Metadata = None,
                  **kwargs):
 
         # duplicated

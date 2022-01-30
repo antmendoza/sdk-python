@@ -1,44 +1,56 @@
+from typing import Union
+
+from serverlessworkflow.sdk.action import Action
+from serverlessworkflow.sdk.end import End
+from serverlessworkflow.sdk.error import Error
+from serverlessworkflow.sdk.metadata import Metadata
+from serverlessworkflow.sdk.state_exec_timeout import StateExecTimeout
+from serverlessworkflow.sdk.statedatafilter import Statedatafilter
+from serverlessworkflow.sdk.transition import Transition
+
+
+class ForEachStateTimeouts:
+    stateExecTimeout: StateExecTimeout = None
+    actionExecTimeout: str = None  # ActionExecTimeout
+
+
 class Foreachstate:
-    id = None
-    name = None
-    type = None
-    end = None
-    inputCollection = None
-    outputCollection = None
-    iterationParam = None
-    batchSize = None
-    actions = None
-    timeouts = None
-    stateExecTimeout = None
-    actionExecTimeout = None
-    stateDataFilter = None
-    onErrors = None
-    transition = None
-    compensatedBy = None
-    usedForCompensation = None
-    mode = None
-    metadata = None
+    id: str = None
+    name: str = None
+    type: str = None
+    end: Union[bool, End] = None
+    inputCollection: str = None
+    outputCollection: str = None
+    iterationParam: str = None
+    batchSize: Union[int, str] = None
+    actions: [Action] = None
+    timeouts: ForEachStateTimeouts = None
+    stateDataFilter: Statedatafilter = None
+    onErrors: [Error] = None
+    transition: Union[str, Transition] = None
+    compensatedBy: str = None
+    usedForCompensation: bool = None
+    mode: Union['sequential', 'parallel'] = None
+    metadata: Metadata = None
 
     def __init__(self,
-                 id=None,
-                 name=None,
-                 type=None,
-                 end=None,
-                 inputCollection=None,
-                 outputCollection=None,
-                 iterationParam=None,
-                 batchSize=None,
-                 actions=None,
-                 timeouts=None,
-                 stateExecTimeout=None,
-                 actionExecTimeout=None,
-                 stateDataFilter=None,
-                 onErrors=None,
-                 transition=None,
-                 compensatedBy=None,
-                 usedForCompensation=None,
-                 mode=None,
-                 metadata=None,
+                 id: str = None,
+                 name: str = None,
+                 type: str = None,
+                 end: Union[bool, End] = None,
+                 inputCollection: str = None,
+                 outputCollection: str = None,
+                 iterationParam: str = None,
+                 batchSize: Union[int, str] = None,
+                 actions: [Action] = None,
+                 timeouts: ForEachStateTimeouts = None,
+                 stateDataFilter: Statedatafilter = None,
+                 onErrors: [Error] = None,
+                 transition: Union[str, Transition] = None,
+                 compensatedBy: str = None,
+                 usedForCompensation: bool = None,
+                 mode: Union['sequential', 'parallel'] = None,
+                 metadata: Metadata = None,
                  **kwargs):
 
         # duplicated

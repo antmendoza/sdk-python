@@ -1,10 +1,13 @@
+from serverlessworkflow.sdk.metadata import Metadata
+
+
 class Bearerpropsdef:
-    token = None
-    metadata = None
+    token: str = None
+    metadata: Metadata = None
 
     def __init__(self,
-                 token=None,
-                 metadata=None,
+                 token: str = None,
+                 metadata: Metadata = None,
                  **kwargs):
 
         # duplicated

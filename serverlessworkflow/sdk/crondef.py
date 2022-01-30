@@ -1,10 +1,10 @@
 class Crondef:
-    expression = None
-    validUntil = None
+    expression: str = None
+    validUntil: str = None
 
     def __init__(self,
-                 expression=None,
-                 validUntil=None,
+                 expression: str = None,
+                 validUntil: str = None,
                  **kwargs):
 
         # duplicated

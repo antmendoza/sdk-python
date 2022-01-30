@@ -1,12 +1,15 @@
+from serverlessworkflow.sdk.metadata import Metadata
+
+
 class Basicpropsdef:
-    username = None
-    password = None
-    metadata = None
+    username: str = None
+    password: str = None
+    metadata: Metadata = None
 
     def __init__(self,
-                 username=None,
-                 password=None,
-                 metadata=None,
+                 username: str = None,
+                 password: str = None,
+                 metadata: Metadata = None,
                  **kwargs):
 
         # duplicated

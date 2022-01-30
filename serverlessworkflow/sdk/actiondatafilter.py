@@ -1,14 +1,14 @@
 class Actiondatafilter:
-    fromStateData = None
-    useResults = None
-    results = None
-    toStateData = None
+    fromStateData: str = None
+    useResults: bool = None
+    results: str = None
+    toStateData: str = None
 
     def __init__(self,
-                 fromStateData=None,
-                 useResults=None,
-                 results=None,
-                 toStateData=None,
+                 fromStateData: str = None,
+                 useResults: bool = None,
+                 results: str = None,
+                 toStateData: str = None,
                  **kwargs):
 
         # duplicated

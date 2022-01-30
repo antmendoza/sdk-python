@@ -1,16 +1,31 @@
+from typing import Union
+
+from serverlessworkflow.sdk.metadata import Metadata
+
+
+class FunctionType:
+    REST = "rest"
+    ASYNCAPI = "asyncapi"
+    RPC = "rpc"
+    GRAPHQL = "graphql"
+    ODATA = "odata"
+    EXPRESSION = "expression"
+    CUSTOM = "custom"
+
+
 class Function:
-    name = None
-    operation = None
-    type = None
-    authRef = None
-    metadata = None
+    name: str = None
+    operation: str = None
+    type: FunctionType = None
+    authRef: str = None
+    metadata: Metadata = None
 
     def __init__(self,
-                 name=None,
-                 operation=None,
-                 type=None,
-                 authRef=None,
-                 metadata=None,
+                 name: str = None,
+                 operation: str = None,
+                 type: FunctionType = None,
+                 authRef: str = None,
+                 metadata: Metadata = None,
                  **kwargs):
 
         # duplicated

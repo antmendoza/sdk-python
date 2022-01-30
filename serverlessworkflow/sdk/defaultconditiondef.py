@@ -1,10 +1,16 @@
+from typing import Union
+
+from serverlessworkflow.sdk.end import End
+from serverlessworkflow.sdk.transition import Transition
+
+
 class Defaultconditiondef:
-    transition = None
-    end = None
+    transition: Union[str, Transition] = None
+    end: Union[bool, End] = None
 
     def __init__(self,
-                 transition=None,
-                 end=None,
+                 transition: Union[str, Transition] = None,
+                 end: Union[bool, End] = None,
                  **kwargs):
 
         # duplicated

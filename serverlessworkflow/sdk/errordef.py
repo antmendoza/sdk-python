@@ -1,12 +1,12 @@
 class Errordef:
-    name = None
-    code = None
-    description = None
+    name: str = None
+    code: str = None
+    description: str = None
 
     def __init__(self,
-                 name=None,
-                 code=None,
-                 description=None,
+                 name: str = None,
+                 code: str = None,
+                 description: str = None,
                  **kwargs):
 
         # duplicated

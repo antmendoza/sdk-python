@@ -1,14 +1,20 @@
+from typing import Union
+
+from serverlessworkflow.sdk.continueasdef import Continueasdef
+from serverlessworkflow.sdk.produceeventdef import Produceeventdef
+
+
 class End:
-    terminate = None
-    produceEvents = None
-    compensate = None
-    continueAs = None
+    terminate: bool = None
+    produceEvents: [Produceeventdef] = None
+    compensate: bool = None
+    continueAs: Union[str, Continueasdef] = None
 
     def __init__(self,
-                 terminate=None,
-                 produceEvents=None,
-                 compensate=None,
-                 continueAs=None,
+                 terminate: bool = None,
+                 produceEvents: [Produceeventdef] = None,
+                 compensate: bool = None,
+                 continueAs: Union[str, Continueasdef] = None,
                  **kwargs):
 
         # duplicated

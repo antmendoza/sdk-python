@@ -1,12 +1,26 @@
+from enum import Enum
+from typing import Union
+
+from serverlessworkflow.sdk.basicpropsdef import Basicpropsdef
+from serverlessworkflow.sdk.bearerpropsdef import Bearerpropsdef
+from serverlessworkflow.sdk.oauth2propsdef import Oauth2propsdef
+
+
+class Scheme(Enum):
+    BASIC = "basic"
+    BEARER = "bearer"
+    OAUTH2 = "oauth2"
+
+
 class Authdef:
-    name = None
-    scheme = None
-    properties = None
+    name:str = None
+    scheme : Scheme = None
+    properties : Union[str, Union[Basicpropsdef, Bearerpropsdef, Oauth2propsdef]] = None
 
     def __init__(self,
-                 name=None,
-                 scheme=None,
-                 properties=None,
+                 name: str = None,
+                 scheme : Scheme = None,
+                 properties : Union[str, Union[Basicpropsdef, Bearerpropsdef, Oauth2propsdef]] = None,
                  **kwargs):
 
         # duplicated

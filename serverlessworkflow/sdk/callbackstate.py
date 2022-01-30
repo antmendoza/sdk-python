@@ -1,42 +1,53 @@
+from typing import Union
+
+from serverlessworkflow.sdk.action import Action
+from serverlessworkflow.sdk.end import End
+from serverlessworkflow.sdk.error import Error
+from serverlessworkflow.sdk.eventdatafilter import Eventdatafilter
+from serverlessworkflow.sdk.metadata import Metadata
+from serverlessworkflow.sdk.state_exec_timeout import StateExecTimeout
+from serverlessworkflow.sdk.statedatafilter import Statedatafilter
+from serverlessworkflow.sdk.transition import Transition
+
+
+class CallbackStateTimeOut:
+    stateExecTimeout: StateExecTimeout = None
+    actionExecTimeout: str = None  # ActionExecTimeout
+    eventTimeout: str = None  # EventTimeout
+
+
 class Callbackstate:
-    id = None
-    name = None
-    type = None
-    action = None
-    eventRef = None
-    timeouts = None
-    stateExecTimeout = None
-    actionExecTimeout = None
-    eventTimeout = None
-    eventDataFilter = None
-    stateDataFilter = None
-    onErrors = None
-    transition = None
-    end = None
-    compensatedBy = None
-    usedForCompensation = None
-    metadata = None
+    id: str = None
+    name: str = None
+    type: 'callback' = None
+    action: Action = None
+    eventRef: str = None
+    timeouts: CallbackStateTimeOut = None
+    eventDataFilter: Eventdatafilter = None
+    stateDataFilter: Statedatafilter = None
+    onErrors: [Error] = None
+    transition: Union[str, Transition] = None
+    end: Union[bool, End] = None
+    compensatedBy: str = None
+    usedForCompensation: bool = None
+    metadata: Metadata = None
 
     def __init__(self,
-                 id=None,
-                 name=None,
-                 type=None,
-                 action=None,
-                 eventRef=None,
-                 timeouts=None,
-                 stateExecTimeout=None,
-                 actionExecTimeout=None,
-                 eventTimeout=None,
-                 eventDataFilter=None,
-                 stateDataFilter=None,
-                 onErrors=None,
-                 transition=None,
-                 end=None,
-                 compensatedBy=None,
-                 usedForCompensation=None,
-                 metadata=None,
+                 id: str = None,
+                 name: str = None,
+                 type: 'callback' = None,
+                 action: Action = None,
+                 eventRef: str = None,
+                 timeouts: CallbackStateTimeOut = None,
+                 eventDataFilter: Eventdatafilter = None,
+                 stateDataFilter: Statedatafilter = None,
+                 onErrors: [Error] = None,
+                 transition: Union[str, Transition] = None,
+                 end: Union[bool, End] = None,
+                 compensatedBy: str = None,
+                 usedForCompensation: bool = None,
+                 metadata: Metadata = None,
                  **kwargs):
-
         # duplicated
         for local in list(locals()):
             if local in ["self", "kwargs"]:
@@ -50,7 +61,8 @@ class Callbackstate:
 
             self.__setattr__(local.replace("_", ""), value)
 
-        # duplicated
+            # duplicated
+
         for k in kwargs.keys():
             value = kwargs[k]
             if value == "true":
