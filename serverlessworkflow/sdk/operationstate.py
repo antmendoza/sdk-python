@@ -5,7 +5,7 @@ from serverlessworkflow.sdk.end import End
 from serverlessworkflow.sdk.enums import ActionMode
 from serverlessworkflow.sdk.error import Error
 from serverlessworkflow.sdk.metadata import Metadata
-from serverlessworkflow.sdk.statedatafilter import Statedatafilter
+from serverlessworkflow.sdk.statedatafilter import StateDataFilter
 from serverlessworkflow.sdk.operationstatetimeout import OperationStateTimeOut
 from serverlessworkflow.sdk.transition import Transition
 
@@ -16,7 +16,7 @@ class OperationState:
     name: str = None
     type: str = None
     end: Union[bool, End] = None
-    stateDataFilter: Statedatafilter = None
+    stateDataFilter: StateDataFilter = None
     actionMode: ActionMode = None
     actions: [Action] = None
     timeouts: OperationStateTimeOut = None
@@ -30,7 +30,7 @@ class OperationState:
                  id: str = None,
                  name: str = None,
                  type: str = None,
-                 stateDataFilter: Statedatafilter = None,
+                 stateDataFilter: StateDataFilter = None,
                  actionMode: ActionMode = None,
                  actions: [Action] = None,
                  timeouts: OperationStateTimeOut = None,

@@ -4,17 +4,17 @@ from typing import Union, Dict, List
 
 import yaml
 
-from serverlessworkflow.sdk.authdef import Authdef
-from serverlessworkflow.sdk.errordef import Errordef
-from serverlessworkflow.sdk.eventdef import Eventdef
+from serverlessworkflow.sdk.authdef import AuthDef
+from serverlessworkflow.sdk.errordef import ErrorDef
+from serverlessworkflow.sdk.eventdef import EventDef
 from serverlessworkflow.sdk.function import Function
-from serverlessworkflow.sdk.injectstate import Injectstate
+from serverlessworkflow.sdk.injectstate import InjectState
 from serverlessworkflow.sdk.metadata import Metadata
 from serverlessworkflow.sdk.operationstate import OperationState
-from serverlessworkflow.sdk.retrydef import Retrydef
-from serverlessworkflow.sdk.startdef import Startdef
+from serverlessworkflow.sdk.retrydef import RetryDef
+from serverlessworkflow.sdk.startdef import StartDef
 from serverlessworkflow.sdk.state import State
-from serverlessworkflow.sdk.timeouts import WorkflowTimeOuts
+from serverlessworkflow.sdk.workflow_time_out import WorkflowTimeOut
 
 
 def is_inject_state(state: State):
@@ -40,18 +40,18 @@ class Workflow:
     dataInputSchema: Union[str, DataInputSchema] = None
     secrets: str = None  # Secrets
     constants: Union[str, Dict[str, Dict]] = None
-    start: Union[str, Startdef] = None
+    start: Union[str, StartDef] = None
     specVersion: str = None
     expressionLang: str = None
-    timeouts: Union[str, WorkflowTimeOuts] = None
-    errors: Union[str, List[Errordef]] = None
+    timeouts: Union[str, WorkflowTimeOut] = None
+    errors: Union[str, List[ErrorDef]] = None
     keepActive: bool = None
     metadata: Metadata = None
-    events: Union[str, List[Eventdef]] = None
+    events: Union[str, List[EventDef]] = None
     functions: Union[str, List[Function]] = None
     autoRetries: bool = None
-    retries: Union[str, List[Retrydef]] = None
-    auth: Union[str, List[Authdef]] = None
+    retries: Union[str, List[RetryDef]] = None
+    auth: Union[str, List[AuthDef]] = None
     states: [State] = None
 
     def __init__(self,
@@ -65,16 +65,16 @@ class Workflow:
                  dataInputSchema: Union[str, DataInputSchema] = None,
                  secrets: str = None,  # Secrets
                  constants: Union[str, Dict[str, Dict]] = None,
-                 start: Union[str, Startdef] = None,
+                 start: Union[str, StartDef] = None,
                  expressionLang: str = None,
-                 timeouts: Union[str, WorkflowTimeOuts] = None,
-                 errors: Union[str, List[Errordef]] = None,
+                 timeouts: Union[str, WorkflowTimeOut] = None,
+                 errors: Union[str, List[ErrorDef]] = None,
                  keepActive: bool = None,
                  metadata: Metadata = None,
-                 events: Union[str, List[Eventdef]] = None,
+                 events: Union[str, List[EventDef]] = None,
                  autoRetries: bool = None,
-                 retries: Union[str, List[Retrydef]] = None,
-                 auth: Union[str, List[Authdef]] = None,
+                 retries: Union[str, List[RetryDef]] = None,
+                 auth: Union[str, List[AuthDef]] = None,
                  states: [State] = None,
                  functions: Union[str, List[Function]] = None,
                  **kwargs):
@@ -157,7 +157,7 @@ class Workflow:
         result = []
         for state in states:
             if is_inject_state(state):
-                result.append(Injectstate(**(states[0])))
+                result.append(InjectState(**(states[0])))
             elif is_operation_state(state):
                 result.append(OperationState(**(states[0])))
             else:

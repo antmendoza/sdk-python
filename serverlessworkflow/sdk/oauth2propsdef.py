@@ -3,15 +3,15 @@ from enum import Enum
 from serverlessworkflow.sdk.metadata import Metadata
 
 
-class Oauth2propsdefGrantType(Enum):
+class Oauth2PropsDefGrantType(Enum):
     password = "password"
     clientCredentials = "clientCredentials"
     tokenExchange = "tokenExchange"
 
 
-class Oauth2propsdef:
+class Oauth2PropsDef:
     authority: str = None
-    grantType: Oauth2propsdefGrantType = None
+    grantType: Oauth2PropsDefGrantType = None
     clientId: str = None
     clientSecret: str = None
     scopes: [str] = None
@@ -25,7 +25,7 @@ class Oauth2propsdef:
 
     def __init__(self,
                  authority: str = None,
-                 grantType: Oauth2propsdefGrantType = None,
+                 grantType: Oauth2PropsDefGrantType = None,
                  clientId: str = None,
                  clientSecret: str = None,
                  scopes: [str] = None,

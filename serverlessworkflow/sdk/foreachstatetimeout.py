@@ -1,6 +1,6 @@
 from serverlessworkflow.sdk.stateexectimeout import StateExecTimeOut
 
 
-class ForEachStateTimeOuts:
+class ForEachStateTimeOut:
     stateExecTimeOut: StateExecTimeOut = None
     actionExecTimeOut: str = None  # ActionExecTimeOut

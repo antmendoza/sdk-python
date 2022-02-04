@@ -1,4 +1,4 @@
-class Crondef:
+class CronDef:
     expression: str = None
     validUntil: str = None
 

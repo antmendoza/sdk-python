@@ -4,7 +4,7 @@ from serverlessworkflow.sdk.end import End
 from serverlessworkflow.sdk.metadata import Metadata
 
 
-class Enddatacondition:
+class EndDataCondition:
     name: str = None
     condition: str = None
     end: Union[bool, End] = None

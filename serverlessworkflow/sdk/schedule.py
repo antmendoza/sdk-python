@@ -1,16 +1,16 @@
 from typing import Union
 
-from serverlessworkflow.sdk.crondef import Crondef
+from serverlessworkflow.sdk.crondef import CronDef
 
 
 class Schedule:
     interval:str = None
-    cron: Union[str, Crondef] = None
+    cron: Union[str, CronDef] = None
     timezone: str = None
 
     def __init__(self,
                  interval:str = None,
-                 cron: Union[str, Crondef] = None,
+                 cron: Union[str, CronDef] = None,
                  timezone: str = None,
                  **kwargs):
 

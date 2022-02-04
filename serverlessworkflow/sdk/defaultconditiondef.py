@@ -4,7 +4,7 @@ from serverlessworkflow.sdk.end import End
 from serverlessworkflow.sdk.transition import Transition
 
 
-class Defaultconditiondef:
+class DefaultConditionDef:
     transition: Union[str, Transition] = None
     end: Union[bool, End] = None
 

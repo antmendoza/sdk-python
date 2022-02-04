@@ -1,23 +1,23 @@
 from typing import Union
 
-from serverlessworkflow.sdk.defaultconditiondef import Defaultconditiondef
-from serverlessworkflow.sdk.enddatacondition import Enddatacondition
+from serverlessworkflow.sdk.defaultconditiondef import DefaultConditionDef
+from serverlessworkflow.sdk.enddatacondition import EndDataCondition
 from serverlessworkflow.sdk.error import Error
 from serverlessworkflow.sdk.metadata import Metadata
-from serverlessworkflow.sdk.statedatafilter import Statedatafilter
-from serverlessworkflow.sdk.databasedswitchstatetimeouts import DatabasedSwitchStateTime0uts
-from serverlessworkflow.sdk.transitiondatacondition import Transitiondatacondition
+from serverlessworkflow.sdk.statedatafilter import StateDataFilter
+from serverlessworkflow.sdk.databasedswitchstatetimeout import DataBasedSwitchStateTime0ut
+from serverlessworkflow.sdk.transitiondatacondition import TransitionDataCondition
 
 
-class Databasedswitchstate:
+class DataBasedSwitchState:
     id: str = None
     name: str = None
     type: 'switch' = None
-    stateDataFilter: Statedatafilter = None
-    timeouts: DatabasedSwitchStateTime0uts = None
-    dataConditions: Union[Transitiondatacondition, Enddatacondition] = None
+    stateDataFilter: StateDataFilter = None
+    timeouts: DataBasedSwitchStateTime0ut = None
+    dataConditions: Union[TransitionDataCondition, EndDataCondition] = None
     onErrors: [Error] = None
-    defaultCondition: Defaultconditiondef = None
+    defaultCondition: DefaultConditionDef = None
     compensatedBy: str = None
     usedForCompensation: bool = None
     metadata: Metadata = None
@@ -26,11 +26,11 @@ class Databasedswitchstate:
                  id: str = None,
                  name: str = None,
                  type: 'switch' = None,
-                 stateDataFilter: Statedatafilter = None,
-                 timeouts: DatabasedSwitchStateTime0uts = None,
-                 dataConditions: Union[Transitiondatacondition, Enddatacondition] = None,
+                 stateDataFilter: StateDataFilter = None,
+                 timeouts: DataBasedSwitchStateTime0ut = None,
+                 dataConditions: Union[TransitionDataCondition, EndDataCondition] = None,
                  onErrors: [Error] = None,
-                 defaultCondition: Defaultconditiondef = None,
+                 defaultCondition: DefaultConditionDef = None,
                  compensatedBy: str = None,
                  usedForCompensation: bool = None,
                  metadata: Metadata = None,

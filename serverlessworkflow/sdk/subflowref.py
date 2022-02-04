@@ -3,12 +3,12 @@ from enum import Enum
 from serverlessworkflow.sdk.enums import Invoke
 
 
-class SubflowrefOnParentComplete(Enum):
+class SubFlowRefOnParentComplete(Enum):
     CONTINUE = "continue"
     TERMINATE = "terminate"
 
 
-class Subflowref:
+class SubFlowRef:
     workflowId: str = None
     version: str = None
     onParentComplete = None

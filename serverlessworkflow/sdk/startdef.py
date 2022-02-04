@@ -3,7 +3,7 @@ from typing import Union
 from serverlessworkflow.sdk.schedule import Schedule
 
 
-class Startdef:
+class StartDef:
     stateName: str = None
     schedule: Union[str, Schedule] = None
 

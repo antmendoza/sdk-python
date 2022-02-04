@@ -1,7 +1,7 @@
 from typing import Dict
 
 
-class Metadata(Dict):
+class Metadata(Dict[str,str]):
 
     def __init__(self,
                  **kwargs):

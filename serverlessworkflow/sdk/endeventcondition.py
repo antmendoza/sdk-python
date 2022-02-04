@@ -1,21 +1,22 @@
 from typing import Union
 
+from serverlessworkflow.sdk.end import End
+from serverlessworkflow.sdk.eventdatafilter import EventDataFilter
 from serverlessworkflow.sdk.metadata import Metadata
-from serverlessworkflow.sdk.transition import Transition
 
 
-class Transitioneventcondition:
+class EndEventCondition:
     name: str = None
     eventRef: str = None
-    transition: Union[str, Transition] = None
-    eventDataFilter = None
+    end: Union[bool, End] = None
+    eventDataFilter: EventDataFilter = None
     metadata: Metadata = None
 
     def __init__(self,
                  name: str = None,
                  eventRef: str = None,
-                 transition: Union[str, Transition] = None,
-                 eventDataFilter=None,
+                 end: Union[bool, End] = None,
+                 eventDataFilter: EventDataFilter = None,
                  metadata: Metadata = None,
                  **kwargs):
 

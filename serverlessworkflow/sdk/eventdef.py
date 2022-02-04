@@ -1,7 +1,7 @@
 from enum import Enum
 from typing import Union, List
 
-from serverlessworkflow.sdk.correlation_def import CorrelationDef
+from serverlessworkflow.sdk.correlationdef import CorrelationDef
 from serverlessworkflow.sdk.metadata import Metadata
 
 
@@ -10,7 +10,7 @@ class Kind(Enum):
     PRODUCED = "produced"
 
 
-class Eventdef:
+class EventDef:
     name: str = None
     source: str = None
     type: str = None

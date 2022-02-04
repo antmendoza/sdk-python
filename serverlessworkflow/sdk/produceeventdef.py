@@ -1,7 +1,7 @@
 from typing import Union, Dict
 
 
-class Produceeventdef:
+class ProduceEventDef:
     eventRef: str = None
     data: Union[str, Dict[str, Dict]] = None
     contextAttributes: Dict[str, str] = None

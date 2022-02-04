@@ -1,23 +1,19 @@
-from enum import Enum
-
 from serverlessworkflow.sdk.action import Action
 from serverlessworkflow.sdk.enums import ActionMode
-from serverlessworkflow.sdk.eventdatafilter import Eventdatafilter
+from serverlessworkflow.sdk.eventdatafilter import EventDataFilter
 
 
-
-
-class Onevents:
+class OnEvents:
     eventRefs: [str] = None
     actionMode: ActionMode = None
     actions: [Action] = None
-    eventDataFilter: Eventdatafilter = None
+    eventDataFilter: EventDataFilter = None
 
     def __init__(self,
                  eventRefs: [str] = None,
                  actionMode: ActionMode = None,
                  actions: [Action] = None,
-                 eventDataFilter: Eventdatafilter = None,
+                 eventDataFilter: EventDataFilter = None,
                  **kwargs):
 
         # duplicated

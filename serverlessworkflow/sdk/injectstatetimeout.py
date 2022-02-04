@@ -1,5 +1,5 @@
 from serverlessworkflow.sdk.stateexectimeout import StateExecTimeOut
 
 
-class DatabasedSwitchStateTime0uts:
+class InjectStateTimeOut:
     stateExecTimeOut: StateExecTimeOut = None

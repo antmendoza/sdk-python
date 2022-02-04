@@ -1,7 +1,6 @@
 from serverlessworkflow.sdk.stateexectimeout import StateExecTimeOut
 
 
-class CallbackStateTimeOuts:
+class EventBasedSwitchStateTimeOut:
     stateExecTimeOut: StateExecTimeOut = None
-    actionExecTimeOut: str = None  # ActionExecTimeOut
     eventTimeOut: str = None  # EventTimeOut

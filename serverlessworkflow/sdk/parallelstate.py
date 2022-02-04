@@ -5,25 +5,25 @@ from serverlessworkflow.sdk.branch import Branch
 from serverlessworkflow.sdk.end import End
 from serverlessworkflow.sdk.error import Error
 from serverlessworkflow.sdk.metadata import Metadata
-from serverlessworkflow.sdk.statedatafilter import Statedatafilter
-from serverlessworkflow.sdk.parallelstatetimeouts import ParallelStateTimeOuts
+from serverlessworkflow.sdk.statedatafilter import StateDataFilter
+from serverlessworkflow.sdk.parallelstatetimeout import ParallelStateTimeOut
 from serverlessworkflow.sdk.transition import Transition
 
 
-class ParallelstateCompletionType(Enum):
+class ParallelStateCompletionType(Enum):
     allOf = "allOf"
     atLeast = "atLeast"
 
 
-class Parallelstate:
+class ParallelState:
     id: str = None
     name: str = None
     type: str = None
     end: Union[bool, End] = None
-    stateDataFilter: Statedatafilter = None
-    timeouts: ParallelStateTimeOuts = None
+    stateDataFilter: StateDataFilter = None
+    timeouts: ParallelStateTimeOut = None
     branches: [Branch] = None
-    completionType: ParallelstateCompletionType = None
+    completionType: ParallelStateCompletionType = None
     numCompleted: Union[int, str] = None
     onErrors: [Error] = None
     transition: Union[str, Transition] = None
@@ -36,10 +36,10 @@ class Parallelstate:
                  name: str = None,
                  type: str = None,
                  end: Union[bool, End] = None,
-                 stateDataFilter: Statedatafilter = None,
-                 timeouts: ParallelStateTimeOuts = None,
+                 stateDataFilter: StateDataFilter = None,
+                 timeouts: ParallelStateTimeOut = None,
                  branches: [Branch] = None,
-                 completionType: ParallelstateCompletionType = None,
+                 completionType: ParallelStateCompletionType = None,
                  numCompleted: Union[int, str] = None,
                  onErrors: [Error] = None,
                  transition: Union[str, Transition] = None,

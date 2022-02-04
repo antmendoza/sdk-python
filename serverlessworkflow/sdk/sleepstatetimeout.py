@@ -1,5 +1,5 @@
 from serverlessworkflow.sdk.stateexectimeout import StateExecTimeOut
 
 
-class SleepStateTimeOuts:
+class SleepStateTimeOut:
     stateExecTimeOut: StateExecTimeOut = None

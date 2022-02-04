@@ -3,22 +3,22 @@ from typing import Union
 from serverlessworkflow.sdk.action import Action
 from serverlessworkflow.sdk.end import End
 from serverlessworkflow.sdk.error import Error
-from serverlessworkflow.sdk.eventdatafilter import Eventdatafilter
+from serverlessworkflow.sdk.eventdatafilter import EventDataFilter
 from serverlessworkflow.sdk.metadata import Metadata
-from serverlessworkflow.sdk.statedatafilter import Statedatafilter
-from serverlessworkflow.sdk.callbackstatetimeouts import CallbackStateTimeOuts
+from serverlessworkflow.sdk.statedatafilter import StateDataFilter
+from serverlessworkflow.sdk.callbackstatetimeout import CallbackStateTimeOut
 from serverlessworkflow.sdk.transition import Transition
 
 
-class Callbackstate:
+class CallbackState:
     id: str = None
     name: str = None
     type: 'callback' = None
     action: Action = None
     eventRef: str = None
-    timeouts: CallbackStateTimeOuts = None
-    eventDataFilter: Eventdatafilter = None
-    stateDataFilter: Statedatafilter = None
+    timeouts: CallbackStateTimeOut = None
+    eventDataFilter: EventDataFilter = None
+    stateDataFilter: StateDataFilter = None
     onErrors: [Error] = None
     transition: Union[str, Transition] = None
     end: Union[bool, End] = None
@@ -32,9 +32,9 @@ class Callbackstate:
                  type: 'callback' = None,
                  action: Action = None,
                  eventRef: str = None,
-                 timeouts: CallbackStateTimeOuts = None,
-                 eventDataFilter: Eventdatafilter = None,
-                 stateDataFilter: Statedatafilter = None,
+                 timeouts: CallbackStateTimeOut = None,
+                 eventDataFilter: EventDataFilter = None,
+                 stateDataFilter: StateDataFilter = None,
                  onErrors: [Error] = None,
                  transition: Union[str, Transition] = None,
                  end: Union[bool, End] = None,

@@ -3,7 +3,7 @@ from typing import Dict
 from serverlessworkflow.sdk.enums import Invoke
 
 
-class Functionref:
+class FunctionRef:
     refName: str = None
     arguments: Dict[str, Dict] = None
     selectionSet: str = None

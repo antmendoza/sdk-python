@@ -1,4 +1,4 @@
-class Errordef:
+class ErrorDef:
     name: str = None
     code: str = None
     description: str = None

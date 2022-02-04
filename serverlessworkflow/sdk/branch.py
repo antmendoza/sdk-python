@@ -1,15 +1,15 @@
 from serverlessworkflow.sdk.action import Action
-from serverlessworkflow.sdk.branchtimeouts import BranchTimeOuts
+from serverlessworkflow.sdk.branchtimeout import BranchTimeOut
 
 
 class Branch:
     name: str = None
-    timeouts: BranchTimeOuts = None
+    timeouts: BranchTimeOut = None
     actions: [Action] = None
 
     def __init__(self,
                  name: str = None,
-                 timeouts: BranchTimeOuts = None,
+                 timeouts: BranchTimeOut = None,
                  actions: [Action] = None,
                  **kwargs):
 

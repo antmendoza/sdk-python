@@ -1,14 +1,14 @@
-from serverlessworkflow.sdk.produceeventdef import Produceeventdef
+from serverlessworkflow.sdk.produceeventdef import ProduceEventDef
 
 
 class Transition:
     nextState: str = None
-    produceEvents: [Produceeventdef] = None
+    produceEvents: [ProduceEventDef] = None
     compensate: bool = None
 
     def __init__(self,
                  nextState: str = None,
-                 produceEvents: [Produceeventdef] = None,
+                 produceEvents: [ProduceEventDef] = None,
                  compensate: bool = None,
                  **kwargs):
 

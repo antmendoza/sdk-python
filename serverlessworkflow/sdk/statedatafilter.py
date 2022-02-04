@@ -1,4 +1,4 @@
-class Statedatafilter:
+class StateDataFilter:
     input: str = None
     output: str = None
 

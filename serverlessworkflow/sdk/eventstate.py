@@ -3,22 +3,22 @@ from typing import Union
 from serverlessworkflow.sdk.end import End
 from serverlessworkflow.sdk.error import Error
 from serverlessworkflow.sdk.metadata import Metadata
-from serverlessworkflow.sdk.onevents import Onevents
-from serverlessworkflow.sdk.statedatafilter import Statedatafilter
-from serverlessworkflow.sdk.eventstatetimeouts import EventStateTimeOuts
+from serverlessworkflow.sdk.onevents import OnEvents
+from serverlessworkflow.sdk.statedatafilter import StateDataFilter
+from serverlessworkflow.sdk.eventstatetimeout import EventStateTimeOut
 from serverlessworkflow.sdk.transition import Transition
 
 
 
 
-class Eventstate:
+class EventState:
     id: str = None
     name: str = None
     type: 'event' = None
     exclusive: bool = None
-    onEvents: [Onevents] = None
-    timeouts: EventStateTimeOuts = None
-    stateDataFilter: Statedatafilter = None
+    onEvents: [OnEvents] = None
+    timeouts: EventStateTimeOut = None
+    stateDataFilter: StateDataFilter = None
     onErrors: [Error] = None
     transition: Union[str, Transition] = None
     end: Union[bool, End] = None
@@ -30,9 +30,9 @@ class Eventstate:
                  name: str = None,
                  type: 'event' = None,
                  exclusive: bool = None,
-                 onEvents: [Onevents] = None,
-                 timeouts: EventStateTimeOuts = None,
-                 stateDataFilter: Statedatafilter = None,
+                 onEvents: [OnEvents] = None,
+                 timeouts: EventStateTimeOut = None,
+                 stateDataFilter: StateDataFilter = None,
                  onErrors: [Error] = None,
                  transition: Union[str, Transition] = None,
                  end: Union[bool, End] = None,

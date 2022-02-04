@@ -3,7 +3,7 @@ from typing import Union, Dict
 from serverlessworkflow.sdk.workflow_exec_timeout import WorkflowExecTimeOut
 
 
-class Continueasdef:
+class ContinueAsDef:
     workflowId: str = None
     version: str = None
     data: Union[str, Dict[str, Dict]] = None

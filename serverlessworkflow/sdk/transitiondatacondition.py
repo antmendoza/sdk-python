@@ -4,7 +4,7 @@ from serverlessworkflow.sdk.metadata import Metadata
 from serverlessworkflow.sdk.transition import Transition
 
 
-class Transitiondatacondition:
+class TransitionDataCondition:
     name: str = None
     condition: str = None
     transition: Union[str, Transition] = None

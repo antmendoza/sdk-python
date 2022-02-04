@@ -1,7 +1,7 @@
 from serverlessworkflow.sdk.metadata import Metadata
 
 
-class Bearerpropsdef:
+class BearerPropsDef:
     token: str = None
     metadata: Metadata = None
 

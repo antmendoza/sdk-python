@@ -1,7 +1,7 @@
 from serverlessworkflow.sdk.metadata import Metadata
 
 
-class Basicpropsdef:
+class BasicPropsDef:
     username: str = None
     password: str = None
     metadata: Metadata = None

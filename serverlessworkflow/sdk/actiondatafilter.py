@@ -1,4 +1,4 @@
-class Actiondatafilter:
+class ActionDataFilter:
     fromStateData: str = None
     useResults: bool = None
     results: str = None

@@ -1,4 +1,4 @@
-class Eventdatafilter:
+class EventDataFilter:
     useData: bool = None
     data: str = None
     toStateData: str = None

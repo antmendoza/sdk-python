@@ -2,7 +2,7 @@ from typing import Dict, Union
 from serverlessworkflow.sdk.enums import Invoke
 
 
-class Eventref:
+class EventRef:
     triggerEventRef: str = None
     resultEventRef: str = None
     resultEventTimeOut: str = None

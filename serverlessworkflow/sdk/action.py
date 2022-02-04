@@ -1,38 +1,41 @@
 from typing import Union
 
-from serverlessworkflow.sdk.actiondatafilter import Actiondatafilter
-from serverlessworkflow.sdk.eventref import Eventref
-from serverlessworkflow.sdk.functionref import Functionref
+from serverlessworkflow.sdk.actiondatafilter import ActionDataFilter
+from serverlessworkflow.sdk.eventref import EventRef
+from serverlessworkflow.sdk.functionref import FunctionRef
 from serverlessworkflow.sdk.sleep import Sleep
-from serverlessworkflow.sdk.subflowref import Subflowref
+from serverlessworkflow.sdk.subflowref import SubFlowRef
 
 
 class Action:
     id: str = None
     name: str = None
-    functionRef: Union[str, Functionref] = None
-    eventRef: Eventref = None
-    subFlowRef: Union[str, Subflowref] = None
+    functionRef: Union[str, FunctionRef] = None
+    eventRef: EventRef = None
+    subFlowRef: Union[str, SubFlowRef] = None
     sleep: Sleep = None
     retryRef: str = None
     nonRetryableErrors: [str] = None
     retryableErrors: [str] = None
-    actionDataFilter: Actiondatafilter = None
+    actionDataFilter: ActionDataFilter = None
     condition: str = None
 
     def __init__(self,
                  id: str = None,
                  name: str = None,
-                 functionRef: Union[str, Functionref] = None,
-                 eventRef: Eventref = None,
-                 subFlowRef: Union[str, Subflowref] = None,
+                 functionRef: Union[str, FunctionRef] = None,
+                 eventRef: EventRef = None,
+                 subFlowRef: Union[str, SubFlowRef] = None,
                  sleep: Sleep = None,
                  retryRef: str = None,
                  nonRetryableErrors: [str] = None,
                  retryableErrors: [str] = None,
-                 actionDataFilter: Actiondatafilter = None,
+                 actionDataFilter: ActionDataFilter = None,
                  condition: str = None,
                  **kwargs):
+
+
+
 
         # duplicated
         for local in list(locals()):

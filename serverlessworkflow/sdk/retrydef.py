@@ -1,7 +1,7 @@
 from typing import Union
 
 
-class Retrydef:
+class RetryDef:
     name: str = None
     delay: str = None
     maxDelay: str = None
