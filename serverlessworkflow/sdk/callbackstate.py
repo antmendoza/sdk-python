@@ -5,15 +5,9 @@ from serverlessworkflow.sdk.end import End
 from serverlessworkflow.sdk.error import Error
 from serverlessworkflow.sdk.eventdatafilter import Eventdatafilter
 from serverlessworkflow.sdk.metadata import Metadata
-from serverlessworkflow.sdk.state_exec_timeout import StateExecTimeout
 from serverlessworkflow.sdk.statedatafilter import Statedatafilter
+from serverlessworkflow.sdk.callbackstatetimeouts import CallbackStateTimeOuts
 from serverlessworkflow.sdk.transition import Transition
-
-
-class CallbackStateTimeOut:
-    stateExecTimeout: StateExecTimeout = None
-    actionExecTimeout: str = None  # ActionExecTimeout
-    eventTimeout: str = None  # EventTimeout
 
 
 class Callbackstate:
@@ -22,7 +16,7 @@ class Callbackstate:
     type: 'callback' = None
     action: Action = None
     eventRef: str = None
-    timeouts: CallbackStateTimeOut = None
+    timeouts: CallbackStateTimeOuts = None
     eventDataFilter: Eventdatafilter = None
     stateDataFilter: Statedatafilter = None
     onErrors: [Error] = None
@@ -38,7 +32,7 @@ class Callbackstate:
                  type: 'callback' = None,
                  action: Action = None,
                  eventRef: str = None,
-                 timeouts: CallbackStateTimeOut = None,
+                 timeouts: CallbackStateTimeOuts = None,
                  eventDataFilter: Eventdatafilter = None,
                  stateDataFilter: Statedatafilter = None,
                  onErrors: [Error] = None,

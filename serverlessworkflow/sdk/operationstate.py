@@ -5,17 +5,13 @@ from serverlessworkflow.sdk.end import End
 from serverlessworkflow.sdk.enums import ActionMode
 from serverlessworkflow.sdk.error import Error
 from serverlessworkflow.sdk.metadata import Metadata
-from serverlessworkflow.sdk.state_exec_timeout import StateExecTimeout
 from serverlessworkflow.sdk.statedatafilter import Statedatafilter
+from serverlessworkflow.sdk.operationstatetimeout import OperationStateTimeOut
 from serverlessworkflow.sdk.transition import Transition
 
 
-class OperationstateTimeOut:
-    stateExecTimeout: StateExecTimeout = None
-    actionExecTimeout: str = None  # ActionExecTimeout
 
-
-class Operationstate:
+class OperationState:
     id: str = None
     name: str = None
     type: str = None
@@ -23,7 +19,7 @@ class Operationstate:
     stateDataFilter: Statedatafilter = None
     actionMode: ActionMode = None
     actions: [Action] = None
-    timeouts: OperationstateTimeOut = None
+    timeouts: OperationStateTimeOut = None
     onErrors: [Error] = None
     transition: Union[str, Transition] = None
     compensatedBy: str = None
@@ -37,7 +33,7 @@ class Operationstate:
                  stateDataFilter: Statedatafilter = None,
                  actionMode: ActionMode = None,
                  actions: [Action] = None,
-                 timeouts: OperationstateTimeOut = None,
+                 timeouts: OperationStateTimeOut = None,
                  onErrors: [Error] = None,
                  transition: Union[str, Transition] = None,
                  compensatedBy: str = None,
@@ -58,7 +54,7 @@ class Operationstate:
             # duplicated
 
             if local == 'actions':
-                value = Operationstate.load_actions(value)
+                value = OperationState.load_actions(value)
 
             self.__setattr__(local.replace("_", ""), value)
 
@@ -69,7 +65,7 @@ class Operationstate:
                 value = True
 
             if k == 'actions':
-                value = Operationstate.load_actions(value)
+                value = OperationState.load_actions(value)
 
             self.__setattr__(k.replace("_", ""), value)
             # duplicated

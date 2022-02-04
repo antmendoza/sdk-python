@@ -4,14 +4,9 @@ from serverlessworkflow.sdk.defaultconditiondef import Defaultconditiondef
 from serverlessworkflow.sdk.enddeventcondition import Enddeventcondition
 from serverlessworkflow.sdk.error import Error
 from serverlessworkflow.sdk.metadata import Metadata
-from serverlessworkflow.sdk.state_exec_timeout import StateExecTimeout
 from serverlessworkflow.sdk.statedatafilter import Statedatafilter
+from serverlessworkflow.sdk.eventbasedswitchstatetimeouts import EventBasedSwitchStateTimeOuts
 from serverlessworkflow.sdk.transitioneventcondition import Transitioneventcondition
-
-
-class EventBasedSwitchStateTimeouts:
-    stateExecTimeout: StateExecTimeout = None
-    eventTimeout: str = None  # EventTimeout
 
 
 class Eventbasedswitchstate:
@@ -19,7 +14,7 @@ class Eventbasedswitchstate:
     name: str = None
     type: str = None
     stateDataFilter: Statedatafilter = None
-    timeouts: EventBasedSwitchStateTimeouts = None
+    timeouts: EventBasedSwitchStateTimeOuts = None
     eventConditions: Union[Transitioneventcondition, Enddeventcondition] = None  # Eventcondition
     onErrors: [Error] = None
     defaultCondition: Defaultconditiondef = None
@@ -32,7 +27,7 @@ class Eventbasedswitchstate:
                  name: str = None,
                  type: 'switch' = None,
                  stateDataFilter: Statedatafilter = None,
-                 timeouts: EventBasedSwitchStateTimeouts = None,
+                 timeouts: EventBasedSwitchStateTimeOuts = None,
                  eventConditions: Union[Transitioneventcondition, Enddeventcondition] = None,  # Eventcondition
                  onErrors: [Error] = None,
                  defaultCondition: Defaultconditiondef = None,

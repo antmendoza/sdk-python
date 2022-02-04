@@ -1,4 +1,5 @@
-class StateExecTimeout:
+
+class StateExecTimeOut:
     single: str = None
     total: str = None
 

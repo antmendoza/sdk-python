@@ -5,14 +5,11 @@ from serverlessworkflow.sdk.action import Action
 from serverlessworkflow.sdk.end import End
 from serverlessworkflow.sdk.error import Error
 from serverlessworkflow.sdk.metadata import Metadata
-from serverlessworkflow.sdk.state_exec_timeout import StateExecTimeout
 from serverlessworkflow.sdk.statedatafilter import Statedatafilter
+from serverlessworkflow.sdk.foreachstatetimeouts import ForEachStateTimeOuts
 from serverlessworkflow.sdk.transition import Transition
 
 
-class ForEachStateTimeouts:
-    stateExecTimeout: StateExecTimeout = None
-    actionExecTimeout: str = None  # ActionExecTimeout
 
 
 class ForEachStateMode(Enum):
@@ -29,7 +26,7 @@ class Foreachstate:
     iterationParam: str = None
     batchSize: Union[int, str] = None
     actions: [Action] = None
-    timeouts: ForEachStateTimeouts = None
+    timeouts: ForEachStateTimeOuts = None
     stateDataFilter: Statedatafilter = None
     onErrors: [Error] = None
     transition: Union[str, Transition] = None
@@ -48,7 +45,7 @@ class Foreachstate:
                  iterationParam: str = None,
                  batchSize: Union[int, str] = None,
                  actions: [Action] = None,
-                 timeouts: ForEachStateTimeouts = None,
+                 timeouts: ForEachStateTimeOuts = None,
                  stateDataFilter: Statedatafilter = None,
                  onErrors: [Error] = None,
                  transition: Union[str, Transition] = None,

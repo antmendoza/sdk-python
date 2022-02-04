@@ -5,7 +5,7 @@ from serverlessworkflow.sdk.enums import Invoke
 class Eventref:
     triggerEventRef: str = None
     resultEventRef: str = None
-    resultEventTimeout: str = None
+    resultEventTimeOut: str = None
     data: Union[str, Dict[str, Dict]] = None
     contextAttributes: Dict[str, str] = None
     invoke: Invoke = None

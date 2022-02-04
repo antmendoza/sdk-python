@@ -5,14 +5,9 @@ from serverlessworkflow.sdk.branch import Branch
 from serverlessworkflow.sdk.end import End
 from serverlessworkflow.sdk.error import Error
 from serverlessworkflow.sdk.metadata import Metadata
-from serverlessworkflow.sdk.state_exec_timeout import StateExecTimeout
 from serverlessworkflow.sdk.statedatafilter import Statedatafilter
+from serverlessworkflow.sdk.parallelstatetimeouts import ParallelStateTimeOuts
 from serverlessworkflow.sdk.transition import Transition
-
-
-class ParallelstateTimeouts:
-    stateExecTimeout: StateExecTimeout = None
-    branchExecTimeout: str = None  # BranchExecTimeout
 
 
 class ParallelstateCompletionType(Enum):
@@ -26,7 +21,7 @@ class Parallelstate:
     type: str = None
     end: Union[bool, End] = None
     stateDataFilter: Statedatafilter = None
-    timeouts: ParallelstateTimeouts = None
+    timeouts: ParallelStateTimeOuts = None
     branches: [Branch] = None
     completionType: ParallelstateCompletionType = None
     numCompleted: Union[int, str] = None
@@ -42,7 +37,7 @@ class Parallelstate:
                  type: str = None,
                  end: Union[bool, End] = None,
                  stateDataFilter: Statedatafilter = None,
-                 timeouts: ParallelstateTimeouts = None,
+                 timeouts: ParallelStateTimeOuts = None,
                  branches: [Branch] = None,
                  completionType: ParallelstateCompletionType = None,
                  numCompleted: Union[int, str] = None,

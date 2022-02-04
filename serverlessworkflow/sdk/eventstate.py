@@ -4,15 +4,11 @@ from serverlessworkflow.sdk.end import End
 from serverlessworkflow.sdk.error import Error
 from serverlessworkflow.sdk.metadata import Metadata
 from serverlessworkflow.sdk.onevents import Onevents
-from serverlessworkflow.sdk.state_exec_timeout import StateExecTimeout
 from serverlessworkflow.sdk.statedatafilter import Statedatafilter
+from serverlessworkflow.sdk.eventstatetimeouts import EventStateTimeOuts
 from serverlessworkflow.sdk.transition import Transition
 
 
-class EventStateTimeouts:
-    stateExecTimeout: StateExecTimeout = None
-    actionExecTimeout: str = None  # ActionExecTimeout
-    eventTimeout: str = None  # EventTimeout
 
 
 class Eventstate:
@@ -21,7 +17,7 @@ class Eventstate:
     type: 'event' = None
     exclusive: bool = None
     onEvents: [Onevents] = None
-    timeouts: EventStateTimeouts = None
+    timeouts: EventStateTimeOuts = None
     stateDataFilter: Statedatafilter = None
     onErrors: [Error] = None
     transition: Union[str, Transition] = None
@@ -35,7 +31,7 @@ class Eventstate:
                  type: 'event' = None,
                  exclusive: bool = None,
                  onEvents: [Onevents] = None,
-                 timeouts: EventStateTimeouts = None,
+                 timeouts: EventStateTimeOuts = None,
                  stateDataFilter: Statedatafilter = None,
                  onErrors: [Error] = None,
                  transition: Union[str, Transition] = None,

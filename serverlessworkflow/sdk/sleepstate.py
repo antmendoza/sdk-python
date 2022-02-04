@@ -3,23 +3,18 @@ from typing import Union
 from serverlessworkflow.sdk.end import End
 from serverlessworkflow.sdk.error import Error
 from serverlessworkflow.sdk.metadata import Metadata
-from serverlessworkflow.sdk.state_exec_timeout import StateExecTimeout
 from serverlessworkflow.sdk.statedatafilter import Statedatafilter
+from serverlessworkflow.sdk.sleepstatetimeouts import SleepStateTimeOuts
 from serverlessworkflow.sdk.transition import Transition
 
-
-class SleepstateTimeOut:
-    stateExecTimeout: StateExecTimeout = None
-
-
-class Sleepstate:
+class SleepState:
     id: str = None
     name: str = None
     type: str = None
     end: Union[bool, End] = None
     stateDataFilter: Statedatafilter = None
     duration: str = None
-    timeouts: SleepstateTimeOut = None
+    timeouts: SleepStateTimeOuts = None
     onErrors: [Error] = None
     transition: Union[str, Transition] = None
     compensatedBy: str = None
@@ -33,7 +28,7 @@ class Sleepstate:
                  end: Union[bool, End] = None,
                  stateDataFilter: Statedatafilter = None,
                  duration: str = None,
-                 timeouts: SleepstateTimeOut = None,
+                 timeouts: SleepStateTimeOuts = None,
                  onErrors: [Error] = None,
                  transition: Union[str, Transition] = None,
                  compensatedBy: str = None,

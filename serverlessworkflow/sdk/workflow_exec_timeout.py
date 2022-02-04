@@ -1,4 +1,4 @@
-class WorkflowExecTimeout:
+class WorkflowExecTimeOut:
     duration: str = None
     interrupt: bool = None
     runBefore: str = None

@@ -2,14 +2,9 @@ from typing import Union, Dict
 
 from serverlessworkflow.sdk.end import End
 from serverlessworkflow.sdk.metadata import Metadata
-from serverlessworkflow.sdk.state_exec_timeout import StateExecTimeout
 from serverlessworkflow.sdk.statedatafilter import Statedatafilter
+from serverlessworkflow.sdk.injectstatetimeouts import InjectStateTimeOuts
 from serverlessworkflow.sdk.transition import Transition
-
-
-class InjectStateTimeouts:
-    stateExecTimeout: StateExecTimeout = None
-    stateDataFilter: Statedatafilter = None
 
 
 class Injectstate:
@@ -18,7 +13,8 @@ class Injectstate:
     type: 'inject' = None
     end: Union[bool, End] = None
     data: Union[str, Dict[str, Dict]] = None
-    timeouts: InjectStateTimeouts = None
+    timeouts: InjectStateTimeOuts = None
+    stateDataFilter: Statedatafilter = None
     transition: Union[str, Transition] = None
     compensatedBy: str = None
     usedForCompensation: bool = None
@@ -30,7 +26,8 @@ class Injectstate:
                  type: 'inject' = None,
                  end: Union[bool, End] = None,
                  data: Union[str, Dict[str, Dict]] = None,
-                 timeouts: InjectStateTimeouts = None,
+                 timeouts: InjectStateTimeOuts = None,
+                 stateDataFilter: Statedatafilter = None,
                  transition: Union[str, Transition] = None,
                  compensatedBy: str = None,
                  usedForCompensation: bool = None,

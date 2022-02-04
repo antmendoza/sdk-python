@@ -10,11 +10,11 @@ from serverlessworkflow.sdk.eventdef import Eventdef
 from serverlessworkflow.sdk.function import Function
 from serverlessworkflow.sdk.injectstate import Injectstate
 from serverlessworkflow.sdk.metadata import Metadata
-from serverlessworkflow.sdk.operationstate import Operationstate
+from serverlessworkflow.sdk.operationstate import OperationState
 from serverlessworkflow.sdk.retrydef import Retrydef
 from serverlessworkflow.sdk.startdef import Startdef
 from serverlessworkflow.sdk.state import State
-from serverlessworkflow.sdk.timeouts import Timeouts
+from serverlessworkflow.sdk.timeouts import WorkflowTimeOuts
 
 
 def is_inject_state(state: State):
@@ -43,7 +43,7 @@ class Workflow:
     start: Union[str, Startdef] = None
     specVersion: str = None
     expressionLang: str = None
-    timeouts: Union[str, Timeouts] = None
+    timeouts: Union[str, WorkflowTimeOuts] = None
     errors: Union[str, List[Errordef]] = None
     keepActive: bool = None
     metadata: Metadata = None
@@ -67,7 +67,7 @@ class Workflow:
                  constants: Union[str, Dict[str, Dict]] = None,
                  start: Union[str, Startdef] = None,
                  expressionLang: str = None,
-                 timeouts: Union[str, Timeouts] = None,
+                 timeouts: Union[str, WorkflowTimeOuts] = None,
                  errors: Union[str, List[Errordef]] = None,
                  keepActive: bool = None,
                  metadata: Metadata = None,
@@ -159,7 +159,7 @@ class Workflow:
             if is_inject_state(state):
                 result.append(Injectstate(**(states[0])))
             elif is_operation_state(state):
-                result.append(Operationstate(**(states[0])))
+                result.append(OperationState(**(states[0])))
             else:
                 result.append(State(**(states[0])))
 

@@ -4,13 +4,9 @@ from serverlessworkflow.sdk.defaultconditiondef import Defaultconditiondef
 from serverlessworkflow.sdk.enddatacondition import Enddatacondition
 from serverlessworkflow.sdk.error import Error
 from serverlessworkflow.sdk.metadata import Metadata
-from serverlessworkflow.sdk.state_exec_timeout import StateExecTimeout
 from serverlessworkflow.sdk.statedatafilter import Statedatafilter
+from serverlessworkflow.sdk.databasedswitchstatetimeouts import DatabasedSwitchStateTime0uts
 from serverlessworkflow.sdk.transitiondatacondition import Transitiondatacondition
-
-
-class DatabasedSwitchStateTimeouts:
-    stateExecTimeout: StateExecTimeout = None
 
 
 class Databasedswitchstate:
@@ -18,7 +14,7 @@ class Databasedswitchstate:
     name: str = None
     type: 'switch' = None
     stateDataFilter: Statedatafilter = None
-    timeouts: DatabasedSwitchStateTimeouts = None
+    timeouts: DatabasedSwitchStateTime0uts = None
     dataConditions: Union[Transitiondatacondition, Enddatacondition] = None
     onErrors: [Error] = None
     defaultCondition: Defaultconditiondef = None
@@ -31,7 +27,7 @@ class Databasedswitchstate:
                  name: str = None,
                  type: 'switch' = None,
                  stateDataFilter: Statedatafilter = None,
-                 timeouts: DatabasedSwitchStateTimeouts = None,
+                 timeouts: DatabasedSwitchStateTime0uts = None,
                  dataConditions: Union[Transitiondatacondition, Enddatacondition] = None,
                  onErrors: [Error] = None,
                  defaultCondition: Defaultconditiondef = None,
