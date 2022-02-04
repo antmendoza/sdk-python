@@ -1,10 +1,15 @@
+from typing import Union
+
+from serverlessworkflow.sdk.schedule import Schedule
+
+
 class Startdef:
-    stateName = None
-    schedule = None
+    stateName: str = None
+    schedule: Union[str, Schedule] = None
 
     def __init__(self,
-                 stateName=None,
-                 schedule=None,
+                 stateName: str = None,
+                 schedule: Union[str, Schedule] = None,
                  **kwargs):
 
         # duplicated

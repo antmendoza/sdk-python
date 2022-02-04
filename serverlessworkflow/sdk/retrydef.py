@@ -1,20 +1,23 @@
+from typing import Union
+
+
 class Retrydef:
-    name = None
-    delay = None
-    maxDelay = None
-    increment = None
-    multiplier = None
-    maxAttempts = None
-    jitter = None
+    name: str = None
+    delay: str = None
+    maxDelay: str = None
+    increment: str = None
+    multiplier: Union[int, str] = None
+    maxAttempts: Union[int, str] = None
+    jitter: Union[int, str] = None
 
     def __init__(self,
-                 name=None,
-                 delay=None,
-                 maxDelay=None,
-                 increment=None,
-                 multiplier=None,
-                 maxAttempts=None,
-                 jitter=None,
+                 name: str = None,
+                 delay: str = None,
+                 maxDelay: str = None,
+                 increment: str = None,
+                 multiplier: Union[int, str] = None,
+                 maxAttempts: Union[int, str] = None,
+                 jitter: Union[int, str] = None,
                  **kwargs):
 
         # duplicated

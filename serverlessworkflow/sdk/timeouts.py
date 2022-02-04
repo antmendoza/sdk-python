@@ -1,16 +1,20 @@
+from serverlessworkflow.sdk.state_exec_timeout import StateExecTimeout
+from serverlessworkflow.sdk.workflow_exec_timeout import WorkflowExecTimeout
+
+
 class Timeouts:
-    workflowExecTimeout = None
-    stateExecTimeout = None
-    actionExecTimeout = None
-    branchExecTimeout = None
-    eventTimeout = None
+    workflowExecTimeout: WorkflowExecTimeout = None
+    stateExecTimeout: StateExecTimeout = None
+    actionExecTimeout: str = None  # ActionExecTimeout
+    branchExecTimeout: str = None  # BranchExecTimeout
+    eventTimeout: str = None  # EventTimeout
 
     def __init__(self,
-                 workflowExecTimeout=None,
-                 stateExecTimeout=None,
-                 actionExecTimeout=None,
-                 branchExecTimeout=None,
-                 eventTimeout=None,
+                 workflowExecTimeout: WorkflowExecTimeout = None,
+                 stateExecTimeout: StateExecTimeout = None,
+                 actionExecTimeout: str = None,  # ActionExecTimeout
+                 branchExecTimeout: str = None,  # BranchExecTimeout
+                 eventTimeout: str = None,  # EventTimeout
                  **kwargs):
 
         # duplicated

@@ -1,32 +1,44 @@
+from typing import Union
+
+from serverlessworkflow.sdk.end import End
+from serverlessworkflow.sdk.error import Error
+from serverlessworkflow.sdk.metadata import Metadata
+from serverlessworkflow.sdk.state_exec_timeout import StateExecTimeout
+from serverlessworkflow.sdk.statedatafilter import Statedatafilter
+from serverlessworkflow.sdk.transition import Transition
+
+
+class SleepstateTimeOut:
+    stateExecTimeout: StateExecTimeout = None
+
+
 class Sleepstate:
-    id = None
-    name = None
-    type = None
-    end = None
-    stateDataFilter = None
-    duration = None
-    timeouts = None
-    stateExecTimeout = None
-    onErrors = None
-    transition = None
-    compensatedBy = None
-    usedForCompensation = None
-    metadata = None
+    id: str = None
+    name: str = None
+    type: str = None
+    end: Union[bool, End] = None
+    stateDataFilter: Statedatafilter = None
+    duration: str = None
+    timeouts: SleepstateTimeOut = None
+    onErrors: [Error] = None
+    transition: Union[str, Transition] = None
+    compensatedBy: str = None
+    usedForCompensation: bool = None
+    metadata: Metadata = None
 
     def __init__(self,
-                 id=None,
-                 name=None,
-                 type=None,
-                 end=None,
-                 stateDataFilter=None,
-                 duration=None,
-                 timeouts=None,
-                 stateExecTimeout=None,
-                 onErrors=None,
-                 transition=None,
-                 compensatedBy=None,
-                 usedForCompensation=None,
-                 metadata=None,
+                 id: str = None,
+                 name: str = None,
+                 type: str = None,
+                 end: Union[bool, End] = None,
+                 stateDataFilter: Statedatafilter = None,
+                 duration: str = None,
+                 timeouts: SleepstateTimeOut = None,
+                 onErrors: [Error] = None,
+                 transition: Union[str, Transition] = None,
+                 compensatedBy: str = None,
+                 usedForCompensation: bool = None,
+                 metadata: Metadata = None,
                  **kwargs):
 
         # duplicated

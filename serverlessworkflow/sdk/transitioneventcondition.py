@@ -1,16 +1,22 @@
+from typing import Union
+
+from serverlessworkflow.sdk.metadata import Metadata
+from serverlessworkflow.sdk.transition import Transition
+
+
 class Transitioneventcondition:
-    name = None
-    eventRef = None
-    transition = None
+    name: str = None
+    eventRef: str = None
+    transition: Union[str, Transition] = None
     eventDataFilter = None
-    metadata = None
+    metadata: Metadata = None
 
     def __init__(self,
-                 name=None,
-                 eventRef=None,
-                 transition=None,
+                 name: str = None,
+                 eventRef: str = None,
+                 transition: Union[str, Transition] = None,
                  eventDataFilter=None,
-                 metadata=None,
+                 metadata: Metadata = None,
                  **kwargs):
 
         # duplicated

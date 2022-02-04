@@ -1,4 +1,8 @@
-class Metadata:
+from typing import Dict
+
+
+class Metadata(Dict):
+
     def __init__(self,
                  **kwargs):
 

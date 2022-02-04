@@ -1,39 +1,49 @@
+from typing import Union
+
 from serverlessworkflow.sdk.action import Action
+from serverlessworkflow.sdk.end import End
+from serverlessworkflow.sdk.enums import ActionMode
+from serverlessworkflow.sdk.error import Error
+from serverlessworkflow.sdk.metadata import Metadata
+from serverlessworkflow.sdk.state_exec_timeout import StateExecTimeout
+from serverlessworkflow.sdk.statedatafilter import Statedatafilter
+from serverlessworkflow.sdk.transition import Transition
+
+
+class OperationstateTimeOut:
+    stateExecTimeout: StateExecTimeout = None
+    actionExecTimeout: str = None  # ActionExecTimeout
 
 
 class Operationstate:
-    id = None
-    name = None
-    type = None
-    end = None
-    stateDataFilter = None
-    actionMode = None
-    actions = None
-    timeouts = None
-    stateExecTimeout = None
-    actionExecTimeout = None
-    onErrors = None
-    transition = None
-    compensatedBy = None
-    usedForCompensation = None
-    metadata = None
+    id: str = None
+    name: str = None
+    type: str = None
+    end: Union[bool, End] = None
+    stateDataFilter: Statedatafilter = None
+    actionMode: ActionMode = None
+    actions: [Action] = None
+    timeouts: OperationstateTimeOut = None
+    onErrors: [Error] = None
+    transition: Union[str, Transition] = None
+    compensatedBy: str = None
+    usedForCompensation: bool = None
+    metadata: Metadata = None
 
     def __init__(self,
-                 id=None,
-                 name=None,
-                 type=None,
-                 stateDataFilter=None,
-                 actionMode=None,
-                 actions=None,
-                 end=None,
-                 timeouts=None,
-                 stateExecTimeout=None,
-                 actionExecTimeout=None,
-                 onErrors=None,
-                 transition=None,
-                 compensatedBy=None,
-                 usedForCompensation=None,
-                 metadata=None,
+                 id: str = None,
+                 name: str = None,
+                 type: str = None,
+                 stateDataFilter: Statedatafilter = None,
+                 actionMode: ActionMode = None,
+                 actions: [Action] = None,
+                 timeouts: OperationstateTimeOut = None,
+                 onErrors: [Error] = None,
+                 transition: Union[str, Transition] = None,
+                 compensatedBy: str = None,
+                 usedForCompensation: bool = None,
+                 metadata: Metadata = None,
+                 end: Union[bool, End] = None,
                  **kwargs):
 
         # duplicated

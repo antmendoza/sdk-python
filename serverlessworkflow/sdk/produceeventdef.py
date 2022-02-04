@@ -1,12 +1,15 @@
+from typing import Union, Dict
+
+
 class Produceeventdef:
-    eventRef = None
-    data = None
-    contextAttributes = None
+    eventRef: str = None
+    data: Union[str, Dict[str, Dict]] = None
+    contextAttributes: Dict[str, str] = None
 
     def __init__(self,
-                 eventRef=None,
-                 data=None,
-                 contextAttributes=None,
+                 eventRef: str = None,
+                 data: Union[str, Dict[str, Dict]] = None,
+                 contextAttributes: Dict[str, str] = None,
                  **kwargs):
 
         # duplicated

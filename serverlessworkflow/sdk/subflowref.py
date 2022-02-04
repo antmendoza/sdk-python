@@ -1,14 +1,24 @@
+from enum import Enum
+
+from serverlessworkflow.sdk.enums import Invoke
+
+
+class SubflowrefOnParentComplete(Enum):
+    CONTINUE = "continue"
+    TERMINATE = "terminate"
+
+
 class Subflowref:
-    workflowId = None
-    version = None
+    workflowId: str = None
+    version: str = None
     onParentComplete = None
-    invoke = None
+    invoke: Invoke = None
 
     def __init__(self,
-                 workflowId=None,
-                 version=None,
+                 workflowId: str = None,
+                 version: str = None,
                  onParentComplete=None,
-                 invoke=None,
+                 invoke: Invoke = None,
                  **kwargs):
 
         # duplicated

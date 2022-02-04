@@ -1,10 +1,10 @@
 class Statedatafilter:
-    input = None
-    output = None
+    input: str = None
+    output: str = None
 
     def __init__(self,
-                 input=None,
-                 output=None,
+                 input: str = None,
+                 output: str = None,
                  **kwargs):
 
         # duplicated

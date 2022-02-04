@@ -1,3 +1,4 @@
+from enum import Enum
 from typing import Union
 
 from serverlessworkflow.sdk.action import Action
@@ -13,6 +14,10 @@ class ForEachStateTimeouts:
     stateExecTimeout: StateExecTimeout = None
     actionExecTimeout: str = None  # ActionExecTimeout
 
+
+class ForEachStateMode(Enum):
+    PARALLEL = "parallel"
+    SEQUENTIAL = "sequential"
 
 class Foreachstate:
     id: str = None
@@ -30,7 +35,7 @@ class Foreachstate:
     transition: Union[str, Transition] = None
     compensatedBy: str = None
     usedForCompensation: bool = None
-    mode: Union['sequential', 'parallel'] = None
+    mode: ForEachStateMode = None
     metadata: Metadata = None
 
     def __init__(self,
@@ -49,7 +54,7 @@ class Foreachstate:
                  transition: Union[str, Transition] = None,
                  compensatedBy: str = None,
                  usedForCompensation: bool = None,
-                 mode: Union['sequential', 'parallel'] = None,
+                 mode: ForEachStateMode = None,
                  metadata: Metadata = None,
                  **kwargs):
 

@@ -1,30 +1,41 @@
+from enum import Enum
+
+from serverlessworkflow.sdk.metadata import Metadata
+
+
+class Oauth2propsdefGrantType(Enum):
+    password = "password"
+    clientCredentials = "clientCredentials"
+    tokenExchange = "tokenExchange"
+
+
 class Oauth2propsdef:
-    authority = None
-    grantType = None
-    clientId = None
-    clientSecret = None
-    scopes = None
-    username = None
-    password = None
-    audiences = None
-    subjectToken = None
-    requestedSubject = None
-    requestedIssuer = None
-    metadata = None
+    authority: str = None
+    grantType: Oauth2propsdefGrantType = None
+    clientId: str = None
+    clientSecret: str = None
+    scopes: [str] = None
+    username: str = None
+    password: str = None
+    audiences: [str] = None
+    subjectToken: str = None
+    requestedSubject: str = None
+    requestedIssuer: str = None
+    metadata: Metadata = None
 
     def __init__(self,
-                 authority=None,
-                 grantType=None,
-                 clientId=None,
-                 clientSecret=None,
-                 scopes=None,
-                 username=None,
-                 password=None,
-                 audiences=None,
-                 subjectToken=None,
-                 requestedSubject=None,
-                 requestedIssuer=None,
-                 metadata=None,
+                 authority: str = None,
+                 grantType: Oauth2propsdefGrantType = None,
+                 clientId: str = None,
+                 clientSecret: str = None,
+                 scopes: [str] = None,
+                 username: str = None,
+                 password: str = None,
+                 audiences: [str] = None,
+                 subjectToken: str = None,
+                 requestedSubject: str = None,
+                 requestedIssuer: str = None,
+                 metadata: Metadata = None,
                  **kwargs):
 
         # duplicated
@@ -46,5 +57,5 @@ class Oauth2propsdef:
             if value == "true":
                 value = True
 
-            self.__setattr__(k.replace("_", ""), value)
-            # duplicated
+        self.__setattr__(k.replace("_", ""), value)
+        # duplicated

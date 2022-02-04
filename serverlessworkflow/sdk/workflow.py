@@ -1,11 +1,20 @@
 import copy
 import json
+from typing import Union, Dict, List
 
 import yaml
 
+from serverlessworkflow.sdk.authdef import Authdef
+from serverlessworkflow.sdk.errordef import Errordef
+from serverlessworkflow.sdk.eventdef import Eventdef
+from serverlessworkflow.sdk.function import Function
 from serverlessworkflow.sdk.injectstate import Injectstate
+from serverlessworkflow.sdk.metadata import Metadata
 from serverlessworkflow.sdk.operationstate import Operationstate
+from serverlessworkflow.sdk.retrydef import Retrydef
+from serverlessworkflow.sdk.startdef import Startdef
 from serverlessworkflow.sdk.state import State
+from serverlessworkflow.sdk.timeouts import Timeouts
 
 
 def is_inject_state(state: State):
@@ -16,57 +25,58 @@ def is_operation_state(state: State):
     return state['type'] == 'operation'
 
 
+class DataInputSchema:
+    schema: str
+    failOnValidationErrors: bool
+
+
 class Workflow:
-    id = None
-    key = None
-    name = None
-    description = None
-    version = None
-    annotations = None
-    dataInputSchema = None
-    schema = None
-    failOnValidationErrors = None
-    secrets = None
-    constants = None
-    start = None
-    specVersion = None
-    expressionLang = None
-    timeouts = None
-    errors = None
-    keepActive = None
-    metadata = None
-    events = None
-    functions = None
-    autoRetries = None
-    retries = None
-    auth = None
-    states = None
+    id: str = None
+    key: str = None
+    name: str = None
+    description: str = None
+    version: str = None
+    annotations: [str] = None
+    dataInputSchema: Union[str, DataInputSchema] = None
+    secrets: str = None  # Secrets
+    constants: Union[str, Dict[str, Dict]] = None
+    start: Union[str, Startdef] = None
+    specVersion: str = None
+    expressionLang: str = None
+    timeouts: Union[str, Timeouts] = None
+    errors: Union[str, List[Errordef]] = None
+    keepActive: bool = None
+    metadata: Metadata = None
+    events: Union[str, List[Eventdef]] = None
+    functions: Union[str, List[Function]] = None
+    autoRetries: bool = None
+    retries: Union[str, List[Retrydef]] = None
+    auth: Union[str, List[Authdef]] = None
+    states: [State] = None
 
     def __init__(self,
-                 id_=None,
-                 key=None,
-                 name=None,
-                 version=None,
-                 description=None,
-                 specVersion=None,
-                 annotations=None,
-                 dataInputSchema=None,
-                 schema=None,
-                 failOnValidationErrors=None,
-                 secrets=None,
-                 constants=None,
-                 start=None,
-                 expressionLang=None,
-                 timeouts=None,
-                 errors=None,
-                 keepActive=None,
-                 metadata=None,
-                 events=None,
-                 autoRetries=None,
-                 retries=None,
-                 auth=None,
-                 states=None,
-                 functions=None,
+                 id_: str = None,
+                 key: str = None,
+                 name: str = None,
+                 version: str = None,
+                 description: str = None,
+                 specVersion: str = None,
+                 annotations: [str] = None,
+                 dataInputSchema: Union[str, DataInputSchema] = None,
+                 secrets: str = None,  # Secrets
+                 constants: Union[str, Dict[str, Dict]] = None,
+                 start: Union[str, Startdef] = None,
+                 expressionLang: str = None,
+                 timeouts: Union[str, Timeouts] = None,
+                 errors: Union[str, List[Errordef]] = None,
+                 keepActive: bool = None,
+                 metadata: Metadata = None,
+                 events: Union[str, List[Eventdef]] = None,
+                 autoRetries: bool = None,
+                 retries: Union[str, List[Retrydef]] = None,
+                 auth: Union[str, List[Authdef]] = None,
+                 states: [State] = None,
+                 functions: Union[str, List[Function]] = None,
                  **kwargs):
 
         self._default_values = {'expressionLang': 'jq'}
