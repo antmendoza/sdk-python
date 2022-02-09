@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import json
 from typing import Union, Dict, List
 
@@ -47,7 +49,7 @@ class Workflow:
     keepActive: bool = None
     metadata: Metadata = None
     events: Union[str, List[EventDef]] = None
-    functions: Union[str, List[Function]] = None
+    functions: (str | [Function]) = None
     autoRetries: bool = None
     retries: Union[str, List[RetryDef]] = None
     auth: Union[str, List[AuthDef]] = None
@@ -75,7 +77,8 @@ class Workflow:
                  retries: Union[str, List[RetryDef]] = None,
                  auth: Union[str, List[AuthDef]] = None,
                  states: [State] = None,
-                 functions: Union[str, List[Function]] = None
+                 # functions: Union[str, List[Function]] = None
+                 functions: (str | [Function]) = None
                  , **kwargs):
 
         # duplicated
@@ -90,6 +93,9 @@ class Workflow:
 
             if local == 'states' and final_value:
                 final_value = Workflow.load_states(final_value)
+
+            if local == 'functions' and final_value:
+                final_value = Workflow.load_functions(final_value)
 
             if final_value is not None:
                 self.__setattr__(local.replace("_", ""), final_value)
@@ -141,3 +147,10 @@ class Workflow:
 
     def __repr__(self):
         return "{!r}".format(self.__dict__)
+
+    @staticmethod
+    def load_functions(functions: (str | [Function])):
+        if type(functions) is str:
+            return functions
+
+        return [Function(**function) if type(function) is not Function else function for function in functions]

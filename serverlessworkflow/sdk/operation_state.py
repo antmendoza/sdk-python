@@ -70,5 +70,5 @@ class OperationState:
             # duplicated
 
     @staticmethod
-    def load_actions(value):
-        return [Action(**action) if type(action) is not Action else action for action in value]
+    def load_actions(actions):
+        return [Action(**action) if type(action) is not Action else action for action in actions]
