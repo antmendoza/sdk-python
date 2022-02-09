@@ -2,6 +2,7 @@ import os
 import unittest
 
 from serverlessworkflow.sdk.action import Action
+from serverlessworkflow.sdk.function_ref import FunctionRef
 from serverlessworkflow.sdk.workflow import Workflow
 
 
@@ -121,4 +122,5 @@ functions:
             self.assertEqual("operation", workflow.states[0].type)
             self.assertEqual(True, workflow.states[0].end)
             self.assertTrue(isinstance(workflow.states[0].actions[0], Action))
+            self.assertTrue(isinstance(workflow.states[0].actions[0].functionRef, FunctionRef))
 

@@ -45,6 +45,9 @@ class Action:
                 value = True
             # duplicated
 
+            if local == 'functionRef':
+                value = Action.load_function_ref(value)
+
             self.__setattr__(local.replace("_", ""), value)
 
         # duplicated
@@ -53,5 +56,15 @@ class Action:
             if value == "true":
                 value = True
 
+            if k == 'functionRef':
+                value = Action.load_function_ref(value)
+
             self.__setattr__(k.replace("_", ""), value)
             # duplicated
+
+    @staticmethod
+    def load_function_ref(function):
+        if type(function) is str:
+            return function
+
+        return FunctionRef(**function) if type(function) is not FunctionRef else function
