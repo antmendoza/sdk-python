@@ -48,6 +48,9 @@ class Action:
             if local == 'functionRef':
                 value = Action.load_function_ref(value)
 
+            if local == 'actionDataFilter':
+                value = Action.load_action_data_filter(value)
+
             self.__setattr__(local.replace("_", ""), value)
 
         # duplicated
@@ -59,6 +62,9 @@ class Action:
             if k == 'functionRef':
                 value = Action.load_function_ref(value)
 
+            if local == 'actionDataFilter':
+                value = Action.load_action_data_filter(value)
+
             self.__setattr__(k.replace("_", ""), value)
             # duplicated
 
@@ -68,3 +74,10 @@ class Action:
             return function
 
         return FunctionRef(**function) if type(function) is not FunctionRef else function
+
+    @staticmethod
+    def load_action_data_filter(action_df):
+        if type(action_df) is str:
+            return action_df
+
+        return ActionDataFilter(**action_df) if type(action_df) is not ActionDataFilter else action_df
