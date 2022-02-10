@@ -8,6 +8,7 @@ import yaml
 from serverlessworkflow.sdk.auth_def import AuthDef
 from serverlessworkflow.sdk.error_def import ErrorDef
 from serverlessworkflow.sdk.event_def import EventDef
+from serverlessworkflow.sdk.foreach_state import ForEachState
 from serverlessworkflow.sdk.function import Function
 from serverlessworkflow.sdk.inject_state import InjectState
 from serverlessworkflow.sdk.metadata import Metadata
@@ -141,13 +142,15 @@ class Workflow:
         result = []
         for state in states:
             if is_inject_state(state):
-                result.append(InjectState(**(states[0])))
+                result.append(InjectState(**(state)))
             elif is_operation_state(state):
-                result.append(OperationState(**(states[0])))
+                result.append(OperationState(**(state)))
             elif is_foreach_state(state):
-                result.append(ForEachState(**(states[0])))
+                result.append(ForEachState(**(state)))
             else:
-                result.append(State(**(states[0])))
+                result.append(State(**(state)))
+
+        return result
 
     def __repr__(self):
         return "{!r}".format(self.__dict__)
