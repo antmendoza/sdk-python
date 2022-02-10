@@ -65,6 +65,9 @@ class ForEachState:
                 value = True
             # duplicated
 
+            if local == 'actions':
+                value = ForEachState.load_actions(value)
+
             self.__setattr__(local.replace("_", ""), value)
 
         # duplicated
@@ -73,5 +76,12 @@ class ForEachState:
             if value == "true":
                 value = True
 
+            if k == 'actions':
+                value = ForEachState.load_actions(value)
+
             self.__setattr__(k.replace("_", ""), value)
             # duplicated
+
+    @staticmethod
+    def load_actions(actions):
+        return [Action(**action) if type(action) is not Action else action for action in actions]
