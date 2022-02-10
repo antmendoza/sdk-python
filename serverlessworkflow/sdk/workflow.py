@@ -16,7 +16,7 @@ from serverlessworkflow.sdk.operation_state import OperationState
 from serverlessworkflow.sdk.retry_def import RetryDef
 from serverlessworkflow.sdk.start_def import StartDef
 from serverlessworkflow.sdk.state import State
-from serverlessworkflow.sdk.test import method_name
+from serverlessworkflow.sdk.test import Attributes
 from serverlessworkflow.sdk.workflow_time_out import WorkflowTimeOut
 
 
@@ -86,10 +86,7 @@ class Workflow:
                  functions: (str | [Function]) = None
                  , **kwargs):
 
-        _attributes = method_name(locals(), kwargs, self.load_properties)
-
-        for attr in _attributes:
-            self.__setattr__(attr.key, attr.value)
+        Attributes(locals(), kwargs, self.load_properties).set_to_object(self)
 
     def to_json(self) -> str:
         return json.dumps(self,
