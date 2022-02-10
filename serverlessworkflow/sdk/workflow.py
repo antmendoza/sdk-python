@@ -82,7 +82,6 @@ class Workflow:
                  retries: Union[str, List[RetryDef]] = None,
                  auth: Union[str, List[AuthDef]] = None,
                  states: [State] = None,
-                 # functions: Union[str, List[Function]] = None
                  functions: (str | [Function]) = None
                  , **kwargs):
 
