@@ -1,7 +1,7 @@
 from typing import Union
 
 from serverlessworkflow.sdk.cron_def import CronDef
-from serverlessworkflow.sdk.test import Attributes
+from serverlessworkflow.sdk.attributes import Attributes
 
 
 class Schedule:

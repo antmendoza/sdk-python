@@ -1,5 +1,5 @@
 from serverlessworkflow.sdk.produce_event_def import ProduceEventDef
-from serverlessworkflow.sdk.test import Attributes
+from serverlessworkflow.sdk.attributes import Attributes
 
 
 class Transition:

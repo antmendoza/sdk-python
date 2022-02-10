@@ -6,7 +6,7 @@ from serverlessworkflow.sdk.event_state_timeout import EventStateTimeOut
 from serverlessworkflow.sdk.metadata import Metadata
 from serverlessworkflow.sdk.on_events import OnEvents
 from serverlessworkflow.sdk.state_data_filter import StateDataFilter
-from serverlessworkflow.sdk.test import Attributes
+from serverlessworkflow.sdk.attributes import Attributes
 from serverlessworkflow.sdk.transition import Transition
 
 

@@ -3,7 +3,7 @@ from typing import Union
 from serverlessworkflow.sdk.end import End
 from serverlessworkflow.sdk.event_data_filter import EventDataFilter
 from serverlessworkflow.sdk.metadata import Metadata
-from serverlessworkflow.sdk.test import Attributes
+from serverlessworkflow.sdk.attributes import Attributes
 
 
 class EndEventCondition:

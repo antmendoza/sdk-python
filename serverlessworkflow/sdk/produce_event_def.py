@@ -1,6 +1,6 @@
 from typing import Union, Dict
 
-from serverlessworkflow.sdk.test import Attributes
+from serverlessworkflow.sdk.attributes import Attributes
 
 
 class ProduceEventDef:

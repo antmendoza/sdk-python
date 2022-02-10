@@ -1,5 +1,5 @@
 from serverlessworkflow.sdk.state_exec_timeout import StateExecTimeOut
-from serverlessworkflow.sdk.test import Attributes
+from serverlessworkflow.sdk.attributes import Attributes
 from serverlessworkflow.sdk.workflow_exec_timeout import WorkflowExecTimeOut
 
 

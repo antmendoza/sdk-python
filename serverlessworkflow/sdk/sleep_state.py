@@ -5,7 +5,7 @@ from serverlessworkflow.sdk.error import Error
 from serverlessworkflow.sdk.metadata import Metadata
 from serverlessworkflow.sdk.sleep_state_timeout import SleepStateTimeOut
 from serverlessworkflow.sdk.state_data_filter import StateDataFilter
-from serverlessworkflow.sdk.test import Attributes
+from serverlessworkflow.sdk.attributes import Attributes
 from serverlessworkflow.sdk.transition import Transition
 
 

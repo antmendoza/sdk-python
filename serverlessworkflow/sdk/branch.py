@@ -1,6 +1,6 @@
 from serverlessworkflow.sdk.action import Action
 from serverlessworkflow.sdk.branch_timeout import BranchTimeOut
-from serverlessworkflow.sdk.test import Attributes
+from serverlessworkflow.sdk.attributes import Attributes
 
 
 class Branch:

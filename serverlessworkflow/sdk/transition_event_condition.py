@@ -1,7 +1,7 @@
 from typing import Union
 
 from serverlessworkflow.sdk.metadata import Metadata
-from serverlessworkflow.sdk.test import Attributes
+from serverlessworkflow.sdk.attributes import Attributes
 from serverlessworkflow.sdk.transition import Transition
 
 

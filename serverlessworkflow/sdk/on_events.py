@@ -1,7 +1,7 @@
 from serverlessworkflow.sdk.action import Action
 from serverlessworkflow.sdk.enums import ActionMode
 from serverlessworkflow.sdk.event_data_filter import EventDataFilter
-from serverlessworkflow.sdk.test import Attributes
+from serverlessworkflow.sdk.attributes import Attributes
 
 
 class OnEvents:

@@ -1,5 +1,5 @@
 from serverlessworkflow.sdk.metadata import Metadata
-from serverlessworkflow.sdk.test import Attributes
+from serverlessworkflow.sdk.attributes import Attributes
 
 
 class BasicPropsDef:

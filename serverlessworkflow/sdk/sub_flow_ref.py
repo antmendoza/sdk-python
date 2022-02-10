@@ -1,7 +1,7 @@
 from enum import Enum
 
 from serverlessworkflow.sdk.enums import Invoke
-from serverlessworkflow.sdk.test import Attributes
+from serverlessworkflow.sdk.attributes import Attributes
 
 
 class SubFlowRefOnParentComplete(Enum):

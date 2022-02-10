@@ -16,7 +16,7 @@ from serverlessworkflow.sdk.operation_state import OperationState
 from serverlessworkflow.sdk.retry_def import RetryDef
 from serverlessworkflow.sdk.start_def import StartDef
 from serverlessworkflow.sdk.state import State
-from serverlessworkflow.sdk.test import Attributes
+from serverlessworkflow.sdk.attributes import Attributes
 from serverlessworkflow.sdk.workflow_time_out import WorkflowTimeOut
 
 

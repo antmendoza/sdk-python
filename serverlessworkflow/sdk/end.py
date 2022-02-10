@@ -2,7 +2,7 @@ from typing import Union
 
 from serverlessworkflow.sdk.continue_as_def import ContinueAsDef
 from serverlessworkflow.sdk.produce_event_def import ProduceEventDef
-from serverlessworkflow.sdk.test import Attributes
+from serverlessworkflow.sdk.attributes import Attributes
 
 
 class End:
