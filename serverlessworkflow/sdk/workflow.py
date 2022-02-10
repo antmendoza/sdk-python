@@ -26,6 +26,10 @@ def is_operation_state(state: State):
     return state['type'] == 'operation'
 
 
+def is_foreach_state(state: State):
+    return state['type'] == 'foreach'
+
+
 class DataInputSchema:
     schema: str
     failOnValidationErrors: bool
@@ -140,10 +144,10 @@ class Workflow:
                 result.append(InjectState(**(states[0])))
             elif is_operation_state(state):
                 result.append(OperationState(**(states[0])))
+            elif is_foreach_state(state):
+                result.append(ForEachState(**(states[0])))
             else:
                 result.append(State(**(states[0])))
-
-        return result
 
     def __repr__(self):
         return "{!r}".format(self.__dict__)
