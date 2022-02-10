@@ -18,8 +18,8 @@ class Attributes:
             object.__setattr__(attr.key, attr.value)
 
     @staticmethod
-    def dummy(x,y):
-        return x
+    def dummy(local, final_value):
+        return final_value
 
 
     @staticmethod
@@ -38,7 +38,7 @@ class Attributes:
                 final_value = True
             # duplicated
 
-            final_value = load_properties(final_value, local)
+            final_value = load_properties(local, final_value)
 
             if final_value is not None:
                 key_ = local.replace("_", "")
@@ -50,7 +50,7 @@ class Attributes:
             if final_value == "true":
                 final_value = True
 
-            final_value = load_properties(final_value, k)
+            final_value = load_properties(k, final_value)
 
             if final_value is not None:
                 key_ = k.replace("_", "")

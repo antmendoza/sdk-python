@@ -110,10 +110,10 @@ class Workflow:
             raise Exception("Format not supported")
 
     @staticmethod
-    def load_properties(final_value, local):
-        if local == 'states' and final_value:
+    def load_properties(k, final_value):
+        if k == 'states' and final_value:
             final_value = Workflow.load_states(final_value)
-        if local == 'functions' and final_value:
+        if k == 'functions' and final_value:
             final_value = Workflow.load_functions(final_value)
         return final_value
 
