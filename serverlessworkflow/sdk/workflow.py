@@ -16,6 +16,7 @@ from serverlessworkflow.sdk.operation_state import OperationState
 from serverlessworkflow.sdk.retry_def import RetryDef
 from serverlessworkflow.sdk.start_def import StartDef
 from serverlessworkflow.sdk.state import State
+from serverlessworkflow.sdk.test import method_name
 from serverlessworkflow.sdk.workflow_time_out import WorkflowTimeOut
 
 
@@ -85,42 +86,17 @@ class Workflow:
                  functions: (str | [Function]) = None
                  , **kwargs):
 
-        # duplicated
-        for local in list(locals()):
-            if local in ["self", "kwargs"]:
-                continue
-            final_value = locals().get(local)
-            initial_value = locals().get(local)
-            if final_value == "true":
-                final_value = True
-            # duplicated
+        _attributes = method_name(locals(), kwargs, self.load_properties)
 
-            if local == 'states' and final_value:
-                final_value = Workflow.load_states(final_value)
-
-            if local == 'functions' and final_value:
-                final_value = Workflow.load_functions(final_value)
-
-            if final_value is not None:
-                self.__setattr__(local.replace("_", ""), final_value)
-
-        # duplicated
-        for k in kwargs.keys():
-            final_value = kwargs[k]
-            if final_value == "true":
-                final_value = True
-
-            self.__setattr__(k.replace("_", ""), final_value)
-        # duplicated
+        for attr in _attributes:
+            self.__setattr__(attr.key, attr.value)
 
     def to_json(self) -> str:
-
         return json.dumps(self,
                           default=lambda o: o.__dict__,
                           indent=4)
 
     def to_yaml(self):
-
         yaml.emitter.Emitter.process_tag = lambda x: None
         return yaml.dump(self,
                          sort_keys=False,
@@ -135,6 +111,14 @@ class Workflow:
             return cls(**loaded_data)
         except Exception:
             raise Exception("Format not supported")
+
+    @staticmethod
+    def load_properties(final_value, local):
+        if local == 'states' and final_value:
+            final_value = Workflow.load_states(final_value)
+        if local == 'functions' and final_value:
+            final_value = Workflow.load_functions(final_value)
+        return final_value
 
     @staticmethod
     def load_states(states: [State]):
