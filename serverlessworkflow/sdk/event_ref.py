@@ -1,7 +1,7 @@
 from typing import Dict, Union
 
 from serverlessworkflow.sdk.enums import Invoke
-from serverlessworkflow.sdk.attributes import Attributes
+from serverlessworkflow.sdk.class_properties import ClassProperties
 
 
 class EventRef:
@@ -20,4 +20,4 @@ class EventRef:
                  invoke: Invoke = None,
                  **kwargs):
 
-        Attributes(locals(), kwargs, Attributes.dummy).set_to_object(self)
+        ClassProperties(locals(), kwargs, ClassProperties.dummy).set_to_object(self)

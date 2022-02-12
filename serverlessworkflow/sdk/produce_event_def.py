@@ -1,6 +1,6 @@
 from typing import Union, Dict
 
-from serverlessworkflow.sdk.attributes import Attributes
+from serverlessworkflow.sdk.class_properties import ClassProperties
 
 
 class ProduceEventDef:
@@ -14,4 +14,4 @@ class ProduceEventDef:
                  contextAttributes: Dict[str, str] = None,
                  **kwargs):
 
-        Attributes(locals(), kwargs, Attributes.dummy).set_to_object(self)
+        ClassProperties(locals(), kwargs, ClassProperties.dummy).set_to_object(self)

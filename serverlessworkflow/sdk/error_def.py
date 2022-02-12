@@ -1,4 +1,4 @@
-from serverlessworkflow.sdk.attributes import Attributes
+from serverlessworkflow.sdk.class_properties import ClassProperties
 
 
 class ErrorDef:
@@ -12,4 +12,4 @@ class ErrorDef:
                  description: str = None,
                  **kwargs):
 
-        Attributes(locals(), kwargs, Attributes.dummy).set_to_object(self)
+        ClassProperties(locals(), kwargs, ClassProperties.dummy).set_to_object(self)

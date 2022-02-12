@@ -1,6 +1,6 @@
 from typing import Union, Dict
 
-from serverlessworkflow.sdk.attributes import Attributes
+from serverlessworkflow.sdk.class_properties import ClassProperties
 from serverlessworkflow.sdk.workflow_exec_timeout import WorkflowExecTimeOut
 
 
@@ -17,4 +17,4 @@ class ContinueAsDef:
                  workflowExecTimeOut: WorkflowExecTimeOut = None,
                  **kwargs):
 
-        Attributes(locals(), kwargs, Attributes.dummy).set_to_object(self)
+        ClassProperties(locals(), kwargs, ClassProperties.dummy).set_to_object(self)

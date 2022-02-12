@@ -1,5 +1,5 @@
 from serverlessworkflow.sdk.produce_event_def import ProduceEventDef
-from serverlessworkflow.sdk.attributes import Attributes
+from serverlessworkflow.sdk.class_properties import ClassProperties
 
 
 class Transition:
@@ -13,4 +13,4 @@ class Transition:
                  compensate: bool = None,
                  **kwargs):
 
-        Attributes(locals(), kwargs, Attributes.dummy).set_to_object(self)
+        ClassProperties(locals(), kwargs, ClassProperties.dummy).set_to_object(self)

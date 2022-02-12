@@ -1,7 +1,7 @@
 from typing import Union
 
 from serverlessworkflow.sdk.end import End
-from serverlessworkflow.sdk.attributes import Attributes
+from serverlessworkflow.sdk.class_properties import ClassProperties
 from serverlessworkflow.sdk.transition import Transition
 
 
@@ -18,4 +18,4 @@ class Error:
                  end: Union[bool, End] = None,
                  **kwargs):
 
-        Attributes(locals(), kwargs, Attributes.dummy).set_to_object(self)
+        ClassProperties(locals(), kwargs, ClassProperties.dummy).set_to_object(self)

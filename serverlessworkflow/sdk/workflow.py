@@ -16,7 +16,7 @@ from serverlessworkflow.sdk.operation_state import OperationState
 from serverlessworkflow.sdk.retry_def import RetryDef
 from serverlessworkflow.sdk.start_def import StartDef
 from serverlessworkflow.sdk.state import State
-from serverlessworkflow.sdk.attributes import Attributes
+from serverlessworkflow.sdk.class_properties import ClassProperties
 from serverlessworkflow.sdk.workflow_time_out import WorkflowTimeOut
 
 
@@ -74,7 +74,7 @@ class Workflow:
                  functions: (str | [Function]) = None
                  , **kwargs):
 
-        Attributes(locals(), kwargs, self.load_properties).set_to_object(self)
+        ClassProperties(locals(), kwargs, Workflow.load_properties).set_to_object(self)
 
     def to_json(self) -> str:
         return json.dumps(self,
@@ -109,13 +109,13 @@ class Workflow:
     def load_states(states: [State]):
         result = []
         for raw_state in states:
-            state = State(**(raw_state))
+            state = State(**raw_state)
             if state.is_inject_state():
-                result.append(InjectState(**(raw_state)))
+                result.append(InjectState(**raw_state))
             elif state.is_operation_state():
-                result.append(OperationState(**(raw_state)))
+                result.append(OperationState(**raw_state))
             elif state.is_foreach_state():
-                result.append(ForEachState(**(raw_state)))
+                result.append(ForEachState(**raw_state))
             else:
                 result.append(state)
 

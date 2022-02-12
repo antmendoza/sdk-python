@@ -9,18 +9,17 @@ class Attribute:
         self.value = value
 
 
-class Attributes:
+class ClassProperties:
     def __init__(self, local_attributes, kwargs, load_properties):
-        self.attributes = Attributes.load(local_attributes, kwargs, load_properties)
+        self.attributes = ClassProperties.load(local_attributes, kwargs, load_properties)
 
-    def set_to_object(self, object):
+    def set_to_object(self, obj):
         for attr in self.attributes:
-            object.__setattr__(attr.key, attr.value)
+            obj.__setattr__(attr.key, attr.value)
 
     @staticmethod
-    def dummy(local, final_value):
-        return final_value
-
+    def dummy(property_key, property_value):
+        return property_value
 
     @staticmethod
     def load(local_attributes, kwargs, load_properties):
@@ -38,17 +37,24 @@ class Attributes:
                 final_value = True
             # duplicated
 
+            if final_value is None:
+                continue
+
             final_value = load_properties(local, final_value)
 
             if final_value is not None:
                 key_ = local.replace("_", "")
                 # self.__setattr__(key_, final_value)
                 _attributes.append(Attribute(key_, final_value))
+
         # duplicated
         for k in kwargs.keys():
             final_value = kwargs[k]
             if final_value == "true":
                 final_value = True
+
+            if final_value is None:
+                continue
 
             final_value = load_properties(k, final_value)
 

@@ -2,7 +2,7 @@ from typing import Union
 
 from serverlessworkflow.sdk.continue_as_def import ContinueAsDef
 from serverlessworkflow.sdk.produce_event_def import ProduceEventDef
-from serverlessworkflow.sdk.attributes import Attributes
+from serverlessworkflow.sdk.class_properties import ClassProperties
 
 
 class End:
@@ -18,4 +18,4 @@ class End:
                  continueAs: Union[str, ContinueAsDef] = None,
                  **kwargs):
 
-        Attributes(locals(), kwargs, Attributes.dummy).set_to_object(self)
+        ClassProperties(locals(), kwargs, ClassProperties.dummy).set_to_object(self)

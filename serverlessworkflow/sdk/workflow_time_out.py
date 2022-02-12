@@ -1,5 +1,5 @@
 from serverlessworkflow.sdk.state_exec_timeout import StateExecTimeOut
-from serverlessworkflow.sdk.attributes import Attributes
+from serverlessworkflow.sdk.class_properties import ClassProperties
 from serverlessworkflow.sdk.workflow_exec_timeout import WorkflowExecTimeOut
 
 
@@ -18,4 +18,4 @@ class WorkflowTimeOut:
                  eventTimeOut: str = None,  # EventTimeOut
                  **kwargs):
 
-        Attributes(locals(), kwargs, Attributes.dummy).set_to_object(self)
+        ClassProperties(locals(), kwargs, ClassProperties.dummy).set_to_object(self)

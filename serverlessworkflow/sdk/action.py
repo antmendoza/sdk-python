@@ -1,6 +1,7 @@
 from typing import Union
 
 from serverlessworkflow.sdk.action_data_filter import ActionDataFilter
+from serverlessworkflow.sdk.class_properties import ClassProperties
 from serverlessworkflow.sdk.event_ref import EventRef
 from serverlessworkflow.sdk.function_ref import FunctionRef
 from serverlessworkflow.sdk.sleep import Sleep
@@ -34,39 +35,15 @@ class Action:
                  condition: str = None,
                  **kwargs):
 
-        # duplicated
-        for local in list(locals()):
-            if local in ["self", "kwargs"]:
-                continue
-            value = locals().get(local)
-            if not value:
-                continue
-            if value == "true":
-                value = True
-            # duplicated
+        ClassProperties(locals(), kwargs, Action.load_properties).set_to_object(self)
 
-            if local == 'functionRef':
-                value = Action.load_function_ref(value)
-
-            if local == 'actionDataFilter':
-                value = Action.load_action_data_filter(value)
-
-            self.__setattr__(local.replace("_", ""), value)
-
-        # duplicated
-        for k in kwargs.keys():
-            value = kwargs[k]
-            if value == "true":
-                value = True
-
-            if k == 'functionRef':
-                value = Action.load_function_ref(value)
-
-            if local == 'actionDataFilter':
-                value = Action.load_action_data_filter(value)
-
-            self.__setattr__(k.replace("_", ""), value)
-            # duplicated
+    @staticmethod
+    def load_properties(property_key, property_value):
+        if property_key == 'functionRef':
+            property_value = Action.load_function_ref(property_value)
+        if property_key == 'actionDataFilter':
+            property_value = Action.load_action_data_filter(property_value)
+        return property_value
 
     @staticmethod
     def load_function_ref(function):

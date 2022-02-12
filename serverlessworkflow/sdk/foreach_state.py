@@ -2,6 +2,7 @@ from enum import Enum
 from typing import Union
 
 from serverlessworkflow.sdk.action import Action
+from serverlessworkflow.sdk.class_properties import ClassProperties
 from serverlessworkflow.sdk.end import End
 from serverlessworkflow.sdk.error import Error
 from serverlessworkflow.sdk.foreach_state_timeout import ForEachStateTimeOut
@@ -55,33 +56,13 @@ class ForEachState(State):
                  metadata: Metadata = None,
                  **kwargs):
 
-        # duplicated
-        for local in list(locals()):
-            if local in ["self", "kwargs"]:
-                continue
-            value = locals().get(local)
-            if not value:
-                continue
-            if value == "true":
-                value = True
-            # duplicated
+        ClassProperties(locals(), kwargs, ForEachState.load_properties).set_to_object(self)
 
-            if local == 'actions':
-                value = ForEachState.load_actions(value)
-
-            self.__setattr__(local.replace("_", ""), value)
-
-        # duplicated
-        for k in kwargs.keys():
-            value = kwargs[k]
-            if value == "true":
-                value = True
-
-            if k == 'actions':
-                value = ForEachState.load_actions(value)
-
-            self.__setattr__(k.replace("_", ""), value)
-            # duplicated
+    @staticmethod
+    def load_properties(local, value):
+        if local == 'actions':
+            value = ForEachState.load_actions(value)
+        return value
 
     @staticmethod
     def load_actions(actions):
