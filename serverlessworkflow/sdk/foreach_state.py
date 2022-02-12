@@ -6,6 +6,7 @@ from serverlessworkflow.sdk.end import End
 from serverlessworkflow.sdk.error import Error
 from serverlessworkflow.sdk.foreach_state_timeout import ForEachStateTimeOut
 from serverlessworkflow.sdk.metadata import Metadata
+from serverlessworkflow.sdk.state import State
 from serverlessworkflow.sdk.state_data_filter import StateDataFilter
 from serverlessworkflow.sdk.transition import Transition
 
@@ -15,7 +16,7 @@ class ForEachStateMode(Enum):
     SEQUENTIAL = "sequential"
 
 
-class ForEachState:
+class ForEachState(State):
     id: str = None
     name: str = None
     type: str = None

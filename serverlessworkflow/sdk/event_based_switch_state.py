@@ -5,12 +5,13 @@ from serverlessworkflow.sdk.end_event_condition import EndEventCondition
 from serverlessworkflow.sdk.error import Error
 from serverlessworkflow.sdk.event_based_switch_state_timeout import EventBasedSwitchStateTimeOut
 from serverlessworkflow.sdk.metadata import Metadata
+from serverlessworkflow.sdk.state import State
 from serverlessworkflow.sdk.state_data_filter import StateDataFilter
 from serverlessworkflow.sdk.attributes import Attributes
 from serverlessworkflow.sdk.transition_event_condition import TransitionEventCondition
 
 
-class EventBasedSwitchState:
+class EventBasedSwitchState(State):
     id: str = None
     name: str = None
     type: str = None

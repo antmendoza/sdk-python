@@ -6,11 +6,12 @@ from serverlessworkflow.sdk.enums import ActionMode
 from serverlessworkflow.sdk.error import Error
 from serverlessworkflow.sdk.metadata import Metadata
 from serverlessworkflow.sdk.operation_state_timeout import OperationStateTimeOut
+from serverlessworkflow.sdk.state import State
 from serverlessworkflow.sdk.state_data_filter import StateDataFilter
 from serverlessworkflow.sdk.transition import Transition
 
 
-class OperationState:
+class OperationState(State):
     id: str = None
     name: str = None
     type: str = None

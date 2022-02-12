@@ -6,11 +6,12 @@ from serverlessworkflow.sdk.end import End
 from serverlessworkflow.sdk.error import Error
 from serverlessworkflow.sdk.event_data_filter import EventDataFilter
 from serverlessworkflow.sdk.metadata import Metadata
+from serverlessworkflow.sdk.state import State
 from serverlessworkflow.sdk.state_data_filter import StateDataFilter
 from serverlessworkflow.sdk.transition import Transition
 
 
-class CallbackState:
+class CallbackState(State):
     id: str = None
     name: str = None
     type: 'callback' = None

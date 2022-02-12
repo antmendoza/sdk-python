@@ -20,18 +20,6 @@ from serverlessworkflow.sdk.attributes import Attributes
 from serverlessworkflow.sdk.workflow_time_out import WorkflowTimeOut
 
 
-def is_inject_state(state: State):
-    return state['type'] == 'inject'
-
-
-def is_operation_state(state: State):
-    return state['type'] == 'operation'
-
-
-def is_foreach_state(state: State):
-    return state['type'] == 'foreach'
-
-
 class DataInputSchema:
     schema: str
     failOnValidationErrors: bool
@@ -120,15 +108,16 @@ class Workflow:
     @staticmethod
     def load_states(states: [State]):
         result = []
-        for state in states:
-            if is_inject_state(state):
-                result.append(InjectState(**(state)))
-            elif is_operation_state(state):
-                result.append(OperationState(**(state)))
-            elif is_foreach_state(state):
-                result.append(ForEachState(**(state)))
+        for raw_state in states:
+            state = State(**(raw_state))
+            if state.is_inject_state():
+                result.append(InjectState(**(raw_state)))
+            elif state.is_operation_state():
+                result.append(OperationState(**(raw_state)))
+            elif state.is_foreach_state():
+                result.append(ForEachState(**(raw_state)))
             else:
-                result.append(State(**(state)))
+                result.append(state)
 
         return result
 

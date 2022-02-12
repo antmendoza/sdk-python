@@ -3,12 +3,13 @@ from typing import Union, Dict
 from serverlessworkflow.sdk.end import End
 from serverlessworkflow.sdk.inject_state_timeout import InjectStateTimeOut
 from serverlessworkflow.sdk.metadata import Metadata
+from serverlessworkflow.sdk.state import State
 from serverlessworkflow.sdk.state_data_filter import StateDataFilter
 from serverlessworkflow.sdk.attributes import Attributes
 from serverlessworkflow.sdk.transition import Transition
 
 
-class InjectState:
+class InjectState(State):
     id: str = None
     name: str = None
     type: 'inject' = None

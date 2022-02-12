@@ -5,12 +5,13 @@ from serverlessworkflow.sdk.default_condition_def import DefaultConditionDef
 from serverlessworkflow.sdk.end_data_condition import EndDataCondition
 from serverlessworkflow.sdk.error import Error
 from serverlessworkflow.sdk.metadata import Metadata
+from serverlessworkflow.sdk.state import State
 from serverlessworkflow.sdk.state_data_filter import StateDataFilter
 from serverlessworkflow.sdk.attributes import Attributes
 from serverlessworkflow.sdk.transition_data_condition import TransitionDataCondition
 
 
-class DataBasedSwitchState:
+class DataBasedSwitchState(State):
     id: str = None
     name: str = None
     type: 'switch' = None
