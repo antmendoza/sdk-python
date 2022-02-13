@@ -1,6 +1,7 @@
 import unittest
 
 from serverlessworkflow.sdk.action import Action
+from serverlessworkflow.sdk.action_data_filter import ActionDataFilter
 from serverlessworkflow.sdk.function_ref import FunctionRef
 
 
@@ -20,3 +21,19 @@ class TestAction(unittest.TestCase):
         action = Action(**action_data)
         print(type(action.retryableErrors))
         self.assertTrue(isinstance(action.retryableErrors, list))
+
+
+    def test_dinamic_load(self):
+        action_data = {
+                                        "functionRef": {
+                                            "refName": "greetingFunction",
+                                            "arguments": {
+                                                "name": "${ .person.name }"
+                                            }
+                                        },
+                                        "actionDataFilter": {
+                                            "results": "${ .greeting }"
+                                        }
+                                    }
+        action = Action(**action_data)
+        self.assertTrue(isinstance(action.actionDataFilter, ActionDataFilter))

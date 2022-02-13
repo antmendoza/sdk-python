@@ -40,42 +40,25 @@ class Action:
     @staticmethod
     def load_properties(property_key, property_value):
         if property_key == 'functionRef':
-            property_value = Action.load_function_ref(property_value)
+            property_value = Action.hydrate_as_union(property_value, str, FunctionRef)
         if property_key == 'eventRef':
-            property_value = Action.load_event_ref(property_value)
+            property_value = Action.hydrate_as_type(property_value, EventRef)
         if property_key == 'subFlowRef':
-            property_value = Action.load_sub_flow_ref(property_value)
+            property_value = Action.hydrate_as_union(property_value, str, SubFlowRef)
         if property_key == 'sleep':
-            property_value = Action.load_sleep(property_value)
+            property_value = Action.hydrate_as_type(property_value, Sleep)
         if property_key == 'actionDataFilter':
-            property_value = Action.load_action_data_filter(property_value)
+            property_value = Action.hydrate_as_type(property_value, ActionDataFilter)
         return property_value
 
     @staticmethod
-    def load_function_ref(function):
-        if type(function) is str:
-            return function
+    def hydrate_as_type(value, Type):
 
-        return FunctionRef(**function) if type(function) is not FunctionRef else function
+        return Type(**value) if type(value) is not Type else value
 
     @staticmethod
-    def load_action_data_filter(action_df):
-        if type(action_df) is str:
-            return action_df
-
-        return ActionDataFilter(**action_df) if type(action_df) is not ActionDataFilter else action_df
-
-    @staticmethod
-    def load_sub_flow_ref(value):
-        if type(value) is str:
+    def hydrate_as_union(value, ifType, elseType):
+        if type(value) is ifType:
             return value
 
-        return SubFlowRef(**value) if type(value) is not SubFlowRef else value
-
-    @staticmethod
-    def load_event_ref(value):
-        return EventRef(**value) if type(value) is not EventRef else value
-
-    @staticmethod
-    def load_sleep(value):
-        return Sleep(**value) if type(value) is not Sleep else value
+        return elseType(**value) if type(value) is not elseType else value
