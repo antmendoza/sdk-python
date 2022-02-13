@@ -3,7 +3,7 @@ from typing import Any
 
 
 @dataclasses.dataclass
-class Attribute:
+class Property:
     def __init__(self, key: str, value: Any):
         self.key = key
         self.value = value
@@ -24,7 +24,7 @@ class Properties:
     @staticmethod
     def load(local_attributes, kwargs, load_properties):
 
-        _attributes: [Attribute] = []
+        _attributes: [Property] = []
         local: str
         for local in list(local_attributes):
             if local in ["self", "kwargs"]:
@@ -45,7 +45,7 @@ class Properties:
             if final_value is not None:
                 key_ = local.replace("_", "")
                 # self.__setattr__(key_, final_value)
-                _attributes.append(Attribute(key_, final_value))
+                _attributes.append(Property(key_, final_value))
 
         for k in kwargs.keys():
             final_value = kwargs[k]
@@ -60,6 +60,6 @@ class Properties:
             if final_value is not None:
                 key_ = k.replace("_", "")
                 # self.__setattr__(key_, final_value)
-                _attributes.append(Attribute(key_, final_value))
+                _attributes.append(Property(key_, final_value))
 
         return _attributes
