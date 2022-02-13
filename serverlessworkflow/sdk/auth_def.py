@@ -1,10 +1,11 @@
+from __future__ import annotations
+
 from enum import Enum
-from typing import Union
 
 from serverlessworkflow.sdk.basic_props_def import BasicPropsDef
 from serverlessworkflow.sdk.bearer_props_def import BearerPropsDef
+from serverlessworkflow.sdk.class_properties import Properties
 from serverlessworkflow.sdk.oauth2props_def import Oauth2PropsDef
-from serverlessworkflow.sdk.class_properties import ClassProperties
 
 
 class Scheme(Enum):
@@ -16,12 +17,11 @@ class Scheme(Enum):
 class AuthDef:
     name: str = None
     scheme: Scheme = None
-    properties: Union[str, Union[BasicPropsDef, BearerPropsDef, Oauth2PropsDef]] = None
+    properties: (str | (BasicPropsDef | BearerPropsDef | Oauth2PropsDef)) = None
 
     def __init__(self,
                  name: str = None,
                  scheme: Scheme = None,
-                 properties: Union[str, Union[BasicPropsDef, BearerPropsDef, Oauth2PropsDef]] = None,
+                 properties: (str | (BasicPropsDef | BearerPropsDef | Oauth2PropsDef)) = None,
                  **kwargs):
-
-        ClassProperties(locals(), kwargs, ClassProperties.dummy).set_to_object(self)
+        Properties(locals(), kwargs, Properties.default).set_to_object(self)

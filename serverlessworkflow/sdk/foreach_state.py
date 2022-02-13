@@ -1,8 +1,9 @@
+from __future__ import annotations
+
 from enum import Enum
-from typing import Union
 
 from serverlessworkflow.sdk.action import Action
-from serverlessworkflow.sdk.class_properties import ClassProperties
+from serverlessworkflow.sdk.class_properties import Properties
 from serverlessworkflow.sdk.end import End
 from serverlessworkflow.sdk.error import Error
 from serverlessworkflow.sdk.foreach_state_timeout import ForEachStateTimeOut
@@ -21,16 +22,16 @@ class ForEachState(State):
     id: str = None
     name: str = None
     type: str = None
-    end: Union[bool, End] = None
+    end: (str | End) = None
     inputCollection: str = None
     outputCollection: str = None
     iterationParam: str = None
-    batchSize: Union[int, str] = None
+    batchSize: (int | str) = None
     actions: [Action] = None
     timeouts: ForEachStateTimeOut = None
     stateDataFilter: StateDataFilter = None
     onErrors: [Error] = None
-    transition: Union[str, Transition] = None
+    transition: (str | Transition) = None
     compensatedBy: str = None
     usedForCompensation: bool = None
     mode: ForEachStateMode = None
@@ -40,23 +41,22 @@ class ForEachState(State):
                  id: str = None,
                  name: str = None,
                  type: str = None,
-                 end: Union[bool, End] = None,
+                 end: (str | End) = None,
                  inputCollection: str = None,
                  outputCollection: str = None,
                  iterationParam: str = None,
-                 batchSize: Union[int, str] = None,
+                 batchSize: (int | str) = None,
                  actions: [Action] = None,
                  timeouts: ForEachStateTimeOut = None,
                  stateDataFilter: StateDataFilter = None,
                  onErrors: [Error] = None,
-                 transition: Union[str, Transition] = None,
+                 transition: (str | Transition) = None,
                  compensatedBy: str = None,
                  usedForCompensation: bool = None,
                  mode: ForEachStateMode = None,
                  metadata: Metadata = None,
                  **kwargs):
-
-        ClassProperties(locals(), kwargs, ForEachState.load_properties).set_to_object(self)
+        Properties(locals(), kwargs, ForEachState.load_properties).set_to_object(self)
 
     @staticmethod
     def load_properties(local, value):

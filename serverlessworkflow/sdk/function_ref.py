@@ -1,7 +1,7 @@
 from typing import Dict
 
+from serverlessworkflow.sdk.class_properties import Properties
 from serverlessworkflow.sdk.enums import Invoke
-from serverlessworkflow.sdk.class_properties import ClassProperties
 
 
 class FunctionRef:
@@ -16,5 +16,4 @@ class FunctionRef:
                  selectionSet: str = None,
                  invoke: Invoke = None,
                  **kwargs):
-
-        ClassProperties(locals(), kwargs, ClassProperties.dummy).set_to_object(self)
+        Properties(locals(), kwargs, Properties.default).set_to_object(self)

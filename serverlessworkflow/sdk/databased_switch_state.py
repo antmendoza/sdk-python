@@ -1,5 +1,6 @@
-from typing import Union
+from __future__ import annotations
 
+from serverlessworkflow.sdk.class_properties import Properties
 from serverlessworkflow.sdk.databased_switch_state_timeout import DataBasedSwitchStateTime0ut
 from serverlessworkflow.sdk.default_condition_def import DefaultConditionDef
 from serverlessworkflow.sdk.end_data_condition import EndDataCondition
@@ -7,7 +8,6 @@ from serverlessworkflow.sdk.error import Error
 from serverlessworkflow.sdk.metadata import Metadata
 from serverlessworkflow.sdk.state import State
 from serverlessworkflow.sdk.state_data_filter import StateDataFilter
-from serverlessworkflow.sdk.class_properties import ClassProperties
 from serverlessworkflow.sdk.transition_data_condition import TransitionDataCondition
 
 
@@ -17,7 +17,7 @@ class DataBasedSwitchState(State):
     type: 'switch' = None
     stateDataFilter: StateDataFilter = None
     timeouts: DataBasedSwitchStateTime0ut = None
-    dataConditions: Union[TransitionDataCondition, EndDataCondition] = None
+    dataConditions: (TransitionDataCondition | EndDataCondition) = None
     onErrors: [Error] = None
     defaultCondition: DefaultConditionDef = None
     compensatedBy: str = None
@@ -30,12 +30,11 @@ class DataBasedSwitchState(State):
                  type: 'switch' = None,
                  stateDataFilter: StateDataFilter = None,
                  timeouts: DataBasedSwitchStateTime0ut = None,
-                 dataConditions: Union[TransitionDataCondition, EndDataCondition] = None,
+                 dataConditions: (TransitionDataCondition | EndDataCondition) = None,
                  onErrors: [Error] = None,
                  defaultCondition: DefaultConditionDef = None,
                  compensatedBy: str = None,
                  usedForCompensation: bool = None,
                  metadata: Metadata = None,
                  **kwargs):
-
-        ClassProperties(locals(), kwargs, ClassProperties.dummy).set_to_object(self)
+        Properties(locals(), kwargs, Properties.default).set_to_object(self)

@@ -1,6 +1,6 @@
 from enum import Enum
 
-from serverlessworkflow.sdk.class_properties import ClassProperties
+from serverlessworkflow.sdk.class_properties import Properties
 from serverlessworkflow.sdk.metadata import Metadata
 
 
@@ -38,5 +38,4 @@ class Oauth2PropsDef:
                  requestedIssuer: str = None,
                  metadata: Metadata = None,
                  **kwargs):
-
-        ClassProperties(locals(), kwargs, ClassProperties.dummy).set_to_object(self)
+        Properties(locals(), kwargs, Properties.default).set_to_object(self)

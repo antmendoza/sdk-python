@@ -1,4 +1,4 @@
-from serverlessworkflow.sdk.class_properties import ClassProperties
+from serverlessworkflow.sdk.class_properties import Properties
 
 
 class State:
@@ -6,7 +6,7 @@ class State:
 
     def __init__(self, data: dict = None,
                  **kwargs):
-        ClassProperties(locals(), kwargs, ClassProperties.dummy).set_to_object(self)
+        Properties(locals(), kwargs, Properties.default).set_to_object(self)
 
     def is_event_state(self):
         return self.type == 'switch'
@@ -31,4 +31,3 @@ class State:
 
     def is_callback_state(self):
         return self.type == 'callback'
-

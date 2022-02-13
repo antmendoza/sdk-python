@@ -1,21 +1,20 @@
-from typing import Union
+from __future__ import annotations
 
+from serverlessworkflow.sdk.class_properties import Properties
 from serverlessworkflow.sdk.end import End
-from serverlessworkflow.sdk.class_properties import ClassProperties
 from serverlessworkflow.sdk.transition import Transition
 
 
 class Error:
     errorRef: str = None
     errorRefs: [str] = None
-    transition: Union[str, Transition] = None
-    end: Union[bool, End] = None
+    transition: (str | Transition) = None
+    end: (str | End) = None
 
     def __init__(self,
                  errorRef: str = None,
                  errorRefs: [str] = None,
-                 transition: Union[str, Transition] = None,
-                 end: Union[bool, End] = None,
+                 transition: (str | Transition) = None,
+                 end: (str | End) = None,
                  **kwargs):
-
-        ClassProperties(locals(), kwargs, ClassProperties.dummy).set_to_object(self)
+        Properties(locals(), kwargs, Properties.default).set_to_object(self)

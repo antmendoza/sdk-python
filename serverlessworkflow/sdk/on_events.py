@@ -1,7 +1,7 @@
 from serverlessworkflow.sdk.action import Action
+from serverlessworkflow.sdk.class_properties import Properties
 from serverlessworkflow.sdk.enums import ActionMode
 from serverlessworkflow.sdk.event_data_filter import EventDataFilter
-from serverlessworkflow.sdk.class_properties import ClassProperties
 
 
 class OnEvents:
@@ -16,5 +16,4 @@ class OnEvents:
                  actions: [Action] = None,
                  eventDataFilter: EventDataFilter = None,
                  **kwargs):
-
-        ClassProperties(locals(), kwargs, ClassProperties.dummy).set_to_object(self)
+        Properties(locals(), kwargs, Properties.default).set_to_object(self)

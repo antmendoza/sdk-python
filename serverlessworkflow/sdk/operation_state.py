@@ -1,7 +1,7 @@
-from typing import Union
+from __future__ import annotations
 
 from serverlessworkflow.sdk.action import Action
-from serverlessworkflow.sdk.class_properties import ClassProperties
+from serverlessworkflow.sdk.class_properties import Properties
 from serverlessworkflow.sdk.end import End
 from serverlessworkflow.sdk.enums import ActionMode
 from serverlessworkflow.sdk.error import Error
@@ -16,13 +16,13 @@ class OperationState(State):
     id: str = None
     name: str = None
     type: str = None
-    end: Union[bool, End] = None
+    end: (str | End) = None
     stateDataFilter: StateDataFilter = None
     actionMode: ActionMode = None
     actions: [Action] = None
     timeouts: OperationStateTimeOut = None
     onErrors: [Error] = None
-    transition: Union[str, Transition] = None
+    transition: (str | Transition) = None
     compensatedBy: str = None
     usedForCompensation: bool = None
     metadata: Metadata = None
@@ -36,14 +36,13 @@ class OperationState(State):
                  actions: [Action] = None,
                  timeouts: OperationStateTimeOut = None,
                  onErrors: [Error] = None,
-                 transition: Union[str, Transition] = None,
+                 transition: (str | Transition) = None,
                  compensatedBy: str = None,
                  usedForCompensation: bool = None,
                  metadata: Metadata = None,
-                 end: Union[bool, End] = None,
+                 end: (str | End) = None,
                  **kwargs):
-
-        ClassProperties(locals(), kwargs, OperationState.load_properties).set_to_object(self)
+        Properties(locals(), kwargs, OperationState.load_properties).set_to_object(self)
 
     @staticmethod
     def load_properties(k, value):

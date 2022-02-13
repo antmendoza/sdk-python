@@ -1,5 +1,6 @@
-from typing import Union
+from __future__ import annotations
 
+from serverlessworkflow.sdk.class_properties import Properties
 from serverlessworkflow.sdk.default_condition_def import DefaultConditionDef
 from serverlessworkflow.sdk.end_event_condition import EndEventCondition
 from serverlessworkflow.sdk.error import Error
@@ -7,7 +8,6 @@ from serverlessworkflow.sdk.event_based_switch_state_timeout import EventBasedSw
 from serverlessworkflow.sdk.metadata import Metadata
 from serverlessworkflow.sdk.state import State
 from serverlessworkflow.sdk.state_data_filter import StateDataFilter
-from serverlessworkflow.sdk.class_properties import ClassProperties
 from serverlessworkflow.sdk.transition_event_condition import TransitionEventCondition
 
 
@@ -17,7 +17,7 @@ class EventBasedSwitchState(State):
     type: str = None
     stateDataFilter: StateDataFilter = None
     timeouts: EventBasedSwitchStateTimeOut = None
-    eventConditions: Union[TransitionEventCondition, EndEventCondition] = None  # Eventcondition
+    eventConditions: (TransitionEventCondition | EndEventCondition) = None  # Eventcondition
     onErrors: [Error] = None
     defaultCondition: DefaultConditionDef = None
     compensatedBy: str = None
@@ -30,12 +30,11 @@ class EventBasedSwitchState(State):
                  type: 'switch' = None,
                  stateDataFilter: StateDataFilter = None,
                  timeouts: EventBasedSwitchStateTimeOut = None,
-                 eventConditions: Union[TransitionEventCondition, EndEventCondition] = None,  # Eventcondition
+                 eventConditions: (TransitionEventCondition | EndEventCondition) = None,  # Eventcondition
                  onErrors: [Error] = None,
                  defaultCondition: DefaultConditionDef = None,
                  compensatedBy: str = None,
                  usedForCompensation: bool = None,
                  metadata: Metadata = None,
                  **kwargs):
-
-        ClassProperties(locals(), kwargs, ClassProperties.dummy).set_to_object(self)
+        Properties(locals(), kwargs, Properties.default).set_to_object(self)

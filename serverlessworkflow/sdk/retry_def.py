@@ -1,6 +1,6 @@
-from typing import Union
+from __future__ import annotations
 
-from serverlessworkflow.sdk.class_properties import ClassProperties
+from serverlessworkflow.sdk.class_properties import Properties
 
 
 class RetryDef:
@@ -8,18 +8,17 @@ class RetryDef:
     delay: str = None
     maxDelay: str = None
     increment: str = None
-    multiplier: Union[int, str] = None
-    maxAttempts: Union[int, str] = None
-    jitter: Union[int, str] = None
+    multiplier: (int | str) = None
+    maxAttempts: (int | str) = None
+    jitter: (int | str) = None
 
     def __init__(self,
                  name: str = None,
                  delay: str = None,
                  maxDelay: str = None,
                  increment: str = None,
-                 multiplier: Union[int, str] = None,
-                 maxAttempts: Union[int, str] = None,
-                 jitter: Union[int, str] = None,
+                 multiplier: (int | str) = None,
+                 maxAttempts: (int | str) = None,
+                 jitter: (int | str) = None,
                  **kwargs):
-
-        ClassProperties(locals(), kwargs, ClassProperties.dummy).set_to_object(self)
+        Properties(locals(), kwargs, Properties.default).set_to_object(self)

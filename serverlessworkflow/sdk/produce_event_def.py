@@ -1,17 +1,18 @@
-from typing import Union, Dict
+from __future__ import annotations
 
-from serverlessworkflow.sdk.class_properties import ClassProperties
+from typing import Dict
+
+from serverlessworkflow.sdk.class_properties import Properties
 
 
 class ProduceEventDef:
     eventRef: str = None
-    data: Union[str, Dict[str, Dict]] = None
+    data: (str | Dict[str, Dict]) = None
     contextAttributes: Dict[str, str] = None
 
     def __init__(self,
                  eventRef: str = None,
-                 data: Union[str, Dict[str, Dict]] = None,
+                 data: (str | Dict[str, Dict]) = None,
                  contextAttributes: Dict[str, str] = None,
                  **kwargs):
-
-        ClassProperties(locals(), kwargs, ClassProperties.dummy).set_to_object(self)
+        Properties(locals(), kwargs, Properties.default).set_to_object(self)

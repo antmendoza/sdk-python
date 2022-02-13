@@ -1,4 +1,4 @@
-from serverlessworkflow.sdk.class_properties import ClassProperties
+from serverlessworkflow.sdk.class_properties import Properties
 from serverlessworkflow.sdk.state_exec_timeout import StateExecTimeOut
 
 
@@ -10,5 +10,4 @@ class ForEachStateTimeOut:
                  stateExecTimeOut: StateExecTimeOut = None,
                  actionExecTimeOut: str = None,
                  **kwargs):
-
-        ClassProperties(locals(), kwargs, ClassProperties.dummy).set_to_object(self)
+        Properties(locals(), kwargs, Properties.default).set_to_object(self)

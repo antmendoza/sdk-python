@@ -1,6 +1,6 @@
 from serverlessworkflow.sdk.action import Action
 from serverlessworkflow.sdk.branch_timeout import BranchTimeOut
-from serverlessworkflow.sdk.class_properties import ClassProperties
+from serverlessworkflow.sdk.class_properties import Properties
 
 
 class Branch:
@@ -13,5 +13,4 @@ class Branch:
                  timeouts: BranchTimeOut = None,
                  actions: [Action] = None,
                  **kwargs):
-
-        ClassProperties(locals(), kwargs, ClassProperties.dummy).set_to_object(self)
+        Properties(locals(), kwargs, Properties.default).set_to_object(self)

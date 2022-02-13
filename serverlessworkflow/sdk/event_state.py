@@ -1,5 +1,6 @@
-from typing import Union
+from __future__ import annotations
 
+from serverlessworkflow.sdk.class_properties import Properties
 from serverlessworkflow.sdk.end import End
 from serverlessworkflow.sdk.error import Error
 from serverlessworkflow.sdk.event_state_timeout import EventStateTimeOut
@@ -7,7 +8,6 @@ from serverlessworkflow.sdk.metadata import Metadata
 from serverlessworkflow.sdk.on_events import OnEvents
 from serverlessworkflow.sdk.state import State
 from serverlessworkflow.sdk.state_data_filter import StateDataFilter
-from serverlessworkflow.sdk.class_properties import ClassProperties
 from serverlessworkflow.sdk.transition import Transition
 
 
@@ -20,8 +20,8 @@ class EventState(State):
     timeouts: EventStateTimeOut = None
     stateDataFilter: StateDataFilter = None
     onErrors: [Error] = None
-    transition: Union[str, Transition] = None
-    end: Union[bool, End] = None
+    transition: (str | Transition) = None
+    end: (str | End) = None
     compensatedBy: str = None
     metadata: Metadata = None
 
@@ -34,10 +34,9 @@ class EventState(State):
                  timeouts: EventStateTimeOut = None,
                  stateDataFilter: StateDataFilter = None,
                  onErrors: [Error] = None,
-                 transition: Union[str, Transition] = None,
-                 end: Union[bool, End] = None,
+                 transition: (str | Transition) = None,
+                 end: (str | End) = None,
                  compensatedBy: str = None,
                  metadata: Metadata = None,
                  **kwargs):
-
-        ClassProperties(locals(), kwargs, ClassProperties.dummy).set_to_object(self)
+        Properties(locals(), kwargs, Properties.default).set_to_object(self)

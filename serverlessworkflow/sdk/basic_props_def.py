@@ -1,5 +1,5 @@
+from serverlessworkflow.sdk.class_properties import Properties
 from serverlessworkflow.sdk.metadata import Metadata
-from serverlessworkflow.sdk.class_properties import ClassProperties
 
 
 class BasicPropsDef:
@@ -12,5 +12,4 @@ class BasicPropsDef:
                  password: str = None,
                  metadata: Metadata = None,
                  **kwargs):
-
-        ClassProperties(locals(), kwargs, ClassProperties.dummy).set_to_object(self)
+        Properties(locals(), kwargs, Properties.default).set_to_object(self)
