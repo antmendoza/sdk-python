@@ -15,7 +15,7 @@ from serverlessworkflow.sdk.transition import Transition
 class CallbackState(State):
     id: str = None
     name: str = None
-    type: 'callback' = None
+    type: str = None
     action: Action = None
     eventRef: str = None
     timeouts: CallbackStateTimeOut = None
@@ -31,7 +31,7 @@ class CallbackState(State):
     def __init__(self,
                  id: str = None,
                  name: str = None,
-                 type: 'callback' = None,
+                 type: str = None,
                  action: Action = None,
                  eventRef: str = None,
                  timeouts: CallbackStateTimeOut = None,

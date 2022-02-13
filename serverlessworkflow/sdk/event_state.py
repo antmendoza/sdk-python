@@ -14,7 +14,7 @@ from serverlessworkflow.sdk.transition import Transition
 class EventState(State):
     id: str = None
     name: str = None
-    type: 'event' = None
+    type: str = None
     exclusive: bool = None
     onEvents: [OnEvents] = None
     timeouts: EventStateTimeOut = None
@@ -28,7 +28,7 @@ class EventState(State):
     def __init__(self,
                  id: str = None,
                  name: str = None,
-                 type: 'event' = None,
+                 type: str = None,
                  exclusive: bool = None,
                  onEvents: [OnEvents] = None,
                  timeouts: EventStateTimeOut = None,

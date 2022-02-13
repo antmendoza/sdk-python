@@ -2,9 +2,9 @@ from serverlessworkflow.sdk.class_properties import Properties
 
 
 class State:
-    type: str
+    type: str = None
 
-    def __init__(self, data: dict = None,
+    def __init__(self, type: str = None,
                  **kwargs):
         Properties(locals(), kwargs, Properties.default).set_to_object(self)
 

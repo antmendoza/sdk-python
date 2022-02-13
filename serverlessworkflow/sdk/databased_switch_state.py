@@ -14,7 +14,7 @@ from serverlessworkflow.sdk.transition_data_condition import TransitionDataCondi
 class DataBasedSwitchState(State):
     id: str = None
     name: str = None
-    type: 'switch' = None
+    type: str = None
     stateDataFilter: StateDataFilter = None
     timeouts: DataBasedSwitchStateTime0ut = None
     dataConditions: (TransitionDataCondition | EndDataCondition) = None
@@ -27,7 +27,7 @@ class DataBasedSwitchState(State):
     def __init__(self,
                  id: str = None,
                  name: str = None,
-                 type: 'switch' = None,
+                 type: str = None,
                  stateDataFilter: StateDataFilter = None,
                  timeouts: DataBasedSwitchStateTime0ut = None,
                  dataConditions: (TransitionDataCondition | EndDataCondition) = None,

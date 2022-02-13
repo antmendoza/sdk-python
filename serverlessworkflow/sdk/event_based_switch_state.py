@@ -27,7 +27,7 @@ class EventBasedSwitchState(State):
     def __init__(self,
                  id: str = None,
                  name: str = None,
-                 type: 'switch' = None,
+                 type: str = None,
                  stateDataFilter: StateDataFilter = None,
                  timeouts: EventBasedSwitchStateTimeOut = None,
                  eventConditions: (TransitionEventCondition | EndEventCondition) = None,  # Eventcondition

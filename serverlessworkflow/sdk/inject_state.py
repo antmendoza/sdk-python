@@ -14,7 +14,7 @@ from serverlessworkflow.sdk.transition import Transition
 class InjectState(State):
     id: str = None
     name: str = None
-    type: 'inject' = None
+    type: str = None
     end: (str | End) = None
     data: (str | Dict[str, Dict]) = None
     timeouts: InjectStateTimeOut = None
@@ -27,7 +27,7 @@ class InjectState(State):
     def __init__(self,
                  id: str = None,
                  name: str = None,
-                 type: 'inject' = None,
+                 type: str = None,
                  end: (str | End) = None,
                  data: (str | Dict[str, Dict]) = None,
                  timeouts: InjectStateTimeOut = None,
