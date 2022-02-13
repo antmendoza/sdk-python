@@ -41,6 +41,12 @@ class Action:
     def load_properties(property_key, property_value):
         if property_key == 'functionRef':
             property_value = Action.load_function_ref(property_value)
+        if property_key == 'eventRef':
+            property_value = Action.load_event_ref(property_value)
+        if property_key == 'subFlowRef':
+            property_value = Action.load_sub_flow_ref(property_value)
+        if property_key == 'sleep':
+            property_value = Action.load_sleep(property_value)
         if property_key == 'actionDataFilter':
             property_value = Action.load_action_data_filter(property_value)
         return property_value
@@ -58,3 +64,18 @@ class Action:
             return action_df
 
         return ActionDataFilter(**action_df) if type(action_df) is not ActionDataFilter else action_df
+
+    @staticmethod
+    def load_sub_flow_ref(value):
+        if type(value) is str:
+            return value
+
+        return SubFlowRef(**value) if type(value) is not SubFlowRef else value
+
+    @staticmethod
+    def load_event_ref(value):
+        return EventRef(**value) if type(value) is not EventRef else value
+
+    @staticmethod
+    def load_sleep(value):
+        return Sleep(**value) if type(value) is not Sleep else value

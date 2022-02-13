@@ -13,4 +13,5 @@ class ActionDataFilter:
                  results: str = None,
                  toStateData: str = None,
                  **kwargs):
+
         Properties(locals(), kwargs, Properties.default).set_to_object(self)
