@@ -8,7 +8,7 @@ from serverlessworkflow.sdk.end_event_condition import EndEventCondition
 from serverlessworkflow.sdk.error import Error
 from serverlessworkflow.sdk.event_based_switch_state_timeout import EventBasedSwitchStateTimeOut
 from serverlessworkflow.sdk.tobedone.hydrate import HydratableParameter, ComplexTypeOf, UnionTypeOf, ArrayTypeOf
-from serverlessworkflow.sdk.tobedone.metadata import Metadata
+from serverlessworkflow.sdk.metadata import Metadata
 from serverlessworkflow.sdk.tobedone.state import State
 from serverlessworkflow.sdk.tobedone.state_data_filter import StateDataFilter
 from serverlessworkflow.sdk.tobedone.transition_event_condition import TransitionEventCondition

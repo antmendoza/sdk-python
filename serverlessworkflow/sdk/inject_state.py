@@ -5,8 +5,8 @@ import copy
 from serverlessworkflow.sdk.class_properties import Fields
 from serverlessworkflow.sdk.end import End
 from serverlessworkflow.sdk.tobedone.hydrate import HydratableParameter, UnionTypeOf, SimpleTypeOf, ComplexTypeOf
-from serverlessworkflow.sdk.tobedone.inject_state_timeout import InjectStateTimeOut
-from serverlessworkflow.sdk.tobedone.metadata import Metadata
+from serverlessworkflow.sdk.inject_state_timeout import InjectStateTimeOut
+from serverlessworkflow.sdk.metadata import Metadata
 from serverlessworkflow.sdk.tobedone.state import State
 from serverlessworkflow.sdk.tobedone.state_data_filter import StateDataFilter
 from serverlessworkflow.sdk.tobedone.transition import Transition

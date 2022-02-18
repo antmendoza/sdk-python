@@ -5,7 +5,7 @@ import copy
 from serverlessworkflow.sdk.class_properties import Fields
 from serverlessworkflow.sdk.end import End
 from serverlessworkflow.sdk.tobedone.hydrate import SimpleTypeOf, ComplexTypeOf, UnionTypeOf, HydratableParameter
-from serverlessworkflow.sdk.tobedone.metadata import Metadata
+from serverlessworkflow.sdk.metadata import Metadata
 
 
 class EndDataCondition:

@@ -4,7 +4,7 @@ from serverlessworkflow.sdk.branch import Branch
 from serverlessworkflow.sdk.class_properties import Fields
 from serverlessworkflow.sdk.end import End
 from serverlessworkflow.sdk.error import Error
-from serverlessworkflow.sdk.tobedone.metadata import Metadata
+from serverlessworkflow.sdk.metadata import Metadata
 from serverlessworkflow.sdk.tobedone.parallel_state_timeout import ParallelStateTimeOut
 from serverlessworkflow.sdk.tobedone.state import State
 from serverlessworkflow.sdk.tobedone.state_data_filter import StateDataFilter

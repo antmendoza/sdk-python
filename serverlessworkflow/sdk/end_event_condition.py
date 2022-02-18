@@ -6,7 +6,7 @@ from serverlessworkflow.sdk.class_properties import Fields
 from serverlessworkflow.sdk.end import End
 from serverlessworkflow.sdk.event_data_filter import EventDataFilter
 from serverlessworkflow.sdk.tobedone.hydrate import HydratableParameter, UnionTypeOf, ComplexTypeOf, SimpleTypeOf
-from serverlessworkflow.sdk.tobedone.metadata import Metadata
+from serverlessworkflow.sdk.metadata import Metadata
 
 
 class EndEventCondition:

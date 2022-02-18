@@ -11,7 +11,7 @@ from serverlessworkflow.sdk.event_def import EventDef
 from serverlessworkflow.sdk.foreach_state import ForEachState
 from serverlessworkflow.sdk.function import Function
 from serverlessworkflow.sdk.inject_state import InjectState
-from serverlessworkflow.sdk.tobedone.metadata import Metadata
+from serverlessworkflow.sdk.metadata import Metadata
 from serverlessworkflow.sdk.tobedone.operation_state import OperationState
 from serverlessworkflow.sdk.tobedone.retry_def import RetryDef
 from serverlessworkflow.sdk.tobedone.start_def import StartDef
