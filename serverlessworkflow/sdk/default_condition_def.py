@@ -25,5 +25,8 @@ class DefaultConditionDef:
             return HydratableParameter(value=p_value).hydrateAs(UnionTypeOf([SimpleTypeOf(str),
                                                                              ComplexTypeOf(Transition)]))
 
-       º
+        if p_key == 'end':
+            return HydratableParameter(value=p_value).hydrateAs(UnionTypeOf([SimpleTypeOf(bool),
+                                                                             ComplexTypeOf(End)]))
+
         return copy.deepcopy(p_value)
