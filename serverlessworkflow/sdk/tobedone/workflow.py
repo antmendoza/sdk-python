@@ -11,7 +11,7 @@ from serverlessworkflow.sdk.error_def import ErrorDef
 from serverlessworkflow.sdk.event_def import EventDef
 from serverlessworkflow.sdk.foreach_state import ForEachState
 from serverlessworkflow.sdk.function import Function
-from serverlessworkflow.sdk.tobedone.inject_state import InjectState
+from serverlessworkflow.sdk.inject_state import InjectState
 from serverlessworkflow.sdk.tobedone.metadata import Metadata
 from serverlessworkflow.sdk.tobedone.operation_state import OperationState
 from serverlessworkflow.sdk.tobedone.retry_def import RetryDef
@@ -34,7 +34,7 @@ class Workflow:
     annotations: [str] = None
     dataInputSchema: (str | DataInputSchema) = None
     secrets: str = None  # Secrets
-    constants: (str | Dict[str, Dict]) = None
+    constants: (str | dict[str, dict]) = None
     start: (str | StartDef) = None
     specVersion: str = None
     expressionLang: str = None
@@ -59,7 +59,7 @@ class Workflow:
                  annotations: [str] = None,
                  dataInputSchema: (str | DataInputSchema) = None,
                  secrets: str = None,  # Secrets
-                 constants: (str | Dict[str, Dict]) = None,
+                 constants: (str | dict[str, dict]) = None,
                  start: (str | StartDef) = None,
                  expressionLang: str = None,
                  timeouts: (str | WorkflowTimeOut) = None,

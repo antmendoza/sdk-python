@@ -1,9 +1,11 @@
 from __future__ import annotations
 
+import copy
 from typing import Dict
 
 from serverlessworkflow.sdk.class_properties import Fields
 from serverlessworkflow.sdk.end import End
+from serverlessworkflow.sdk.tobedone.hydrate import HydratableParameter, UnionTypeOf, SimpleTypeOf, ComplexTypeOf
 from serverlessworkflow.sdk.tobedone.inject_state_timeout import InjectStateTimeOut
 from serverlessworkflow.sdk.tobedone.metadata import Metadata
 from serverlessworkflow.sdk.tobedone.state import State
@@ -16,7 +18,7 @@ class InjectState(State):
     name: str = None
     type: str = None
     end: (bool | End) = None
-    data: (str | Dict) = None
+    data: (str | dict) = None
     timeouts: InjectStateTimeOut = None
     stateDataFilter: StateDataFilter = None
     transition: (str | Transition) = None
@@ -29,7 +31,7 @@ class InjectState(State):
                  name: str = None,
                  type: str = None,
                  end: (bool | End) = None,
-                 data: (str | Dict) = None,
+                 data: (str | dict) = None,
                  timeouts: InjectStateTimeOut = None,
                  stateDataFilter: StateDataFilter = None,
                  transition: (str | Transition) = None,
@@ -37,4 +39,25 @@ class InjectState(State):
                  usedForCompensation: bool = None,
                  metadata: Metadata = None,
                  **kwargs):
-        Fields(locals(), kwargs, Fields.no_hydration).set_to_object(self)
+        Fields(locals(), kwargs, InjectState.f_hydration).set_to_object(self)
+
+    @staticmethod
+    def f_hydration(p_key, p_value):
+
+        if p_key == 'end':
+            return HydratableParameter(value=p_value).hydrateAs(UnionTypeOf(SimpleTypeOf(bool),
+                                                                            ComplexTypeOf(End)))
+        if p_key == 'data':
+            return HydratableParameter(value=p_value).hydrateAs(UnionTypeOf([SimpleTypeOf(str),
+                                                                             ComplexTypeOf(dict)]))
+        if p_key == 'timeouts':
+            return HydratableParameter(value=p_value).hydrateAs(ComplexTypeOf(InjectStateTimeOut))
+
+        if p_key == 'stateDataFilter':
+            return HydratableParameter(value=p_value).hydrateAs(ComplexTypeOf(StateDataFilter))
+
+        if p_key == 'transition':
+            return HydratableParameter(value=p_value).hydrateAs(UnionTypeOf([SimpleTypeOf(str),
+                                                                             ComplexTypeOf(Transition)]))
+
+        return copy.deepcopy(p_value)

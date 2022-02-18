@@ -11,13 +11,13 @@ from serverlessworkflow.sdk.tobedone.workflow_exec_timeout import WorkflowExecTi
 class ContinueAsDef:
     workflowId: str = None
     version: str = None
-    data: (str | Dict) = None
+    data: (str | dict) = None
     workflowExecTimeOut: WorkflowExecTimeOut = None
 
     def __init__(self,
                  workflowId: str = None,
                  version: str = None,
-                 data: (str | Dict) = None,
+                 data: (str | dict) = None,
                  workflowExecTimeOut: WorkflowExecTimeOut = None,
                  **kwargs):
 
@@ -27,7 +27,7 @@ class ContinueAsDef:
     def f_hydration(p_key, p_value):
 
         if p_key == 'data':
-            return HydratableParameter(value=p_value).hydrateAs(UnionTypeOf([SimpleTypeOf(str), ComplexTypeOf(Dict)]))
+            return HydratableParameter(value=p_value).hydrateAs(UnionTypeOf([SimpleTypeOf(str), ComplexTypeOf(dict)]))
 
         if p_key == 'workflowExecTimeOut':
             return HydratableParameter(value=p_value).hydrateAs(ComplexTypeOf(WorkflowExecTimeOut))

@@ -2,7 +2,7 @@ import unittest
 
 from serverlessworkflow.sdk.action import Action
 from serverlessworkflow.sdk.action_data_filter import ActionDataFilter
-from serverlessworkflow.sdk.tobedone.function_ref import FunctionRef
+from serverlessworkflow.sdk.function_ref import FunctionRef
 
 
 class TestAction(unittest.TestCase):

@@ -20,12 +20,11 @@ class Branch:
 
     @staticmethod
     def f_hydration(p_key, p_value):
-        result = copy.deepcopy(p_value)
 
         if p_key == 'timeouts':
-            result = HydratableParameter(value=p_value).hydrateAs(ComplexTypeOf(BranchTimeOut))
+            return HydratableParameter(value=p_value).hydrateAs(ComplexTypeOf(BranchTimeOut))
 
         if p_key == 'actions':
-            result = HydratableParameter(value=p_value).hydrateAs(ArrayTypeOf(Action))
+            return HydratableParameter(value=p_value).hydrateAs(ArrayTypeOf(Action))
 
-        return result
+        return copy.deepcopy(p_value)
