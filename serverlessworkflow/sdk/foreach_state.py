@@ -6,7 +6,7 @@ from serverlessworkflow.sdk.action import Action
 from serverlessworkflow.sdk.class_properties import Fields
 from serverlessworkflow.sdk.end import End
 from serverlessworkflow.sdk.error import Error
-from serverlessworkflow.sdk.tobedone.foreach_state_timeout import ForEachStateTimeOut
+from serverlessworkflow.sdk.foreach_state_timeout import ForEachStateTimeOut
 from serverlessworkflow.sdk.tobedone.hydrate import SimpleTypeOf, ComplexTypeOf, UnionTypeOf, HydratableParameter, \
     ArrayTypeOf
 from serverlessworkflow.sdk.tobedone.metadata import Metadata

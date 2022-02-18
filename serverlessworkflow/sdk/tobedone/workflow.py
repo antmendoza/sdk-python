@@ -9,8 +9,8 @@ from serverlessworkflow.sdk.auth_def import AuthDef
 from serverlessworkflow.sdk.class_properties import Fields
 from serverlessworkflow.sdk.error_def import ErrorDef
 from serverlessworkflow.sdk.event_def import EventDef
-from serverlessworkflow.sdk.tobedone.foreach_state import ForEachState
-from serverlessworkflow.sdk.tobedone.function import Function
+from serverlessworkflow.sdk.foreach_state import ForEachState
+from serverlessworkflow.sdk.function import Function
 from serverlessworkflow.sdk.tobedone.inject_state import InjectState
 from serverlessworkflow.sdk.tobedone.metadata import Metadata
 from serverlessworkflow.sdk.tobedone.operation_state import OperationState
