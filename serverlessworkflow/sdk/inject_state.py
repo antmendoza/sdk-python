@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import copy
-from typing import Dict
 
 from serverlessworkflow.sdk.class_properties import Fields
 from serverlessworkflow.sdk.end import End

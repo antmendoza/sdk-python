@@ -3,7 +3,7 @@ from typing import Dict
 from serverlessworkflow.sdk.class_properties import Fields
 
 
-class Metadata(dict[str, str]):
+class Metadata(Dict[str, str]):
 
     def __init__(self,
                  **kwargs):

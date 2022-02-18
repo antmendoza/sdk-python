@@ -1,5 +1,4 @@
 import copy
-from typing import Dict
 
 from serverlessworkflow.sdk.class_properties import Fields
 from serverlessworkflow.sdk.tobedone.hydrate import ComplexTypeOf, HydratableParameter
