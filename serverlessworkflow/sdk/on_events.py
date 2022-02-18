@@ -22,7 +22,7 @@ class OnEvents:
 
     @staticmethod
     def f_hydration(p_key, p_value):
-        if p_key == 'action':
+        if p_key == 'actions':
             return HydratableParameter(value=p_value).hydrateAs(ArrayTypeOf(Action))
 
         if p_key == 'eventDataFilter':
