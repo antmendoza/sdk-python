@@ -7,7 +7,7 @@ from serverlessworkflow.sdk.action_data_filter import ActionDataFilter
 from serverlessworkflow.sdk.class_properties import Fields
 from serverlessworkflow.sdk.event_ref import EventRef
 from serverlessworkflow.sdk.function_ref import FunctionRef
-from serverlessworkflow.sdk.hydrate import ComplexType
+from serverlessworkflow.sdk.hydrate import ComplexType, UnionOfType, SimpleType
 from serverlessworkflow.sdk.sleep import Sleep
 from serverlessworkflow.sdk.sub_flow_ref import SubFlowRef
 
@@ -60,7 +60,6 @@ class Action:
                  eslavida: str = None,
                  **kwargs):
 
-        Action.load_obj(self)
 
         Fields(locals(), kwargs, Action.f_hydration).set_to_object(self)
 
@@ -71,7 +70,7 @@ class Action:
 
         if p_key == 'functionRef':
             ## TODO hydrateUnionType
-            result = Parameter(value=p_value).hydrateAsUnionOf(str, FunctionRef)
+            result = Parameter(value=p_value).hydrateAs(UnionOfType([SimpleType(str), ComplexType(FunctionRef)]) )
             #property_value = Action.hydrate_union(property_value, str, FunctionRef)
         if p_key == 'eventRef':
             result = Parameter(value=p_value).hydrateAs(ComplexType(EventRef))
@@ -88,14 +87,6 @@ class Action:
 
         return Type(**value) if type(value) is not Type else value
 
-    @staticmethod
-    def load_obj(obj):
-
-        for prop in obj.__dict__.keys():
-            print(prop + " " + str(type(prop)))
-
-        print(dir(obj))
-        print(dir(obj))
 
     @staticmethod
     def hydrate_union(value, ifType, elseType):

@@ -3,7 +3,7 @@ import copy
 from serverlessworkflow.sdk.action import Action, Parameter
 from serverlessworkflow.sdk.branch_timeout import BranchTimeOut
 from serverlessworkflow.sdk.class_properties import Fields
-from serverlessworkflow.sdk.hydrate import ArrayOf, ComplexType
+from serverlessworkflow.sdk.hydrate import ArrayOfType, ComplexType
 
 
 class Branch:
@@ -26,6 +26,6 @@ class Branch:
             result = Parameter(value=p_value).hydrateAs(ComplexType(BranchTimeOut))
 
         if p_key == 'actions':
-            result = Parameter(value=p_value).hydrateAs(ArrayOf(Action))
+            result = Parameter(value=p_value).hydrateAs(ArrayOfType(Action))
 
         return result
