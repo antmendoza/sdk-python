@@ -5,8 +5,8 @@ from os import listdir
 
 from jsonschema.exceptions import ValidationError
 
-from serverlessworkflow.sdk.tobedone.workflow import Workflow
-from serverlessworkflow.sdk.tobedone.workflow_validator import WorkflowValidator
+from serverlessworkflow.sdk.workflow import Workflow
+from serverlessworkflow.sdk.workflow_validator import WorkflowValidator
 
 
 class TestWorkflowValidator(unittest.TestCase):

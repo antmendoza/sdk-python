@@ -4,7 +4,7 @@ import unittest
 from serverlessworkflow.sdk.action import Action
 from serverlessworkflow.sdk.function import Function
 from serverlessworkflow.sdk.function_ref import FunctionRef
-from serverlessworkflow.sdk.tobedone.workflow import Workflow
+from serverlessworkflow.sdk.workflow import Workflow
 
 
 class TestWorkflow(unittest.TestCase):

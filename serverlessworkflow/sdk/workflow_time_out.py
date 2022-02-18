@@ -1,6 +1,9 @@
+import copy
+
 from serverlessworkflow.sdk.class_properties import Fields
 from serverlessworkflow.sdk.state_exec_timeout import StateExecTimeOut
-from serverlessworkflow.sdk.tobedone.workflow_exec_timeout import WorkflowExecTimeOut
+from serverlessworkflow.sdk.tobedone.hydrate import HydratableParameter, ComplexTypeOf
+from serverlessworkflow.sdk.workflow_exec_timeout import WorkflowExecTimeOut
 
 
 class WorkflowTimeOut:
@@ -17,4 +20,15 @@ class WorkflowTimeOut:
                  branchExecTimeOut: str = None,  # BranchExecTimeOut
                  eventTimeOut: str = None,  # EventTimeOut
                  **kwargs):
-        Fields(locals(), kwargs, Fields.default_hydration).set_to_object(self)
+        Fields(locals(), kwargs, WorkflowTimeOut.f_hydration).set_to_object(self)
+
+    @staticmethod
+    def f_hydration(p_key, p_value):
+
+        if p_key == 'workflowExecTimeOut':
+            return HydratableParameter(value=p_value).hydrateAs(ComplexTypeOf(WorkflowExecTimeOut))
+
+        if p_key == 'stateExecTimeOut':
+            return HydratableParameter(value=p_value).hydrateAs(ComplexTypeOf(StateExecTimeOut))
+
+        return copy.deepcopy(p_value)

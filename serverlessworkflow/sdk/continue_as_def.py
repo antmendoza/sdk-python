@@ -4,7 +4,7 @@ import copy
 
 from serverlessworkflow.sdk.class_properties import Fields
 from serverlessworkflow.sdk.tobedone.hydrate import ComplexTypeOf, SimpleTypeOf, UnionTypeOf, HydratableParameter
-from serverlessworkflow.sdk.tobedone.workflow_exec_timeout import WorkflowExecTimeOut
+from serverlessworkflow.sdk.workflow_exec_timeout import WorkflowExecTimeOut
 
 
 class ContinueAsDef:

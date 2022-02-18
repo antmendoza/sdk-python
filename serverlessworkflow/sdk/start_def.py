@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import copy
+
 from serverlessworkflow.sdk.class_properties import Fields
 from serverlessworkflow.sdk.schedule import Schedule
 from serverlessworkflow.sdk.tobedone.hydrate import SimpleTypeOf, ComplexTypeOf, UnionTypeOf, HydratableParameter
@@ -18,5 +20,7 @@ class StartDef:
     @staticmethod
     def f_hydration(p_key, p_value):
         if p_key == 'schedule':
-            return HydratableParameter(value=p_value).hydrateAs(UnionTypeOf([SimpleTypeOf(bool),
-                                                                             ComplexTypeOf(Schedule)]))
+            return HydratableParameter(value=p_value).hydrateAs(
+                UnionTypeOf([SimpleTypeOf(str), ComplexTypeOf(Schedule)]))
+
+        return copy.deepcopy(p_value)

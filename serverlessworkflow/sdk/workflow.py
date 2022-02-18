@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import copy
 import json
 
 import yaml
@@ -16,7 +17,9 @@ from serverlessworkflow.sdk.operation_state import OperationState
 from serverlessworkflow.sdk.retry_def import RetryDef
 from serverlessworkflow.sdk.start_def import StartDef
 from serverlessworkflow.sdk.state import State
-from serverlessworkflow.sdk.tobedone.workflow_time_out import WorkflowTimeOut
+from serverlessworkflow.sdk.tobedone.hydrate import HydratableParameter, UnionTypeOf, SimpleTypeOf, ComplexTypeOf, \
+    ArrayTypeOf
+from serverlessworkflow.sdk.workflow_time_out import WorkflowTimeOut
 
 
 class DataInputSchema:
@@ -73,7 +76,7 @@ class Workflow:
                  functions: (str | [Function]) = None
                  , **kwargs):
 
-        Fields(locals(), kwargs, Workflow.load_properties).set_to_object(self)
+        Fields(locals(), kwargs, Workflow.f_hydration).set_to_object(self)
 
     def to_json(self) -> str:
         return json.dumps(self,
@@ -96,17 +99,70 @@ class Workflow:
         except Exception:
             raise Exception("Format not supported")
 
+    def __repr__(self):
+        return "{!r}".format(self.__dict__)
+
     @staticmethod
-    def load_properties(k, final_value):
-        if k == 'states' and final_value:
-            final_value = Workflow.load_states(final_value)
-        if k == 'functions' and final_value:
-            final_value = Workflow.load_functions(final_value)
-        return final_value
+    def f_hydration(p_key, p_value):
+
+        if p_key == 'dataInputSchema':
+            return HydratableParameter(value=p_value).hydrateAs(UnionTypeOf([SimpleTypeOf(str),
+                                                                             ComplexTypeOf(DataInputSchema)]))
+
+        if p_key == 'constants':
+            return HydratableParameter(value=p_value).hydrateAs(UnionTypeOf([SimpleTypeOf(str),
+                                                                             ComplexTypeOf(dict)]))
+        if p_key == 'start':
+            return HydratableParameter(value=p_value).hydrateAs(UnionTypeOf([SimpleTypeOf(str),
+                                                                             ComplexTypeOf(StartDef)]))
+
+        if p_key == 'timeouts':
+            return HydratableParameter(value=p_value).hydrateAs(UnionTypeOf([SimpleTypeOf(str),
+                                                                             ComplexTypeOf(WorkflowTimeOut)]))
+
+        if p_key == 'errors':
+            return HydratableParameter(value=p_value).hydrateAs(UnionTypeOf([SimpleTypeOf(str),
+                                                                             ArrayTypeOf(ErrorDef)]))
+
+        if p_key == 'events':
+            return HydratableParameter(value=p_value).hydrateAs(UnionTypeOf([SimpleTypeOf(str),
+                                                                             ArrayTypeOf(EventDef)]))
+
+        if p_key == 'retries':
+            return HydratableParameter(value=p_value).hydrateAs(UnionTypeOf([SimpleTypeOf(str),
+                                                                             ArrayTypeOf(RetryDef)]))
+
+        if p_key == 'auth':
+            return HydratableParameter(value=p_value).hydrateAs(UnionTypeOf([SimpleTypeOf(str),
+                                                                             ArrayTypeOf(AuthDef)]))
+
+        if p_key == 'states':
+            result = []
+
+            for raw_state in p_value:
+                state = State(**raw_state)
+                if state.is_inject_state():
+                    result.append(InjectState(**raw_state))
+                elif state.is_operation_state():
+                    result.append(OperationState(**raw_state))
+                elif state.is_foreach_state():
+                    result.append(ForEachState(**raw_state))
+                # TODO add states
+                else:
+                    result.append(state)
+
+            return result
+
+        if p_key == 'functions':
+            return HydratableParameter(value=p_value).hydrateAs(UnionTypeOf([SimpleTypeOf(str),
+                                                                             ArrayTypeOf(Function)]))
+
+        return copy.deepcopy(p_value)
 
     @staticmethod
     def load_states(states: [State]):
         result = []
+
         for raw_state in states:
             state = State(**raw_state)
             if state.is_inject_state():
@@ -119,13 +175,3 @@ class Workflow:
                 result.append(state)
 
         return result
-
-    def __repr__(self):
-        return "{!r}".format(self.__dict__)
-
-    @staticmethod
-    def load_functions(functions: (str | [Function])):
-        if type(functions) is str:
-            return functions
-
-        return [Function(**function) if type(function) is not Function else function for function in functions]
