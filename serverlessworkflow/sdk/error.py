@@ -6,7 +6,7 @@ from serverlessworkflow.sdk.class_properties import Fields
 from serverlessworkflow.sdk.end import End
 from serverlessworkflow.sdk.tobedone.hydrate import HydratableParameter, ArrayTypeOf, SimpleTypeOf, ComplexTypeOf, \
     UnionTypeOf
-from serverlessworkflow.sdk.tobedone.transition import Transition
+from serverlessworkflow.sdk.transition import Transition
 
 
 class Error:

@@ -5,7 +5,7 @@ import copy
 from serverlessworkflow.sdk.class_properties import Fields
 from serverlessworkflow.sdk.end import End
 from serverlessworkflow.sdk.tobedone.hydrate import UnionTypeOf, SimpleTypeOf, ComplexTypeOf, HydratableParameter
-from serverlessworkflow.sdk.tobedone.transition import Transition
+from serverlessworkflow.sdk.transition import Transition
 
 
 class DefaultConditionDef:

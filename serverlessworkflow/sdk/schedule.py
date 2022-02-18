@@ -17,7 +17,7 @@ class Schedule:
                  cron: (str | CronDef) = None,
                  timezone: str = None,
                  **kwargs):
-        Fields(locals(), kwargs, Fields.default_hydration).set_to_object(self)
+        Fields(locals(), kwargs, Schedule.f_hydration).set_to_object(self)
 
     @staticmethod
     def f_hydration(p_key, p_value):

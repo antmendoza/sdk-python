@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from serverlessworkflow.sdk.class_properties import Fields
 from serverlessworkflow.sdk.metadata import Metadata
-from serverlessworkflow.sdk.tobedone.transition import Transition
+from serverlessworkflow.sdk.transition import Transition
 
 
 class TransitionDataCondition:

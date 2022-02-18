@@ -10,9 +10,9 @@ from serverlessworkflow.sdk.metadata import Metadata
 from serverlessworkflow.sdk.tobedone.hydrate import HydratableParameter, UnionTypeOf, SimpleTypeOf, ComplexTypeOf, \
     ArrayTypeOf
 from serverlessworkflow.sdk.parallel_state_timeout import ParallelStateTimeOut
-from serverlessworkflow.sdk.tobedone.state import State
-from serverlessworkflow.sdk.tobedone.state_data_filter import StateDataFilter
-from serverlessworkflow.sdk.tobedone.transition import Transition
+from serverlessworkflow.sdk.state import State
+from serverlessworkflow.sdk.state_data_filter import StateDataFilter
+from serverlessworkflow.sdk.transition import Transition
 
 
 class ParallelState(State):

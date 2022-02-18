@@ -8,10 +8,10 @@ from serverlessworkflow.sdk.error import Error
 from serverlessworkflow.sdk.metadata import Metadata
 from serverlessworkflow.sdk.tobedone.hydrate import HydratableParameter, ComplexTypeOf, UnionTypeOf, SimpleTypeOf, \
     ArrayTypeOf
-from serverlessworkflow.sdk.tobedone.sleep_state_timeout import SleepStateTimeOut
-from serverlessworkflow.sdk.tobedone.state import State
-from serverlessworkflow.sdk.tobedone.state_data_filter import StateDataFilter
-from serverlessworkflow.sdk.tobedone.transition import Transition
+from serverlessworkflow.sdk.sleep_state_timeout import SleepStateTimeOut
+from serverlessworkflow.sdk.state import State
+from serverlessworkflow.sdk.state_data_filter import StateDataFilter
+from serverlessworkflow.sdk.transition import Transition
 
 
 class SleepState(State):
@@ -42,7 +42,7 @@ class SleepState(State):
                  usedForCompensation: bool = None,
                  metadata: Metadata = None,
                  **kwargs):
-        Fields(locals(), kwargs, Fields.default_hydration).set_to_object(self)
+        Fields(locals(), kwargs, SleepState.f_hydration).set_to_object(self)
 
     @staticmethod
     def f_hydration(p_key, p_value):

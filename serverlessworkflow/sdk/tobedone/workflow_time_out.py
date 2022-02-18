@@ -1,5 +1,5 @@
 from serverlessworkflow.sdk.class_properties import Fields
-from serverlessworkflow.sdk.tobedone.state_exec_timeout import StateExecTimeOut
+from serverlessworkflow.sdk.state_exec_timeout import StateExecTimeOut
 from serverlessworkflow.sdk.tobedone.workflow_exec_timeout import WorkflowExecTimeOut
 
 

@@ -6,8 +6,10 @@ from serverlessworkflow.sdk.class_properties import Fields
 class State:
     type: str = None
 
-    def __init__(self, type: str = None,
+    def __init__(self,
+                 type: str = None,
                  **kwargs):
+
         Fields(locals(), kwargs, Fields.default_hydration).set_to_object(self)
 
     def is_event_state(self):
@@ -33,6 +35,3 @@ class State:
 
     def is_callback_state(self):
         return self.type == 'callback'
-
-    def to_dict(self):
-        return json.loads(json.dumps(self, default=lambda o: o.__dict__))

@@ -10,9 +10,9 @@ from serverlessworkflow.sdk.foreach_state_timeout import ForEachStateTimeOut
 from serverlessworkflow.sdk.tobedone.hydrate import SimpleTypeOf, ComplexTypeOf, UnionTypeOf, HydratableParameter, \
     ArrayTypeOf
 from serverlessworkflow.sdk.metadata import Metadata
-from serverlessworkflow.sdk.tobedone.state import State
-from serverlessworkflow.sdk.tobedone.state_data_filter import StateDataFilter
-from serverlessworkflow.sdk.tobedone.transition import Transition
+from serverlessworkflow.sdk.state import State
+from serverlessworkflow.sdk.state_data_filter import StateDataFilter
+from serverlessworkflow.sdk.transition import Transition
 
 
 class ForEachState(State):
