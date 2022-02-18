@@ -1,9 +1,14 @@
-class Hydratable:
+from __future__ import annotations
+
+from typing import Any
+
+
+class HydratableType:
     def hydrate(self, value):
         pass
 
 
-class ArrayOfType(Hydratable):
+class ArrayOfType(HydratableType):
     def __init__(self, Type):
         self.Type = Type
 
@@ -11,7 +16,7 @@ class ArrayOfType(Hydratable):
         return [self.Type(**v) if type(v) is not self.Type else v for v in value]
 
 
-class ComplexType(Hydratable):
+class ComplexType(HydratableType):
     def __init__(self, Type):
         self.Type = Type
 
@@ -19,7 +24,7 @@ class ComplexType(Hydratable):
         return self.Type(**value) if type(value) is not self.Type else value
 
 
-class SimpleType(Hydratable):
+class SimpleType(HydratableType):
     def __init__(self, Type):
         self.Type = Type
 
@@ -28,10 +33,10 @@ class SimpleType(Hydratable):
             return value
 
 
-class UnionOfType(Hydratable):
-    types: [Hydratable]
+class UnionOfType(HydratableType):
+    types: [HydratableType]
 
-    def __init__(self, types: [Hydratable]):
+    def __init__(self, types: [HydratableType]):
         self.types = types
 
     def hydrate(self, value):
@@ -41,3 +46,13 @@ class UnionOfType(Hydratable):
                 return t.hydrate(value)
 
         return None
+
+
+class HydratableParameter:
+    def __init__(self, value: Any):
+        self.complex_type = None
+        self.simple_type = None
+        self.value = value
+
+    def hydrateAs(self, hydratable):
+        return hydratable.hydrate(self.value)

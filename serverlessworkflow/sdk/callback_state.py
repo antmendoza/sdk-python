@@ -2,13 +2,13 @@ from __future__ import annotations
 
 import copy
 
-from serverlessworkflow.sdk.action import Action, Parameter
+from serverlessworkflow.sdk.action import Action
 from serverlessworkflow.sdk.callback_state_timeout import CallbackStateTimeOut
 from serverlessworkflow.sdk.class_properties import Fields
 from serverlessworkflow.sdk.end import End
 from serverlessworkflow.sdk.error import Error
 from serverlessworkflow.sdk.event_data_filter import EventDataFilter
-from serverlessworkflow.sdk.hydrate import ComplexType, ArrayOfType
+from serverlessworkflow.sdk.hydrate import ComplexType, ArrayOfType, HydratableParameter
 from serverlessworkflow.sdk.metadata import Metadata
 from serverlessworkflow.sdk.state import State
 from serverlessworkflow.sdk.state_data_filter import StateDataFilter
@@ -55,18 +55,18 @@ class CallbackState(State):
         result = copy.deepcopy(p_value)
 
         if p_key == 'action':
-            result = Parameter(value=p_value).hydrateAs(ComplexType(Action))
+            result = HydratableParameter(value=p_value).hydrateAs(ComplexType(Action))
 
         if p_key == 'timeouts':
-            result = Parameter(value=p_value).hydrateAs(ComplexType(CallbackStateTimeOut))
+            result = HydratableParameter(value=p_value).hydrateAs(ComplexType(CallbackStateTimeOut))
 
         if p_key == 'eventDataFilter':
-            result = Parameter(value=p_value).hydrateAs(ComplexType(EventDataFilter))
+            result = HydratableParameter(value=p_value).hydrateAs(ComplexType(EventDataFilter))
 
         if p_key == 'stateDataFilter':
-            result = Parameter(value=p_value).hydrateAs(ComplexType(StateDataFilter))
+            result = HydratableParameter(value=p_value).hydrateAs(ComplexType(StateDataFilter))
 
         if p_key == 'onErrors':
-            result = Parameter(value=p_value).hydrateAs(ArrayOfType(Error))
+            result = HydratableParameter(value=p_value).hydrateAs(ArrayOfType(Error))
 
         return result

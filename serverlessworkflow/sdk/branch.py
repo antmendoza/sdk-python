@@ -1,9 +1,9 @@
 import copy
 
-from serverlessworkflow.sdk.action import Action, Parameter
+from serverlessworkflow.sdk.action import Action
 from serverlessworkflow.sdk.branch_timeout import BranchTimeOut
 from serverlessworkflow.sdk.class_properties import Fields
-from serverlessworkflow.sdk.hydrate import ArrayOfType, ComplexType
+from serverlessworkflow.sdk.hydrate import ArrayOfType, ComplexType, HydratableParameter
 
 
 class Branch:
@@ -23,9 +23,9 @@ class Branch:
         result = copy.deepcopy(p_value)
 
         if p_key == 'timeouts':
-            result = Parameter(value=p_value).hydrateAs(ComplexType(BranchTimeOut))
+            result = HydratableParameter(value=p_value).hydrateAs(ComplexType(BranchTimeOut))
 
         if p_key == 'actions':
-            result = Parameter(value=p_value).hydrateAs(ArrayOfType(Action))
+            result = HydratableParameter(value=p_value).hydrateAs(ArrayOfType(Action))
 
         return result

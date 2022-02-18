@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import copy
 
-from serverlessworkflow.sdk.action import Parameter
+from serverlessworkflow.sdk.hydrate import HydratableParameter
 from serverlessworkflow.sdk.basic_props_def import BasicPropsDef
 from serverlessworkflow.sdk.bearer_props_def import BearerPropsDef
 from serverlessworkflow.sdk.class_properties import Fields
