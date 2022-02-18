@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from serverlessworkflow.sdk.action import Action
 from serverlessworkflow.sdk.callback_state_timeout import CallbackStateTimeOut
-from serverlessworkflow.sdk.class_properties import Properties
+from serverlessworkflow.sdk.class_properties import Fields
 from serverlessworkflow.sdk.end import End
 from serverlessworkflow.sdk.error import Error
 from serverlessworkflow.sdk.event_data_filter import EventDataFilter
@@ -44,4 +44,4 @@ class CallbackState(State):
                  usedForCompensation: bool = None,
                  metadata: Metadata = None,
                  **kwargs):
-        Properties(locals(), kwargs, Properties.default).set_to_object(self)
+        Fields(locals(), kwargs, Fields.no_hydration).set_to_object(self)

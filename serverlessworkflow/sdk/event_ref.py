@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Dict
 
-from serverlessworkflow.sdk.class_properties import Properties
+from serverlessworkflow.sdk.class_properties import Fields
 from serverlessworkflow.sdk.enums import Invoke
 
 
@@ -21,4 +21,4 @@ class EventRef:
                  contextAttributes: Dict[str, str] = None,
                  invoke: Invoke = None,
                  **kwargs):
-        Properties(locals(), kwargs, Properties.default).set_to_object(self)
+        Fields(locals(), kwargs, Fields.no_hydration).set_to_object(self)

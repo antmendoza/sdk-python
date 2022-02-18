@@ -4,7 +4,7 @@ from enum import Enum
 
 from serverlessworkflow.sdk.basic_props_def import BasicPropsDef
 from serverlessworkflow.sdk.bearer_props_def import BearerPropsDef
-from serverlessworkflow.sdk.class_properties import Properties
+from serverlessworkflow.sdk.class_properties import Fields
 from serverlessworkflow.sdk.oauth2props_def import Oauth2PropsDef
 
 
@@ -24,4 +24,4 @@ class AuthDef:
                  scheme: Scheme = None,
                  properties: (str | (BasicPropsDef | BearerPropsDef | Oauth2PropsDef)) = None,
                  **kwargs):
-        Properties(locals(), kwargs, Properties.default).set_to_object(self)
+        Fields(locals(), kwargs, Fields.no_hydration).set_to_object(self)

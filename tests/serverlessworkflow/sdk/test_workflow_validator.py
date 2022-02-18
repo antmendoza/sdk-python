@@ -21,10 +21,7 @@ class TestWorkflowValidator(unittest.TestCase):
 
                 with open(examples_dir + "/" + example, "r") as swf_file:
                     swf_file_content = json.load(swf_file)
-                    print(type(swf_file_content))
-                    print(swf_file_content)
                     workflow = Workflow(**swf_file_content)
-                    #print(workflow.to_json())
                     WorkflowValidator(workflow).validate()
 
     def test_invalid_wf(self):

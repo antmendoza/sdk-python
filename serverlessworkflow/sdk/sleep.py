@@ -1,4 +1,4 @@
-from serverlessworkflow.sdk.class_properties import Properties
+from serverlessworkflow.sdk.class_properties import Fields
 
 
 class Sleep:
@@ -9,4 +9,4 @@ class Sleep:
                  before: str = None,
                  after: str = None,
                  **kwargs):
-        Properties(locals(), kwargs, Properties.default).set_to_object(self)
+        Fields(locals(), kwargs, Fields.no_hydration).set_to_object(self)

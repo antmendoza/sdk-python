@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from enum import Enum
 
-from serverlessworkflow.sdk.class_properties import Properties
+from serverlessworkflow.sdk.class_properties import Fields
 from serverlessworkflow.sdk.correlation_def import CorrelationDef
 from serverlessworkflow.sdk.metadata import Metadata
 
@@ -30,4 +30,4 @@ class EventDef:
                  dataOnly: bool = None,
                  metadata: Metadata = None,
                  **kwargs):
-        Properties(locals(), kwargs, Properties.default).set_to_object(self)
+        Fields(locals(), kwargs, Fields.no_hydration).set_to_object(self)

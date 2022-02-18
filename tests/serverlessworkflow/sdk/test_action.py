@@ -19,7 +19,6 @@ class TestAction(unittest.TestCase):
         action_data = {
             'retryableErrors': ['err1', 'err2']}
         action = Action(**action_data)
-        print(type(action.retryableErrors))
         self.assertTrue(isinstance(action.retryableErrors, list))
 
 

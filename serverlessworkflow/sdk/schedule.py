@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from serverlessworkflow.sdk.class_properties import Properties
+from serverlessworkflow.sdk.class_properties import Fields
 from serverlessworkflow.sdk.cron_def import CronDef
 
 
@@ -14,4 +14,4 @@ class Schedule:
                  cron: (str | CronDef) = None,
                  timezone: str = None,
                  **kwargs):
-        Properties(locals(), kwargs, Properties.default).set_to_object(self)
+        Fields(locals(), kwargs, Fields.no_hydration).set_to_object(self)

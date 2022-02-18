@@ -1,4 +1,4 @@
-from serverlessworkflow.sdk.class_properties import Properties
+from serverlessworkflow.sdk.class_properties import Fields
 from serverlessworkflow.sdk.produce_event_def import ProduceEventDef
 
 
@@ -12,4 +12,4 @@ class Transition:
                  produceEvents: [ProduceEventDef] = None,
                  compensate: bool = None,
                  **kwargs):
-        Properties(locals(), kwargs, Properties.default).set_to_object(self)
+        Fields(locals(), kwargs, Fields.no_hydration).set_to_object(self)

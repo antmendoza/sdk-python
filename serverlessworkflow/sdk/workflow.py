@@ -6,7 +6,7 @@ from typing import Dict
 import yaml
 
 from serverlessworkflow.sdk.auth_def import AuthDef
-from serverlessworkflow.sdk.class_properties import Properties
+from serverlessworkflow.sdk.class_properties import Fields
 from serverlessworkflow.sdk.error_def import ErrorDef
 from serverlessworkflow.sdk.event_def import EventDef
 from serverlessworkflow.sdk.foreach_state import ForEachState
@@ -74,7 +74,7 @@ class Workflow:
                  functions: (str | [Function]) = None
                  , **kwargs):
 
-        Properties(locals(), kwargs, Workflow.load_properties).set_to_object(self)
+        Fields(locals(), kwargs, Workflow.load_properties).set_to_object(self)
 
     def to_json(self) -> str:
         return json.dumps(self,

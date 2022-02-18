@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Dict
 
-from serverlessworkflow.sdk.class_properties import Properties
+from serverlessworkflow.sdk.class_properties import Fields
 from serverlessworkflow.sdk.end import End
 from serverlessworkflow.sdk.inject_state_timeout import InjectStateTimeOut
 from serverlessworkflow.sdk.metadata import Metadata
@@ -37,4 +37,4 @@ class InjectState(State):
                  usedForCompensation: bool = None,
                  metadata: Metadata = None,
                  **kwargs):
-        Properties(locals(), kwargs, Properties.default).set_to_object(self)
+        Fields(locals(), kwargs, Fields.no_hydration).set_to_object(self)

@@ -1,11 +1,31 @@
 from __future__ import annotations
 
+import copy
+from typing import Any
+
 from serverlessworkflow.sdk.action_data_filter import ActionDataFilter
-from serverlessworkflow.sdk.class_properties import Properties
+from serverlessworkflow.sdk.class_properties import Fields
 from serverlessworkflow.sdk.event_ref import EventRef
 from serverlessworkflow.sdk.function_ref import FunctionRef
 from serverlessworkflow.sdk.sleep import Sleep
 from serverlessworkflow.sdk.sub_flow_ref import SubFlowRef
+
+
+class HydrateParameter:
+    def __init__(self, value: Any):
+        self.complex_type = None
+        self.simple_type = None
+        self.value = value
+
+    def asUnion(self, simple_type, complex_type):
+        self.simple_type = simple_type
+        self.complex_type = complex_type
+
+        if type(self.value) is self.simple_type:
+            return self.value
+
+        return self.complex_type(**self.value) if type(self.value) is not self.complex_type else self.value
+
 
 
 class Action:
@@ -35,26 +55,42 @@ class Action:
                  condition: str = None,
                  **kwargs):
 
-        Properties(locals(), kwargs, Action.load_properties).set_to_object(self)
+        Action.load_obj(self)
+
+        Fields(locals(), kwargs, Action.load_properties).set_to_object(self)
 
     @staticmethod
-    def load_properties(property_key, property_value):
-        if property_key == 'functionRef':
-            property_value = Action.hydrate_union(property_value, str, FunctionRef)
-        if property_key == 'eventRef':
-            property_value = Action.hydrate_type(property_value, EventRef)
-        if property_key == 'subFlowRef':
-            property_value = Action.hydrate_union(property_value, str, SubFlowRef)
-        if property_key == 'sleep':
-            property_value = Action.hydrate_type(property_value, Sleep)
-        if property_key == 'actionDataFilter':
-            property_value = Action.hydrate_type(property_value, ActionDataFilter)
-        return property_value
+    def load_properties(parameter_key, parameter_value):
+
+        result = copy.deepcopy(parameter_value)
+
+        if parameter_key == 'functionRef':
+            ## TODO hydrateUnionType
+            result = HydrateParameter(value=parameter_value).asUnion(str, FunctionRef)
+            #property_value = Action.hydrate_union(property_value, str, FunctionRef)
+        if parameter_key == 'eventRef':
+            result = Action.hydrate_type(parameter_value, EventRef)
+        if parameter_key == 'subFlowRef':
+            result = Action.hydrate_union(parameter_value, str, SubFlowRef)
+        if parameter_key == 'sleep':
+            result = Action.hydrate_type(parameter_value, Sleep)
+        if parameter_key == 'actionDataFilter':
+            result = Action.hydrate_type(parameter_value, ActionDataFilter)
+        return result
 
     @staticmethod
     def hydrate_type(value, Type):
 
         return Type(**value) if type(value) is not Type else value
+
+    @staticmethod
+    def load_obj(obj):
+
+        for prop in obj.__dict__.keys():
+            print(prop + " " + str(type(prop)))
+
+        print(dir(obj))
+        print(dir(obj))
 
     @staticmethod
     def hydrate_union(value, ifType, elseType):

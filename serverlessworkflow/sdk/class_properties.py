@@ -3,28 +3,28 @@ from typing import Any
 
 
 @dataclasses.dataclass
-class Property:
+class Field:
     def __init__(self, key: str, value: Any):
         self.key = key
         self.value = value
 
 
-class Properties:
+class Fields:
     def __init__(self, local_attributes, kwargs, load_properties):
-        self.attributes = Properties.load(local_attributes, kwargs, load_properties)
+        self.attributes = Fields.load(local_attributes, kwargs, load_properties)
 
     def set_to_object(self, obj):
         for attr in self.attributes:
             obj.__setattr__(attr.key, attr.value)
 
     @staticmethod
-    def default(property_key, property_value):
+    def no_hydration(property_key, property_value):
         return property_value
 
     @staticmethod
     def load(local_attributes, kwargs, load_properties):
 
-        _attributes: [Property] = []
+        _attributes: [Field] = []
         local: str
         for local in list(local_attributes):
             if local in ["self", "kwargs"]:
@@ -45,7 +45,7 @@ class Properties:
             if final_value is not None:
                 key_ = local.replace("_", "")
                 # self.__setattr__(key_, final_value)
-                _attributes.append(Property(key_, final_value))
+                _attributes.append(Field(key_, final_value))
 
         for k in kwargs.keys():
             final_value = kwargs[k]
@@ -60,6 +60,6 @@ class Properties:
             if final_value is not None:
                 key_ = k.replace("_", "")
                 # self.__setattr__(key_, final_value)
-                _attributes.append(Property(key_, final_value))
+                _attributes.append(Field(key_, final_value))
 
         return _attributes

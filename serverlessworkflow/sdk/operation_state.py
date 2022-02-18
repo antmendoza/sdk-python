@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from serverlessworkflow.sdk.action import Action
-from serverlessworkflow.sdk.class_properties import Properties
+from serverlessworkflow.sdk.class_properties import Fields
 from serverlessworkflow.sdk.end import End
 from serverlessworkflow.sdk.enums import ActionMode
 from serverlessworkflow.sdk.error import Error
@@ -42,7 +42,7 @@ class OperationState(State):
                  metadata: Metadata = None,
                  end: (str | End) = None,
                  **kwargs):
-        Properties(locals(), kwargs, OperationState.load_properties).set_to_object(self)
+        Fields(locals(), kwargs, OperationState.load_properties).set_to_object(self)
 
     @staticmethod
     def load_properties(k, value):

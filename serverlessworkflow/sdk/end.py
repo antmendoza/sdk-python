@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from serverlessworkflow.sdk.class_properties import Properties
+from serverlessworkflow.sdk.class_properties import Fields
 from serverlessworkflow.sdk.continue_as_def import ContinueAsDef
 from serverlessworkflow.sdk.produce_event_def import ProduceEventDef
 
@@ -17,4 +17,4 @@ class End:
                  compensate: bool = None,
                  continueAs: (str | ContinueAsDef) = None,
                  **kwargs):
-        Properties(locals(), kwargs, Properties.default).set_to_object(self)
+        Fields(locals(), kwargs, Fields.no_hydration).set_to_object(self)
