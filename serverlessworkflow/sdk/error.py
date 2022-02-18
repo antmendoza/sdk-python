@@ -2,10 +2,9 @@ from __future__ import annotations
 
 import copy
 
-from serverlessworkflow.sdk.tobedone.class_properties import Fields
 from serverlessworkflow.sdk.end import End
-from serverlessworkflow.sdk.tobedone.hydrate import HydratableParameter, ArrayTypeOf, SimpleTypeOf, ComplexTypeOf, \
-    UnionTypeOf
+from serverlessworkflow.sdk.hydration import HydratableParameter, ArrayTypeOf, SimpleTypeOf, ComplexTypeOf, \
+    UnionTypeOf, Fields
 from serverlessworkflow.sdk.transition import Transition
 
 

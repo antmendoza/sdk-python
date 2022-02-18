@@ -6,7 +6,6 @@ import json
 import yaml
 
 from serverlessworkflow.sdk.auth_def import AuthDef
-from serverlessworkflow.sdk.tobedone.class_properties import Fields
 from serverlessworkflow.sdk.error_def import ErrorDef
 from serverlessworkflow.sdk.event_def import EventDef
 from serverlessworkflow.sdk.foreach_state import ForEachState
@@ -17,8 +16,8 @@ from serverlessworkflow.sdk.operation_state import OperationState
 from serverlessworkflow.sdk.retry_def import RetryDef
 from serverlessworkflow.sdk.start_def import StartDef
 from serverlessworkflow.sdk.state import State
-from serverlessworkflow.sdk.tobedone.hydrate import HydratableParameter, UnionTypeOf, SimpleTypeOf, ComplexTypeOf, \
-    ArrayTypeOf
+from serverlessworkflow.sdk.hydration import HydratableParameter, UnionTypeOf, SimpleTypeOf, ComplexTypeOf, \
+    ArrayTypeOf, Fields
 from serverlessworkflow.sdk.workflow_time_out import WorkflowTimeOut
 
 

@@ -1,7 +1,6 @@
 import copy
 
-from serverlessworkflow.sdk.tobedone.class_properties import Fields
-from serverlessworkflow.sdk.tobedone.hydrate import ComplexTypeOf, HydratableParameter
+from serverlessworkflow.sdk.hydration import ComplexTypeOf, HydratableParameter, Fields
 
 
 class FunctionRef:

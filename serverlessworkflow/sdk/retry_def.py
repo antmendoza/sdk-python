@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from serverlessworkflow.sdk.tobedone.class_properties import Fields
+from serverlessworkflow.sdk.hydration import Fields
 
 
 class RetryDef:

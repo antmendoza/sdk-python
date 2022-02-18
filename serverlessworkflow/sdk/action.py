@@ -3,10 +3,10 @@ from __future__ import annotations
 import copy
 
 from serverlessworkflow.sdk.action_data_filter import ActionDataFilter
-from serverlessworkflow.sdk.tobedone.class_properties import Fields
 from serverlessworkflow.sdk.event_ref import EventRef
 from serverlessworkflow.sdk.function_ref import FunctionRef
-from serverlessworkflow.sdk.tobedone.hydrate import ComplexTypeOf, UnionTypeOf, SimpleTypeOf, HydratableParameter
+from serverlessworkflow.sdk.hydration import ComplexTypeOf, UnionTypeOf, SimpleTypeOf, HydratableParameter, \
+    Fields
 from serverlessworkflow.sdk.sleep import Sleep
 from serverlessworkflow.sdk.sub_flow_ref import SubFlowRef
 

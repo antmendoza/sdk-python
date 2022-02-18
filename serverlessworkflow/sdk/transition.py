@@ -1,8 +1,7 @@
 import copy
 
-from serverlessworkflow.sdk.tobedone.class_properties import Fields
 from serverlessworkflow.sdk.produce_event_def import ProduceEventDef
-from serverlessworkflow.sdk.tobedone.hydrate import ArrayTypeOf, HydratableParameter
+from serverlessworkflow.sdk.hydration import ArrayTypeOf, HydratableParameter, Fields
 
 
 class Transition:

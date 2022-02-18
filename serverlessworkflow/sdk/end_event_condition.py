@@ -2,10 +2,10 @@ from __future__ import annotations
 
 import copy
 
-from serverlessworkflow.sdk.tobedone.class_properties import Fields
 from serverlessworkflow.sdk.end import End
 from serverlessworkflow.sdk.event_data_filter import EventDataFilter
-from serverlessworkflow.sdk.tobedone.hydrate import HydratableParameter, UnionTypeOf, ComplexTypeOf, SimpleTypeOf
+from serverlessworkflow.sdk.hydration import HydratableParameter, UnionTypeOf, ComplexTypeOf, SimpleTypeOf, \
+    Fields
 from serverlessworkflow.sdk.metadata import Metadata
 
 

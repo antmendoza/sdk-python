@@ -3,12 +3,11 @@ from __future__ import annotations
 import copy
 
 from serverlessworkflow.sdk.branch import Branch
-from serverlessworkflow.sdk.tobedone.class_properties import Fields
 from serverlessworkflow.sdk.end import End
 from serverlessworkflow.sdk.error import Error
 from serverlessworkflow.sdk.metadata import Metadata
-from serverlessworkflow.sdk.tobedone.hydrate import HydratableParameter, UnionTypeOf, SimpleTypeOf, ComplexTypeOf, \
-    ArrayTypeOf
+from serverlessworkflow.sdk.hydration import HydratableParameter, UnionTypeOf, SimpleTypeOf, ComplexTypeOf, \
+    ArrayTypeOf, Fields
 from serverlessworkflow.sdk.parallel_state_timeout import ParallelStateTimeOut
 from serverlessworkflow.sdk.state import State
 from serverlessworkflow.sdk.state_data_filter import StateDataFilter

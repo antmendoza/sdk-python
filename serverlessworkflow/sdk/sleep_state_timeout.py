@@ -1,5 +1,4 @@
-from serverlessworkflow.sdk.tobedone.class_properties import Fields
-from serverlessworkflow.sdk.tobedone.hydrate import HydratableParameter, ComplexTypeOf
+from serverlessworkflow.sdk.hydration import HydratableParameter, ComplexTypeOf, Fields
 from serverlessworkflow.sdk.state_exec_timeout import StateExecTimeOut
 
 

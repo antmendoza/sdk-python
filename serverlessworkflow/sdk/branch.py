@@ -2,8 +2,7 @@ import copy
 
 from serverlessworkflow.sdk.action import Action
 from serverlessworkflow.sdk.branch_timeout import BranchTimeOut
-from serverlessworkflow.sdk.tobedone.class_properties import Fields
-from serverlessworkflow.sdk.tobedone.hydrate import ArrayTypeOf, ComplexTypeOf, HydratableParameter
+from serverlessworkflow.sdk.hydration import ArrayTypeOf, ComplexTypeOf, HydratableParameter, Fields
 
 
 class Branch:

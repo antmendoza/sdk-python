@@ -2,12 +2,12 @@ from __future__ import annotations
 
 import copy
 
-from serverlessworkflow.sdk.tobedone.class_properties import Fields
 from serverlessworkflow.sdk.databased_switch_state_timeout import DataBasedSwitchStateTime0ut
 from serverlessworkflow.sdk.default_condition_def import DefaultConditionDef
 from serverlessworkflow.sdk.end_data_condition import EndDataCondition
 from serverlessworkflow.sdk.error import Error
-from serverlessworkflow.sdk.tobedone.hydrate import HydratableParameter, UnionTypeOf, ComplexTypeOf, ArrayTypeOf
+from serverlessworkflow.sdk.hydration import HydratableParameter, UnionTypeOf, ComplexTypeOf, ArrayTypeOf, \
+    Fields
 from serverlessworkflow.sdk.metadata import Metadata
 from serverlessworkflow.sdk.state import State
 from serverlessworkflow.sdk.state_data_filter import StateDataFilter

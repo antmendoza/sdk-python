@@ -2,8 +2,8 @@ from __future__ import annotations
 
 import copy
 
-from serverlessworkflow.sdk.tobedone.class_properties import Fields
-from serverlessworkflow.sdk.tobedone.hydrate import HydratableParameter, ComplexTypeOf, SimpleTypeOf, UnionTypeOf
+from serverlessworkflow.sdk.hydration import HydratableParameter, ComplexTypeOf, SimpleTypeOf, UnionTypeOf, \
+    Fields
 
 
 class ProduceEventDef:

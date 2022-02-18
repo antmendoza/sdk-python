@@ -4,12 +4,11 @@ import copy
 
 from serverlessworkflow.sdk.action import Action
 from serverlessworkflow.sdk.callback_state_timeout import CallbackStateTimeOut
-from serverlessworkflow.sdk.tobedone.class_properties import Fields
 from serverlessworkflow.sdk.end import End
 from serverlessworkflow.sdk.error import Error
 from serverlessworkflow.sdk.event_data_filter import EventDataFilter
-from serverlessworkflow.sdk.tobedone.hydrate import ComplexTypeOf, ArrayTypeOf, HydratableParameter, SimpleTypeOf, \
-    UnionTypeOf
+from serverlessworkflow.sdk.hydration import ComplexTypeOf, ArrayTypeOf, HydratableParameter, SimpleTypeOf, \
+    UnionTypeOf, Fields
 from serverlessworkflow.sdk.metadata import Metadata
 from serverlessworkflow.sdk.state import State
 from serverlessworkflow.sdk.state_data_filter import StateDataFilter

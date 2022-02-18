@@ -1,9 +1,8 @@
 import copy
 
 from serverlessworkflow.sdk.action import Action
-from serverlessworkflow.sdk.tobedone.class_properties import Fields
 from serverlessworkflow.sdk.event_data_filter import EventDataFilter
-from serverlessworkflow.sdk.tobedone.hydrate import HydratableParameter, ArrayTypeOf, ComplexTypeOf
+from serverlessworkflow.sdk.hydration import HydratableParameter, ArrayTypeOf, ComplexTypeOf, Fields
 
 
 class OnEvents:
