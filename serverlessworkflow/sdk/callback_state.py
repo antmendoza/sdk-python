@@ -70,9 +70,11 @@ class CallbackState(State):
             return HydratableParameter(value=p_value).hydrateAs(ArrayTypeOf(Error))
 
         if p_key == 'transition':
-            return HydratableParameter(value=p_value).hydrateAs(UnionTypeOf(SimpleTypeOf(str), ComplexTypeOf(Transition)))
+            return HydratableParameter(value=p_value).hydrateAs(UnionTypeOf([SimpleTypeOf(str),
+                                                                             ComplexTypeOf(Transition)]))
 
         if p_key == 'end':
-            return HydratableParameter(value=p_value).hydrateAs(UnionTypeOf(SimpleTypeOf(bool), ComplexTypeOf(End)))
+            return HydratableParameter(value=p_value).hydrateAs(UnionTypeOf([SimpleTypeOf(bool),
+                                                                            ComplexTypeOf(End)]))
 
         return copy.deepcopy(p_value)
