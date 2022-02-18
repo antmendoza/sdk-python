@@ -7,17 +7,18 @@ from serverlessworkflow.sdk.action_data_filter import ActionDataFilter
 from serverlessworkflow.sdk.class_properties import Fields
 from serverlessworkflow.sdk.event_ref import EventRef
 from serverlessworkflow.sdk.function_ref import FunctionRef
+from serverlessworkflow.sdk.hydrate import ComplexType
 from serverlessworkflow.sdk.sleep import Sleep
 from serverlessworkflow.sdk.sub_flow_ref import SubFlowRef
 
 
-class HydrateParameter:
+class Parameter:
     def __init__(self, value: Any):
         self.complex_type = None
         self.simple_type = None
         self.value = value
 
-    def asUnion(self, simple_type, complex_type):
+    def hydrateAsUnionOf(self, simple_type, complex_type):
         self.simple_type = simple_type
         self.complex_type = complex_type
 
@@ -26,6 +27,8 @@ class HydrateParameter:
 
         return self.complex_type(**self.value) if type(self.value) is not self.complex_type else self.value
 
+    def hydrateAs(self, hydratable):
+        return hydratable.hydrate(self.value)
 
 
 class Action:
@@ -40,6 +43,7 @@ class Action:
     retryableErrors: [str] = None
     actionDataFilter: ActionDataFilter = None
     condition: str = None
+    jespin: str = None
 
     def __init__(self,
                  id: str = None,
@@ -53,29 +57,30 @@ class Action:
                  retryableErrors: [str] = None,
                  actionDataFilter: ActionDataFilter = None,
                  condition: str = None,
+                 eslavida: str = None,
                  **kwargs):
 
         Action.load_obj(self)
 
-        Fields(locals(), kwargs, Action.load_properties).set_to_object(self)
+        Fields(locals(), kwargs, Action.f_hydration).set_to_object(self)
 
     @staticmethod
-    def load_properties(parameter_key, parameter_value):
+    def f_hydration(p_key, p_value):
 
-        result = copy.deepcopy(parameter_value)
+        result = copy.deepcopy(p_value)
 
-        if parameter_key == 'functionRef':
+        if p_key == 'functionRef':
             ## TODO hydrateUnionType
-            result = HydrateParameter(value=parameter_value).asUnion(str, FunctionRef)
+            result = Parameter(value=p_value).hydrateAsUnionOf(str, FunctionRef)
             #property_value = Action.hydrate_union(property_value, str, FunctionRef)
-        if parameter_key == 'eventRef':
-            result = Action.hydrate_type(parameter_value, EventRef)
-        if parameter_key == 'subFlowRef':
-            result = Action.hydrate_union(parameter_value, str, SubFlowRef)
-        if parameter_key == 'sleep':
-            result = Action.hydrate_type(parameter_value, Sleep)
-        if parameter_key == 'actionDataFilter':
-            result = Action.hydrate_type(parameter_value, ActionDataFilter)
+        if p_key == 'eventRef':
+            result = Parameter(value=p_value).hydrateAs(ComplexType(EventRef))
+        if p_key == 'subFlowRef':
+            result = Action.hydrate_union(p_value, str, SubFlowRef)
+        if p_key == 'sleep':
+            result = Parameter(value=p_value).hydrateAs(ComplexType(Sleep))
+        if p_key == 'actionDataFilter':
+            result = Parameter(value=p_value).hydrateAs(ComplexType(ActionDataFilter))
         return result
 
     @staticmethod

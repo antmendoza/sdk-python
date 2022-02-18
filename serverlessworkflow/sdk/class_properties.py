@@ -10,29 +10,29 @@ class Field:
 
 
 class Fields:
-    def __init__(self, local_attributes, kwargs, load_properties):
-        self.attributes = Fields.load(local_attributes, kwargs, load_properties)
+    def __init__(self, local_attributes, kwargs, f_hydration):
+        self.fields = Fields.load(local_attributes, kwargs, f_hydration)
 
     def set_to_object(self, obj):
-        for attr in self.attributes:
-            obj.__setattr__(attr.key, attr.value)
+        for f in self.fields:
+            obj.__setattr__(f.key, f.value)
 
     @staticmethod
     def no_hydration(property_key, property_value):
         return property_value
 
     @staticmethod
-    def load(local_attributes, kwargs, load_properties):
+    def load(fields, kwargs, f_hydration):
 
         _attributes: [Field] = []
-        local: str
-        for local in list(local_attributes):
-            if local in ["self", "kwargs"]:
+        key: str
+        for key in list(fields):
+            if key in ["self", "kwargs"]:
                 continue
-            if local.startswith("_"):
+            if key.startswith("_"):
                 continue
-            final_value = local_attributes.get(local)
-            initial_value = local_attributes.get(local)
+            final_value = fields.get(key)
+            initial_value = fields.get(key)
 
             if final_value == "true":
                 final_value = True
@@ -40,10 +40,10 @@ class Fields:
             if final_value is None:
                 continue
 
-            final_value = load_properties(local, final_value)
+            final_value = f_hydration(key, final_value)
 
             if final_value is not None:
-                key_ = local.replace("_", "")
+                key_ = key.replace("_", "")
                 # self.__setattr__(key_, final_value)
                 _attributes.append(Field(key_, final_value))
 
@@ -55,7 +55,7 @@ class Fields:
             if final_value is None:
                 continue
 
-            final_value = load_properties(k, final_value)
+            final_value = f_hydration(k, final_value)
 
             if final_value is not None:
                 key_ = k.replace("_", "")
