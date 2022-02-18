@@ -1,5 +1,5 @@
 from serverlessworkflow.sdk.class_properties import Fields
-from serverlessworkflow.sdk.tobedone.produce_event_def import ProduceEventDef
+from serverlessworkflow.sdk.produce_event_def import ProduceEventDef
 
 
 class Transition:

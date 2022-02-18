@@ -9,7 +9,7 @@ from serverlessworkflow.sdk.error import Error
 from serverlessworkflow.sdk.metadata import Metadata
 from serverlessworkflow.sdk.tobedone.hydrate import HydratableParameter, UnionTypeOf, SimpleTypeOf, ComplexTypeOf, \
     ArrayTypeOf
-from serverlessworkflow.sdk.tobedone.parallel_state_timeout import ParallelStateTimeOut
+from serverlessworkflow.sdk.parallel_state_timeout import ParallelStateTimeOut
 from serverlessworkflow.sdk.tobedone.state import State
 from serverlessworkflow.sdk.tobedone.state_data_filter import StateDataFilter
 from serverlessworkflow.sdk.tobedone.transition import Transition
