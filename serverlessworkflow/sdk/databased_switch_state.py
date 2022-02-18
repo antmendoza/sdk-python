@@ -11,7 +11,7 @@ from serverlessworkflow.sdk.tobedone.hydrate import HydratableParameter, UnionTy
 from serverlessworkflow.sdk.metadata import Metadata
 from serverlessworkflow.sdk.state import State
 from serverlessworkflow.sdk.state_data_filter import StateDataFilter
-from serverlessworkflow.sdk.tobedone.transition_data_condition import TransitionDataCondition
+from serverlessworkflow.sdk.transition_data_condition import TransitionDataCondition
 
 
 class DataBasedSwitchState(State):

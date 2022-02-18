@@ -11,7 +11,7 @@ from serverlessworkflow.sdk.tobedone.hydrate import HydratableParameter, Complex
 from serverlessworkflow.sdk.metadata import Metadata
 from serverlessworkflow.sdk.state import State
 from serverlessworkflow.sdk.state_data_filter import StateDataFilter
-from serverlessworkflow.sdk.tobedone.transition_event_condition import TransitionEventCondition
+from serverlessworkflow.sdk.transition_event_condition import TransitionEventCondition
 
 
 class EventBasedSwitchState(State):
