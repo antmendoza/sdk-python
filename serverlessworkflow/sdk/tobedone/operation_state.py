@@ -4,18 +4,18 @@ from serverlessworkflow.sdk.action import Action
 from serverlessworkflow.sdk.class_properties import Fields
 from serverlessworkflow.sdk.end import End
 from serverlessworkflow.sdk.error import Error
-from serverlessworkflow.sdk.metadata import Metadata
-from serverlessworkflow.sdk.operation_state_timeout import OperationStateTimeOut
-from serverlessworkflow.sdk.state import State
-from serverlessworkflow.sdk.state_data_filter import StateDataFilter
-from serverlessworkflow.sdk.transition import Transition
+from serverlessworkflow.sdk.tobedone.metadata import Metadata
+from serverlessworkflow.sdk.tobedone.operation_state_timeout import OperationStateTimeOut
+from serverlessworkflow.sdk.tobedone.state import State
+from serverlessworkflow.sdk.tobedone.state_data_filter import StateDataFilter
+from serverlessworkflow.sdk.tobedone.transition import Transition
 
 
 class OperationState(State):
     id: str = None
     name: str = None
     type: str = None
-    end: (str | End) = None
+    end: (bool | End) = None
     stateDataFilter: StateDataFilter = None
     actionMode: str = None
     actions: [Action] = None
@@ -39,7 +39,7 @@ class OperationState(State):
                  compensatedBy: str = None,
                  usedForCompensation: bool = None,
                  metadata: Metadata = None,
-                 end: (str | End) = None,
+                 end: (bool | End) = None,
                  **kwargs):
         Fields(locals(), kwargs, OperationState.load_properties).set_to_object(self)
 

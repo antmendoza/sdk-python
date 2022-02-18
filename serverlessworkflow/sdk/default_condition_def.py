@@ -4,17 +4,17 @@ import copy
 
 from serverlessworkflow.sdk.class_properties import Fields
 from serverlessworkflow.sdk.end import End
-from serverlessworkflow.sdk.hydrate import UnionTypeOf, SimpleTypeOf, ComplexTypeOf, HydratableParameter
-from serverlessworkflow.sdk.transition import Transition
+from serverlessworkflow.sdk.tobedone.hydrate import UnionTypeOf, SimpleTypeOf, ComplexTypeOf, HydratableParameter
+from serverlessworkflow.sdk.tobedone.transition import Transition
 
 
 class DefaultConditionDef:
     transition: (str | Transition) = None
-    end: (str | End) = None
+    end: (bool | End) = None
 
     def __init__(self,
                  transition: (str | Transition) = None,
-                 end: (str | End) = None,
+                 end: (bool | End) = None,
                  **kwargs):
         Fields(locals(), kwargs, DefaultConditionDef.f_hydration).set_to_object(self)
 
@@ -25,8 +25,5 @@ class DefaultConditionDef:
             return HydratableParameter(value=p_value).hydrateAs(UnionTypeOf([SimpleTypeOf(str),
                                                                              ComplexTypeOf(Transition)]))
 
-        if p_key == 'end':
-            return HydratableParameter(value=p_value).hydrateAs(UnionTypeOf([SimpleTypeOf(str),
-                                                                             ComplexTypeOf(End)]))
-
+       º
         return copy.deepcopy(p_value)

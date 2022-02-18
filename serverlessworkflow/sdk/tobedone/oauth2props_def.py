@@ -1,18 +1,10 @@
-from enum import Enum
-
 from serverlessworkflow.sdk.class_properties import Fields
-from serverlessworkflow.sdk.metadata import Metadata
-
-
-class Oauth2PropsDefGrantType(Enum):
-    password = "password"
-    clientCredentials = "clientCredentials"
-    tokenExchange = "tokenExchange"
+from serverlessworkflow.sdk.tobedone.metadata import Metadata
 
 
 class Oauth2PropsDef:
     authority: str = None
-    grantType: Oauth2PropsDefGrantType = None
+    grantType: str = None
     clientId: str = None
     clientSecret: str = None
     scopes: [str] = None
@@ -26,7 +18,7 @@ class Oauth2PropsDef:
 
     def __init__(self,
                  authority: str = None,
-                 grantType: Oauth2PropsDefGrantType = None,
+                 grantType: str = None,
                  clientId: str = None,
                  clientSecret: str = None,
                  scopes: [str] = None,

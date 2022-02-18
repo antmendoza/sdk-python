@@ -1,8 +1,8 @@
 from serverlessworkflow.sdk.class_properties import Fields
-from serverlessworkflow.sdk.state_exec_timeout import StateExecTimeOut
+from serverlessworkflow.sdk.tobedone.state_exec_timeout import StateExecTimeOut
 
 
-class ForEachStateTimeOut:
+class OperationStateTimeOut:
     stateExecTimeOut: StateExecTimeOut = None
     actionExecTimeOut: str = None  # ActionExecTimeOut
 

@@ -3,7 +3,7 @@ import json
 import requests
 from jsonschema.validators import validate
 
-from serverlessworkflow.sdk.workflow import Workflow
+from serverlessworkflow.sdk.tobedone.workflow import Workflow
 
 
 class WorkflowValidator:

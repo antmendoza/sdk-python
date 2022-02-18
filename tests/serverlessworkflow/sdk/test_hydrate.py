@@ -1,6 +1,6 @@
 import unittest
 
-from serverlessworkflow.sdk.hydrate import ArrayTypeOf, ComplexTypeOf, UnionTypeOf, SimpleTypeOf
+from serverlessworkflow.sdk.tobedone.hydrate import ArrayTypeOf, ComplexTypeOf, UnionTypeOf, SimpleTypeOf
 
 
 class AnyClass:
@@ -26,5 +26,9 @@ class TestHydrateUnionOfType(unittest.TestCase):
         result_string = UnionTypeOf([SimpleTypeOf(str), ComplexTypeOf(AnyClass)]).hydrate("anyValue")
         self.assertTrue(isinstance(result_string, str))
 
-        result_class = UnionTypeOf([SimpleTypeOf(str), ComplexTypeOf(AnyClass)]).hydrate({})
-        self.assertTrue(isinstance(result_class, AnyClass))
+        result_object = UnionTypeOf([SimpleTypeOf(str), ComplexTypeOf(AnyClass)]).hydrate({})
+        self.assertTrue(isinstance(result_object, AnyClass))
+
+        result_array = UnionTypeOf([SimpleTypeOf(str), ArrayTypeOf(AnyClass)]).hydrate([{}, {}])
+        self.assertTrue(isinstance(result_array, list))
+        self.assertTrue(isinstance(result_array[0], AnyClass))

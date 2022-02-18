@@ -1,5 +1,5 @@
 from serverlessworkflow.sdk.class_properties import Fields
-from serverlessworkflow.sdk.metadata import Metadata
+from serverlessworkflow.sdk.tobedone.metadata import Metadata
 
 
 class BasicPropsDef:

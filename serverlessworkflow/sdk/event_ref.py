@@ -1,9 +1,10 @@
 from __future__ import annotations
 
+import copy
 from typing import Dict
 
 from serverlessworkflow.sdk.class_properties import Fields
-
+from serverlessworkflow.sdk.tobedone.hydrate import HydratableParameter, ComplexTypeOf, UnionTypeOf, SimpleTypeOf
 
 
 class EventRef:
@@ -21,4 +22,16 @@ class EventRef:
                  contextAttributes: Dict[str, str] = None,
                  invoke: str = None,
                  **kwargs):
-        Fields(locals(), kwargs, Fields.no_hydration).set_to_object(self)
+
+        Fields(locals(), kwargs, EventRef.f_hydration).set_to_object(self)
+
+    @staticmethod
+    def f_hydration(p_key, p_value):
+
+        if p_key == 'data':
+            return HydratableParameter(value=p_value).hydrateAs(UnionTypeOf([SimpleTypeOf(str), ComplexTypeOf(Dict)]))
+
+        if p_key == 'contextAttributes':
+            return HydratableParameter(value=p_value).hydrateAs(ComplexTypeOf(Dict))
+
+        return copy.deepcopy(p_value)

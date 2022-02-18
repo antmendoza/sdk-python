@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from serverlessworkflow.sdk.class_properties import Fields
-from serverlessworkflow.sdk.schedule import Schedule
+from serverlessworkflow.sdk.tobedone.schedule import Schedule
 
 
 class StartDef:

@@ -8,11 +8,11 @@ from serverlessworkflow.sdk.class_properties import Fields
 from serverlessworkflow.sdk.end import End
 from serverlessworkflow.sdk.error import Error
 from serverlessworkflow.sdk.event_data_filter import EventDataFilter
-from serverlessworkflow.sdk.hydrate import ComplexTypeOf, ArrayTypeOf, HydratableParameter, SimpleTypeOf, UnionTypeOf
-from serverlessworkflow.sdk.metadata import Metadata
-from serverlessworkflow.sdk.state import State
-from serverlessworkflow.sdk.state_data_filter import StateDataFilter
-from serverlessworkflow.sdk.transition import Transition
+from serverlessworkflow.sdk.tobedone.hydrate import ComplexTypeOf, ArrayTypeOf, HydratableParameter, SimpleTypeOf, UnionTypeOf
+from serverlessworkflow.sdk.tobedone.metadata import Metadata
+from serverlessworkflow.sdk.tobedone.state import State
+from serverlessworkflow.sdk.tobedone.state_data_filter import StateDataFilter
+from serverlessworkflow.sdk.tobedone.transition import Transition
 
 
 class CallbackState(State):
@@ -26,7 +26,7 @@ class CallbackState(State):
     stateDataFilter: StateDataFilter = None
     onErrors: [Error] = None
     transition: (str | Transition) = None
-    end: (str | End) = None
+    end: (bool | End) = None
     compensatedBy: str = None
     usedForCompensation: bool = None
     metadata: Metadata = None
@@ -42,7 +42,7 @@ class CallbackState(State):
                  stateDataFilter: StateDataFilter = None,
                  onErrors: [Error] = None,
                  transition: (str | Transition) = None,
-                 end: (str | End) = None,
+                 end: (bool | End) = None,
                  compensatedBy: str = None,
                  usedForCompensation: bool = None,
                  metadata: Metadata = None,

@@ -4,21 +4,21 @@ import copy
 
 from serverlessworkflow.sdk.class_properties import Fields
 from serverlessworkflow.sdk.end import End
-from serverlessworkflow.sdk.hydrate import HydratableParameter, ArrayTypeOf, SimpleTypeOf, ComplexTypeOf, UnionTypeOf
-from serverlessworkflow.sdk.transition import Transition
+from serverlessworkflow.sdk.tobedone.hydrate import HydratableParameter, ArrayTypeOf, SimpleTypeOf, ComplexTypeOf, UnionTypeOf
+from serverlessworkflow.sdk.tobedone.transition import Transition
 
 
 class Error:
     errorRef: str = None
     errorRefs: [str] = None
     transition: (str | Transition) = None
-    end: (str | End) = None
+    end: (bool | End) = None
 
     def __init__(self,
                  errorRef: str = None,
                  errorRefs: [str] = None,
                  transition: (str | Transition) = None,
-                 end: (str | End) = None,
+                 end: (bool | End) = None,
                  **kwargs):
 
         Fields(locals(), kwargs, Error.f_hydration).set_to_object(self)

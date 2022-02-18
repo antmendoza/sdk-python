@@ -9,15 +9,15 @@ from serverlessworkflow.sdk.auth_def import AuthDef
 from serverlessworkflow.sdk.class_properties import Fields
 from serverlessworkflow.sdk.error_def import ErrorDef
 from serverlessworkflow.sdk.event_def import EventDef
-from serverlessworkflow.sdk.foreach_state import ForEachState
-from serverlessworkflow.sdk.function import Function
-from serverlessworkflow.sdk.inject_state import InjectState
-from serverlessworkflow.sdk.metadata import Metadata
-from serverlessworkflow.sdk.operation_state import OperationState
-from serverlessworkflow.sdk.retry_def import RetryDef
-from serverlessworkflow.sdk.start_def import StartDef
-from serverlessworkflow.sdk.state import State
-from serverlessworkflow.sdk.workflow_time_out import WorkflowTimeOut
+from serverlessworkflow.sdk.tobedone.foreach_state import ForEachState
+from serverlessworkflow.sdk.tobedone.function import Function
+from serverlessworkflow.sdk.tobedone.inject_state import InjectState
+from serverlessworkflow.sdk.tobedone.metadata import Metadata
+from serverlessworkflow.sdk.tobedone.operation_state import OperationState
+from serverlessworkflow.sdk.tobedone.retry_def import RetryDef
+from serverlessworkflow.sdk.tobedone.start_def import StartDef
+from serverlessworkflow.sdk.tobedone.state import State
+from serverlessworkflow.sdk.tobedone.workflow_time_out import WorkflowTimeOut
 
 
 class DataInputSchema:

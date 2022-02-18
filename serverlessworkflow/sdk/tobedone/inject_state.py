@@ -4,18 +4,18 @@ from typing import Dict
 
 from serverlessworkflow.sdk.class_properties import Fields
 from serverlessworkflow.sdk.end import End
-from serverlessworkflow.sdk.inject_state_timeout import InjectStateTimeOut
-from serverlessworkflow.sdk.metadata import Metadata
-from serverlessworkflow.sdk.state import State
-from serverlessworkflow.sdk.state_data_filter import StateDataFilter
-from serverlessworkflow.sdk.transition import Transition
+from serverlessworkflow.sdk.tobedone.inject_state_timeout import InjectStateTimeOut
+from serverlessworkflow.sdk.tobedone.metadata import Metadata
+from serverlessworkflow.sdk.tobedone.state import State
+from serverlessworkflow.sdk.tobedone.state_data_filter import StateDataFilter
+from serverlessworkflow.sdk.tobedone.transition import Transition
 
 
 class InjectState(State):
     id: str = None
     name: str = None
     type: str = None
-    end: (str | End) = None
+    end: (bool | End) = None
     data: (str | Dict) = None
     timeouts: InjectStateTimeOut = None
     stateDataFilter: StateDataFilter = None
@@ -28,7 +28,7 @@ class InjectState(State):
                  id: str = None,
                  name: str = None,
                  type: str = None,
-                 end: (str | End) = None,
+                 end: (bool | End) = None,
                  data: (str | Dict) = None,
                  timeouts: InjectStateTimeOut = None,
                  stateDataFilter: StateDataFilter = None,

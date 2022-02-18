@@ -1,33 +1,23 @@
 from __future__ import annotations
 
-from enum import Enum
-
-from serverlessworkflow.sdk.branch import Branch
 from serverlessworkflow.sdk.class_properties import Fields
 from serverlessworkflow.sdk.end import End
 from serverlessworkflow.sdk.error import Error
-from serverlessworkflow.sdk.metadata import Metadata
-from serverlessworkflow.sdk.parallel_state_timeout import ParallelStateTimeOut
-from serverlessworkflow.sdk.state import State
-from serverlessworkflow.sdk.state_data_filter import StateDataFilter
-from serverlessworkflow.sdk.transition import Transition
+from serverlessworkflow.sdk.tobedone.metadata import Metadata
+from serverlessworkflow.sdk.tobedone.sleep_state_timeout import SleepStateTimeOut
+from serverlessworkflow.sdk.tobedone.state import State
+from serverlessworkflow.sdk.tobedone.state_data_filter import StateDataFilter
+from serverlessworkflow.sdk.tobedone.transition import Transition
 
 
-class ParallelStateCompletionType(Enum):
-    allOf = "allOf"
-    atLeast = "atLeast"
-
-
-class ParallelState(State):
+class SleepState(State):
     id: str = None
     name: str = None
     type: str = None
-    end: (str | End) = None
+    end: (bool | End) = None
     stateDataFilter: StateDataFilter = None
-    timeouts: ParallelStateTimeOut = None
-    branches: [Branch] = None
-    completionType: ParallelStateCompletionType = None
-    numCompleted: (int | str) = None
+    duration: str = None
+    timeouts: SleepStateTimeOut = None
     onErrors: [Error] = None
     transition: (str | Transition) = None
     compensatedBy: str = None
@@ -38,12 +28,10 @@ class ParallelState(State):
                  id: str = None,
                  name: str = None,
                  type: str = None,
-                 end: (str | End) = None,
+                 end: (bool | End) = None,
                  stateDataFilter: StateDataFilter = None,
-                 timeouts: ParallelStateTimeOut = None,
-                 branches: [Branch] = None,
-                 completionType: ParallelStateCompletionType = None,
-                 numCompleted: (int | str) = None,
+                 duration: str = None,
+                 timeouts: SleepStateTimeOut = None,
                  onErrors: [Error] = None,
                  transition: (str | Transition) = None,
                  compensatedBy: str = None,

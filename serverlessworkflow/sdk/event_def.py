@@ -1,10 +1,12 @@
 from __future__ import annotations
 
+import copy
 from enum import Enum
 
 from serverlessworkflow.sdk.class_properties import Fields
 from serverlessworkflow.sdk.correlation_def import CorrelationDef
-from serverlessworkflow.sdk.metadata import Metadata
+from serverlessworkflow.sdk.tobedone.hydrate import HydratableParameter, UnionTypeOf, ArrayTypeOf, ComplexTypeOf
+from serverlessworkflow.sdk.tobedone.metadata import Metadata
 
 
 class Kind(Enum):
@@ -30,4 +32,12 @@ class EventDef:
                  dataOnly: bool = None,
                  metadata: Metadata = None,
                  **kwargs):
-        Fields(locals(), kwargs, Fields.no_hydration).set_to_object(self)
+
+        Fields(locals(), kwargs, EventDef.f_hydration).set_to_object(self)
+
+    @staticmethod
+    def f_hydration(p_key, p_value):
+        if p_key == 'correlation':
+            return HydratableParameter(value=p_value).hydrateAs(UnionTypeOf([ComplexTypeOf(CorrelationDef),
+                                                                             ArrayTypeOf(CorrelationDef)]))
+        return copy.deepcopy(p_value)

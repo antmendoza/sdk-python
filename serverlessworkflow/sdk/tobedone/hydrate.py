@@ -54,5 +54,5 @@ class HydratableParameter:
         self.simple_type = None
         self.value = value
 
-    def hydrateAs(self, hydratable):
+    def hydrateAs(self, hydratable: HydratableType):
         return hydratable.hydrate(self.value)
