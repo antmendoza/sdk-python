@@ -33,7 +33,7 @@ class SimpleType(HydratableType):
             return value
 
 
-class UnionOfType(HydratableType):
+class UnionTypeOf(HydratableType):
     types: [HydratableType]
 
     def __init__(self, types: [HydratableType]):

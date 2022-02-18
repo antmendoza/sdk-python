@@ -6,7 +6,7 @@ from serverlessworkflow.sdk.action_data_filter import ActionDataFilter
 from serverlessworkflow.sdk.class_properties import Fields
 from serverlessworkflow.sdk.event_ref import EventRef
 from serverlessworkflow.sdk.function_ref import FunctionRef
-from serverlessworkflow.sdk.hydrate import ComplexType, UnionOfType, SimpleType, HydratableParameter
+from serverlessworkflow.sdk.hydrate import ComplexType, UnionTypeOf, SimpleType, HydratableParameter
 from serverlessworkflow.sdk.sleep import Sleep
 from serverlessworkflow.sdk.sub_flow_ref import SubFlowRef
 
@@ -47,11 +47,11 @@ class Action:
 
         parameter = HydratableParameter(value=p_value)
         if p_key == 'functionRef':
-            return parameter.hydrateAs(UnionOfType([SimpleType(str), ComplexType(FunctionRef)]))
+            return parameter.hydrateAs(UnionTypeOf([SimpleType(str), ComplexType(FunctionRef)]))
         if p_key == 'eventRef':
             return parameter.hydrateAs(ComplexType(EventRef))
         if p_key == 'subFlowRef':
-            return parameter.hydrateAs(UnionOfType([SimpleType(str), ComplexType(SubFlowRef)]))
+            return parameter.hydrateAs(UnionTypeOf([SimpleType(str), ComplexType(SubFlowRef)]))
         if p_key == 'sleep':
             return parameter.hydrateAs(ComplexType(Sleep))
         if p_key == 'actionDataFilter':
