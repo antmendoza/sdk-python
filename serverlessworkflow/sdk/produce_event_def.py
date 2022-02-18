@@ -17,7 +17,7 @@ class ProduceEventDef:
                  contextAttributes: dict[str, str] = None,
                  **kwargs):
 
-        Fields(locals(), kwargs, Fields.no_hydration).set_to_object(self)
+        Fields(locals(), kwargs, ProduceEventDef.f_hydration).set_to_object(self)
 
     @staticmethod
     def f_hydration(p_key, p_value):

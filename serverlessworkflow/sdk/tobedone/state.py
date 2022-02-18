@@ -8,7 +8,7 @@ class State:
 
     def __init__(self, type: str = None,
                  **kwargs):
-        Fields(locals(), kwargs, Fields.no_hydration).set_to_object(self)
+        Fields(locals(), kwargs, Fields.default_hydration).set_to_object(self)
 
     def is_event_state(self):
         return self.type == 'switch'

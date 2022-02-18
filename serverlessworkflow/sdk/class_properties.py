@@ -18,7 +18,7 @@ class Fields:
             obj.__setattr__(f.key, f.value)
 
     @staticmethod
-    def no_hydration(property_key, property_value):
+    def default_hydration(property_key, property_value):
         return property_value
 
     @staticmethod

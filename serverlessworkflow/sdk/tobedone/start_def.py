@@ -12,4 +12,4 @@ class StartDef:
                  stateName: str = None,
                  schedule: (str | Schedule) = None,
                  **kwargs):
-        Fields(locals(), kwargs, Fields.no_hydration).set_to_object(self)
+        Fields(locals(), kwargs, Fields.default_hydration).set_to_object(self)

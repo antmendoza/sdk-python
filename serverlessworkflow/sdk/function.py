@@ -16,4 +16,4 @@ class Function:
                  authRef: str = None,
                  metadata: Metadata = None,
                  **kwargs):
-        Fields(locals(), kwargs, Fields.no_hydration).set_to_object(self)
+        Fields(locals(), kwargs, Fields.default_hydration).set_to_object(self)
