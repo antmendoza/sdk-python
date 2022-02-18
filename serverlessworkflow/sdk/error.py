@@ -34,7 +34,7 @@ class Error:
                                                                              ComplexTypeOf(Transition)]))
 
         if p_key == 'end':
-            return HydratableParameter(value=p_value).hydrateAs(UnionTypeOf([SimpleTypeOf(str),
+            return HydratableParameter(value=p_value).hydrateAs(UnionTypeOf([SimpleTypeOf(bool),
                                                                              ComplexTypeOf(End)]))
 
         return copy.deepcopy(p_value)

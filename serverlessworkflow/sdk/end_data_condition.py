@@ -27,6 +27,6 @@ class EndDataCondition:
     @staticmethod
     def f_hydration(p_key, p_value):
         if p_key == 'end':
-            return HydratableParameter(value=p_value).hydrateAs(UnionTypeOf([SimpleTypeOf(str),
+            return HydratableParameter(value=p_value).hydrateAs(UnionTypeOf([SimpleTypeOf(bool),
                                                                              ComplexTypeOf(End)]))
         return copy.deepcopy(p_value)
