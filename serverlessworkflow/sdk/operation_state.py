@@ -50,8 +50,6 @@ class OperationState(State):
     @staticmethod
     def f_hydration(p_key, p_value):
 
-        end: (bool | End) = None,
-
         if p_key == 'stateDataFilter':
             return HydratableParameter(value=p_value).hydrateAs(ComplexTypeOf(StateDataFilter))
 
