@@ -3,7 +3,6 @@ from __future__ import annotations
 from serverlessworkflow.sdk.action import Action
 from serverlessworkflow.sdk.class_properties import Fields
 from serverlessworkflow.sdk.end import End
-from serverlessworkflow.sdk.enums import ActionMode
 from serverlessworkflow.sdk.error import Error
 from serverlessworkflow.sdk.metadata import Metadata
 from serverlessworkflow.sdk.operation_state_timeout import OperationStateTimeOut
@@ -18,7 +17,7 @@ class OperationState(State):
     type: str = None
     end: (str | End) = None
     stateDataFilter: StateDataFilter = None
-    actionMode: ActionMode = None
+    actionMode: str = None
     actions: [Action] = None
     timeouts: OperationStateTimeOut = None
     onErrors: [Error] = None
@@ -32,7 +31,7 @@ class OperationState(State):
                  name: str = None,
                  type: str = None,
                  stateDataFilter: StateDataFilter = None,
-                 actionMode: ActionMode = None,
+                 actionMode: str = None,
                  actions: [Action] = None,
                  timeouts: OperationStateTimeOut = None,
                  onErrors: [Error] = None,

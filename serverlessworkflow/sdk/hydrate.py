@@ -8,7 +8,7 @@ class HydratableType:
         pass
 
 
-class ArrayOfType(HydratableType):
+class ArrayTypeOf(HydratableType):
     def __init__(self, Type):
         self.Type = Type
 
@@ -16,7 +16,7 @@ class ArrayOfType(HydratableType):
         return [self.Type(**v) if type(v) is not self.Type else v for v in value]
 
 
-class ComplexType(HydratableType):
+class ComplexTypeOf(HydratableType):
     def __init__(self, Type):
         self.Type = Type
 
@@ -24,7 +24,7 @@ class ComplexType(HydratableType):
         return self.Type(**value) if type(value) is not self.Type else value
 
 
-class SimpleType(HydratableType):
+class SimpleTypeOf(HydratableType):
     def __init__(self, Type):
         self.Type = Type
 

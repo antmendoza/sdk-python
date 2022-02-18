@@ -8,7 +8,7 @@ from serverlessworkflow.sdk.class_properties import Fields
 from serverlessworkflow.sdk.end import End
 from serverlessworkflow.sdk.error import Error
 from serverlessworkflow.sdk.event_data_filter import EventDataFilter
-from serverlessworkflow.sdk.hydrate import ComplexType, ArrayOfType, HydratableParameter
+from serverlessworkflow.sdk.hydrate import ComplexTypeOf, ArrayTypeOf, HydratableParameter, SimpleTypeOf, UnionTypeOf
 from serverlessworkflow.sdk.metadata import Metadata
 from serverlessworkflow.sdk.state import State
 from serverlessworkflow.sdk.state_data_filter import StateDataFilter
@@ -52,21 +52,26 @@ class CallbackState(State):
 
     @staticmethod
     def f_hydration(p_key, p_value):
-        result = copy.deepcopy(p_value)
 
         if p_key == 'action':
-            result = HydratableParameter(value=p_value).hydrateAs(ComplexType(Action))
+            return HydratableParameter(value=p_value).hydrateAs(ComplexTypeOf(Action))
 
         if p_key == 'timeouts':
-            result = HydratableParameter(value=p_value).hydrateAs(ComplexType(CallbackStateTimeOut))
+            return HydratableParameter(value=p_value).hydrateAs(ComplexTypeOf(CallbackStateTimeOut))
 
         if p_key == 'eventDataFilter':
-            result = HydratableParameter(value=p_value).hydrateAs(ComplexType(EventDataFilter))
+            return HydratableParameter(value=p_value).hydrateAs(ComplexTypeOf(EventDataFilter))
 
         if p_key == 'stateDataFilter':
-            result = HydratableParameter(value=p_value).hydrateAs(ComplexType(StateDataFilter))
+            return HydratableParameter(value=p_value).hydrateAs(ComplexTypeOf(StateDataFilter))
 
         if p_key == 'onErrors':
-            result = HydratableParameter(value=p_value).hydrateAs(ArrayOfType(Error))
+            return HydratableParameter(value=p_value).hydrateAs(ArrayTypeOf(Error))
 
-        return result
+        if p_key == 'transition':
+            return HydratableParameter(value=p_value).hydrateAs(UnionTypeOf(SimpleTypeOf(str), ComplexTypeOf(Transition)))
+
+        if p_key == 'end':
+            return HydratableParameter(value=p_value).hydrateAs(UnionTypeOf(SimpleTypeOf(str), ComplexTypeOf(End)))
+
+        return copy.deepcopy(p_value)

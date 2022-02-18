@@ -1,7 +1,10 @@
 from __future__ import annotations
 
+import copy
+
 from serverlessworkflow.sdk.class_properties import Fields
 from serverlessworkflow.sdk.continue_as_def import ContinueAsDef
+from serverlessworkflow.sdk.hydrate import HydratableParameter, ArrayTypeOf, UnionTypeOf, SimpleTypeOf, ComplexTypeOf
 from serverlessworkflow.sdk.produce_event_def import ProduceEventDef
 
 
@@ -17,4 +20,16 @@ class End:
                  compensate: bool = None,
                  continueAs: (str | ContinueAsDef) = None,
                  **kwargs):
-        Fields(locals(), kwargs, Fields.no_hydration).set_to_object(self)
+        Fields(locals(), kwargs, End.f_hydration).set_to_object(self)
+
+    @staticmethod
+    def f_hydration(p_key, p_value):
+
+        if p_key == 'produceEvents':
+            return HydratableParameter(value=p_value).hydrateAs(ArrayTypeOf(ProduceEventDef))
+
+        if p_key == 'continueAs':
+            return HydratableParameter(value=p_value).hydrateAs(UnionTypeOf([SimpleTypeOf(str),
+                                                                             ComplexTypeOf(ContinueAsDef)]))
+
+        return copy.deepcopy(p_value)

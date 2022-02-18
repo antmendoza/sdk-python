@@ -6,7 +6,7 @@ from serverlessworkflow.sdk.action_data_filter import ActionDataFilter
 from serverlessworkflow.sdk.class_properties import Fields
 from serverlessworkflow.sdk.event_ref import EventRef
 from serverlessworkflow.sdk.function_ref import FunctionRef
-from serverlessworkflow.sdk.hydrate import ComplexType, UnionTypeOf, SimpleType, HydratableParameter
+from serverlessworkflow.sdk.hydrate import ComplexTypeOf, UnionTypeOf, SimpleTypeOf, HydratableParameter
 from serverlessworkflow.sdk.sleep import Sleep
 from serverlessworkflow.sdk.sub_flow_ref import SubFlowRef
 
@@ -47,14 +47,14 @@ class Action:
 
         parameter = HydratableParameter(value=p_value)
         if p_key == 'functionRef':
-            return parameter.hydrateAs(UnionTypeOf([SimpleType(str), ComplexType(FunctionRef)]))
+            return parameter.hydrateAs(UnionTypeOf([SimpleTypeOf(str), ComplexTypeOf(FunctionRef)]))
         if p_key == 'eventRef':
-            return parameter.hydrateAs(ComplexType(EventRef))
+            return parameter.hydrateAs(ComplexTypeOf(EventRef))
         if p_key == 'subFlowRef':
-            return parameter.hydrateAs(UnionTypeOf([SimpleType(str), ComplexType(SubFlowRef)]))
+            return parameter.hydrateAs(UnionTypeOf([SimpleTypeOf(str), ComplexTypeOf(SubFlowRef)]))
         if p_key == 'sleep':
-            return parameter.hydrateAs(ComplexType(Sleep))
+            return parameter.hydrateAs(ComplexTypeOf(Sleep))
         if p_key == 'actionDataFilter':
-            return parameter.hydrateAs(ComplexType(ActionDataFilter))
+            return parameter.hydrateAs(ComplexTypeOf(ActionDataFilter))
 
         return copy.deepcopy(p_value)

@@ -16,7 +16,7 @@ class InjectState(State):
     name: str = None
     type: str = None
     end: (str | End) = None
-    data: (str | Dict[str, Dict]) = None
+    data: (str | Dict) = None
     timeouts: InjectStateTimeOut = None
     stateDataFilter: StateDataFilter = None
     transition: (str | Transition) = None
@@ -29,7 +29,7 @@ class InjectState(State):
                  name: str = None,
                  type: str = None,
                  end: (str | End) = None,
-                 data: (str | Dict[str, Dict]) = None,
+                 data: (str | Dict) = None,
                  timeouts: InjectStateTimeOut = None,
                  stateDataFilter: StateDataFilter = None,
                  transition: (str | Transition) = None,
