@@ -3,7 +3,7 @@ from __future__ import annotations
 import copy
 from enum import Enum
 
-from serverlessworkflow.sdk.class_properties import Fields
+from serverlessworkflow.sdk.tobedone.class_properties import Fields
 from serverlessworkflow.sdk.correlation_def import CorrelationDef
 from serverlessworkflow.sdk.tobedone.hydrate import HydratableParameter, UnionTypeOf, ArrayTypeOf, ComplexTypeOf
 from serverlessworkflow.sdk.metadata import Metadata

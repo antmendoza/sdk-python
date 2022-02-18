@@ -1,4 +1,4 @@
-from serverlessworkflow.sdk.class_properties import Fields
+from serverlessworkflow.sdk.tobedone.class_properties import Fields
 
 
 class BranchTimeOut:

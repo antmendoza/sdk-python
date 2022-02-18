@@ -4,7 +4,7 @@ import copy
 
 from serverlessworkflow.sdk.basic_props_def import BasicPropsDef
 from serverlessworkflow.sdk.bearer_props_def import BearerPropsDef
-from serverlessworkflow.sdk.class_properties import Fields
+from serverlessworkflow.sdk.tobedone.class_properties import Fields
 from serverlessworkflow.sdk.oauth2props_def import Oauth2PropsDef
 
 

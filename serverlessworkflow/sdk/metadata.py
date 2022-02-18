@@ -1,6 +1,6 @@
 from typing import Dict
 
-from serverlessworkflow.sdk.class_properties import Fields
+from serverlessworkflow.sdk.tobedone.class_properties import Fields
 
 
 class Metadata(Dict[str, str]):

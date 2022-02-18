@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import copy
 
-from serverlessworkflow.sdk.class_properties import Fields
+from serverlessworkflow.sdk.tobedone.class_properties import Fields
 from serverlessworkflow.sdk.tobedone.hydrate import ComplexTypeOf, SimpleTypeOf, UnionTypeOf, HydratableParameter
 from serverlessworkflow.sdk.workflow_exec_timeout import WorkflowExecTimeOut
 

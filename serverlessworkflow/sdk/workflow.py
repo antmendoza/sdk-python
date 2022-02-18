@@ -6,7 +6,7 @@ import json
 import yaml
 
 from serverlessworkflow.sdk.auth_def import AuthDef
-from serverlessworkflow.sdk.class_properties import Fields
+from serverlessworkflow.sdk.tobedone.class_properties import Fields
 from serverlessworkflow.sdk.error_def import ErrorDef
 from serverlessworkflow.sdk.event_def import EventDef
 from serverlessworkflow.sdk.foreach_state import ForEachState

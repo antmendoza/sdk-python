@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import copy
 
-from serverlessworkflow.sdk.class_properties import Fields
+from serverlessworkflow.sdk.tobedone.class_properties import Fields
 from serverlessworkflow.sdk.default_condition_def import DefaultConditionDef
 from serverlessworkflow.sdk.end_event_condition import EndEventCondition
 from serverlessworkflow.sdk.error import Error
