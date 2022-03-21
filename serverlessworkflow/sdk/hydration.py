@@ -69,9 +69,8 @@ class Field:
 
 
 class Fields:
-    def __init__(self, local_attributes, kwargs, f_hydration, default_values = {}):
+    def __init__(self, local_attributes, kwargs, f_hydration, default_values={}):
         self.fields = Fields.load(local_attributes, kwargs, f_hydration, default_values)
-        self.default_values = default_values
 
     def set_to_object(self, obj):
         for f in self.fields:
@@ -82,10 +81,10 @@ class Fields:
         return property_value
 
     @staticmethod
-    def load(fields, kwargs, f_hydration, default_values = {}):
+    def load(fields, kwargs, f_hydration, default_values={}):
 
         _attributes: [Field] = []
-        _initial_values = {}
+        initial_values = {}
         k: str
         for k in list(fields):
             if k in ["self", "kwargs"]:
@@ -93,17 +92,14 @@ class Fields:
             if k.startswith("_"):
                 continue
             final_value = fields.get(k)
-            initial_value = fields.get(k)
 
             if final_value == "true":
                 final_value = True
 
-
+            initial_values[k] = final_value
 
             if final_value is None and default_values.get(k):
                 final_value = default_values.get(k)
-
-
 
             if final_value is None:
                 continue
@@ -116,16 +112,16 @@ class Fields:
                 _attributes.append(Field(key_, final_value))
 
 
-
-        _initial_values[k] = final_value
-        _attributes.append(Field("_initial_values", _initial_values))
-
+            _attributes.append(Field("initial_values", initial_values))
+            _attributes.append(Field("default_values", default_values))
 
         for k in kwargs.keys():
             final_value = kwargs[k]
             if final_value == "true":
                 final_value = True
 
+            initial_values[k] = final_value
+
             if final_value is None and default_values.get(k):
                 final_value = default_values.get(k)
 
@@ -139,5 +135,8 @@ class Fields:
                 # self.__setattr__(key_, final_value)
                 _attributes.append(Field(key_, final_value))
 
+
+            _attributes.append(Field("initial_values", initial_values))
+            _attributes.append(Field("default_values", default_values))
 
         return _attributes

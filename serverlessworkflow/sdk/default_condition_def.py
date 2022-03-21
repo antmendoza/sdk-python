@@ -5,10 +5,11 @@ import copy
 from serverlessworkflow.sdk.end import End
 from serverlessworkflow.sdk.hydration import UnionTypeOf, SimpleTypeOf, ComplexTypeOf, HydratableParameter, \
     Fields
+from serverlessworkflow.sdk.serializable import Serializable
 from serverlessworkflow.sdk.transition import Transition
 
 
-class DefaultConditionDef:
+class DefaultConditionDef(Serializable):
     transition: (str | Transition) = None
     end: (bool | End) = None
 
@@ -16,6 +17,7 @@ class DefaultConditionDef:
                  transition: (str | Transition) = None,
                  end: (bool | End) = None,
                  **kwargs):
+        Serializable.__init__(self)
         Fields(locals(), kwargs, DefaultConditionDef.f_hydration).set_to_object(self)
 
     @staticmethod

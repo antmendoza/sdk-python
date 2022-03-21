@@ -1,7 +1,8 @@
 from serverlessworkflow.sdk.hydration import Fields
+from serverlessworkflow.sdk.serializable import Serializable
 
 
-class StateExecTimeOut:
+class StateExecTimeOut(Serializable):
     single: str = None
     total: str = None
 
@@ -9,4 +10,5 @@ class StateExecTimeOut:
                  single: str = None,
                  total: str = None,
                  **kwargs):
+        Serializable.__init__(self)
         Fields(locals(), kwargs, Fields.default_hydration).set_to_object(self)

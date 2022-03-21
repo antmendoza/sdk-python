@@ -4,10 +4,11 @@ import copy
 
 from serverlessworkflow.sdk.hydration import ComplexTypeOf, SimpleTypeOf, UnionTypeOf, HydratableParameter, \
     Fields
+from serverlessworkflow.sdk.serializable import Serializable
 from serverlessworkflow.sdk.workflow_exec_timeout import WorkflowExecTimeOut
 
 
-class ContinueAsDef:
+class ContinueAsDef(Serializable):
     workflowId: str = None
     version: str = None
     data: (str | dict) = None
@@ -20,6 +21,7 @@ class ContinueAsDef:
                  workflowExecTimeOut: WorkflowExecTimeOut = None,
                  **kwargs):
 
+        Serializable.__init__(self)
         Fields(locals(), kwargs, ContinueAsDef.f_hydration).set_to_object(self)
 
     @staticmethod

@@ -1,7 +1,7 @@
 import copy
 
-from serverlessworkflow.sdk.serializable import Serializable
 from serverlessworkflow.sdk.hydration import ComplexTypeOf, HydratableParameter, Fields
+from serverlessworkflow.sdk.serializable import Serializable
 
 
 class FunctionRef(Serializable):
@@ -16,10 +16,8 @@ class FunctionRef(Serializable):
                  selectionSet: str = None,
                  invoke: str = None,
                  **kwargs):
-        Fields(locals(), kwargs, FunctionRef.f_hydration).set_to_object(self)
-
-
-
+        Serializable.__init__(self)
+        Fields(locals(), kwargs, FunctionRef.f_hydration, {}).set_to_object(self)
 
     @staticmethod
     def f_hydration(p_key, p_value):

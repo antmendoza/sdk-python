@@ -1,5 +1,5 @@
-from serverlessworkflow.sdk.serializable import Serializable
 from serverlessworkflow.sdk.hydration import Fields
+from serverlessworkflow.sdk.serializable import Serializable
 
 
 class ActionDataFilter(Serializable):
@@ -14,7 +14,5 @@ class ActionDataFilter(Serializable):
                  results: str = None,
                  toStateData: str = None,
                  **kwargs):
+        Serializable.__init__(self)
         Fields(locals(), kwargs, Fields.default_hydration).set_to_object(self)
-
-
-

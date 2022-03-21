@@ -9,12 +9,13 @@ from serverlessworkflow.sdk.hydration import HydratableParameter, UnionTypeOf, S
     ArrayTypeOf, Fields
 from serverlessworkflow.sdk.metadata import Metadata
 from serverlessworkflow.sdk.parallel_state_timeout import ParallelStateTimeOut
+from serverlessworkflow.sdk.serializable import Serializable
 from serverlessworkflow.sdk.state import State
 from serverlessworkflow.sdk.state_data_filter import StateDataFilter
 from serverlessworkflow.sdk.transition import Transition
 
 
-class ParallelState(State):
+class ParallelState(State, Serializable):
     id: str = None
     name: str = None
     type: str = None
@@ -46,6 +47,7 @@ class ParallelState(State):
                  usedForCompensation: bool = None,
                  metadata: Metadata = None,
                  **kwargs):
+        Serializable.__init__(self)
 
         Fields(locals(), kwargs, ParallelState.f_hydration).set_to_object(self)
 

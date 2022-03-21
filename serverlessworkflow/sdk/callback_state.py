@@ -10,12 +10,13 @@ from serverlessworkflow.sdk.event_data_filter import EventDataFilter
 from serverlessworkflow.sdk.hydration import ComplexTypeOf, ArrayTypeOf, HydratableParameter, SimpleTypeOf, \
     UnionTypeOf, Fields
 from serverlessworkflow.sdk.metadata import Metadata
+from serverlessworkflow.sdk.serializable import Serializable
 from serverlessworkflow.sdk.state import State
 from serverlessworkflow.sdk.state_data_filter import StateDataFilter
 from serverlessworkflow.sdk.transition import Transition
 
 
-class CallbackState(State):
+class CallbackState(State, Serializable):
     id: str = None
     name: str = None
     type: str = None
@@ -48,6 +49,7 @@ class CallbackState(State):
                  metadata: Metadata = None,
                  **kwargs):
 
+        Serializable.__init__(self)
         Fields(locals(), kwargs, Fields.f_hydration).set_to_object(self)
 
     @staticmethod

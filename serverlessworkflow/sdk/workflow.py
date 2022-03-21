@@ -6,7 +6,6 @@ import json
 import yaml
 
 from serverlessworkflow.sdk.auth_def import AuthDef
-from serverlessworkflow.sdk.serializable import Serializable
 from serverlessworkflow.sdk.callback_state import CallbackState
 from serverlessworkflow.sdk.databased_switch_state import DataBasedSwitchState
 from serverlessworkflow.sdk.error_def import ErrorDef
@@ -22,6 +21,7 @@ from serverlessworkflow.sdk.metadata import Metadata
 from serverlessworkflow.sdk.operation_state import OperationState
 from serverlessworkflow.sdk.parallel_state import ParallelState
 from serverlessworkflow.sdk.retry_def import RetryDef
+from serverlessworkflow.sdk.serializable import Serializable
 from serverlessworkflow.sdk.sleep_state import SleepState
 from serverlessworkflow.sdk.start_def import StartDef
 from serverlessworkflow.sdk.state import State
@@ -82,22 +82,23 @@ class Workflow(Serializable):
                  functions: (str | [Function]) = None
                  , **kwargs):
 
-        self._default_values = {"expressionLang": 'jq'}
+        Serializable.__init__(self)
+        #self.default_values = {"expressionLang": 'jq'}
 
-        Fields(locals(), kwargs, Workflow.f_hydration, self._default_values).set_to_object(self)
+        Fields(locals(), kwargs, Workflow.f_hydration, {"expressionLang": 'jq'}).set_to_object(self)
 
     def to_json(self) -> str:
 
-        selfcopy = self.serialize()
-        return json.dumps(selfcopy,
+        self_copy = self.serialize()
+        return json.dumps(self_copy,
                           default=lambda o: o.__dict__,
                           indent=4)
 
     def to_yaml(self):
 
-        selfcopy = self.serialize()
+        self_copy = self.serialize()
         yaml.emitter.Emitter.process_tag = lambda x: None
-        return yaml.dump(selfcopy,
+        return yaml.dump(self_copy,
                          sort_keys=False,
                          # , default_flow_style=False,
                          allow_unicode=True,

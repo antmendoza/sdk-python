@@ -3,13 +3,13 @@ from __future__ import annotations
 import copy
 
 from serverlessworkflow.sdk.action import Action
-from serverlessworkflow.sdk.serializable import Serializable
 from serverlessworkflow.sdk.end import End
 from serverlessworkflow.sdk.error import Error
 from serverlessworkflow.sdk.hydration import HydratableParameter, ComplexTypeOf, ArrayTypeOf, UnionTypeOf, \
     SimpleTypeOf, Fields
 from serverlessworkflow.sdk.metadata import Metadata
 from serverlessworkflow.sdk.operation_state_timeout import OperationStateTimeOut
+from serverlessworkflow.sdk.serializable import Serializable
 from serverlessworkflow.sdk.state import State
 from serverlessworkflow.sdk.state_data_filter import StateDataFilter
 from serverlessworkflow.sdk.transition import Transition
@@ -45,6 +45,8 @@ class OperationState(State, Serializable):
                  metadata: Metadata = None,
                  end: (bool | End) = None,
                  **kwargs):
+
+        Serializable.__init__(self)
         Fields(locals(), kwargs, OperationState.f_hydration).set_to_object(self)
 
     @staticmethod

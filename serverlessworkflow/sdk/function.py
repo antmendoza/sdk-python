@@ -1,6 +1,6 @@
-from serverlessworkflow.sdk.serializable import Serializable
 from serverlessworkflow.sdk.hydration import Fields
 from serverlessworkflow.sdk.metadata import Metadata
+from serverlessworkflow.sdk.serializable import Serializable
 
 
 class Function(Serializable):
@@ -17,4 +17,6 @@ class Function(Serializable):
                  authRef: str = None,
                  metadata: Metadata = None,
                  **kwargs):
+        Serializable.__init__(self)
+
         Fields(locals(), kwargs, Fields.default_hydration).set_to_object(self)

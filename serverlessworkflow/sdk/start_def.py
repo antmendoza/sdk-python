@@ -5,9 +5,10 @@ import copy
 from serverlessworkflow.sdk.hydration import SimpleTypeOf, ComplexTypeOf, UnionTypeOf, HydratableParameter, \
     Fields
 from serverlessworkflow.sdk.schedule import Schedule
+from serverlessworkflow.sdk.serializable import Serializable
 
 
-class StartDef:
+class StartDef(Serializable):
     stateName: str = None
     schedule: (str | Schedule) = None
 
@@ -15,6 +16,7 @@ class StartDef:
                  stateName: str = None,
                  schedule: (str | Schedule) = None,
                  **kwargs):
+        Serializable.__init__(self)
         Fields(locals(), kwargs, StartDef.f_hydration).set_to_object(self)
 
     @staticmethod

@@ -5,9 +5,10 @@ import copy
 from serverlessworkflow.sdk.cron_def import CronDef
 from serverlessworkflow.sdk.hydration import HydratableParameter, SimpleTypeOf, ComplexTypeOf, UnionTypeOf, \
     Fields
+from serverlessworkflow.sdk.serializable import Serializable
 
 
-class Schedule:
+class Schedule(Serializable):
     interval: str = None
     cron: (str | CronDef) = None
     timezone: str = None
@@ -17,6 +18,7 @@ class Schedule:
                  cron: (str | CronDef) = None,
                  timezone: str = None,
                  **kwargs):
+        Serializable.__init__(self)
         Fields(locals(), kwargs, Schedule.f_hydration).set_to_object(self)
 
     @staticmethod

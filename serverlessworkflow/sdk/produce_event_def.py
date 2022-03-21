@@ -4,9 +4,10 @@ import copy
 
 from serverlessworkflow.sdk.hydration import HydratableParameter, ComplexTypeOf, SimpleTypeOf, UnionTypeOf, \
     Fields
+from serverlessworkflow.sdk.serializable import Serializable
 
 
-class ProduceEventDef:
+class ProduceEventDef(Serializable):
     eventRef: str = None
     data: (str | dict) = None
     contextAttributes: dict[str, str] = None
@@ -17,6 +18,7 @@ class ProduceEventDef:
                  contextAttributes: dict[str, str] = None,
                  **kwargs):
 
+        Serializable.__init__(self)
         Fields(locals(), kwargs, ProduceEventDef.f_hydration).set_to_object(self)
 
     @staticmethod

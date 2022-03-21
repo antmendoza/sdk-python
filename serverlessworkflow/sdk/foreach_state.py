@@ -9,12 +9,13 @@ from serverlessworkflow.sdk.foreach_state_timeout import ForEachStateTimeOut
 from serverlessworkflow.sdk.hydration import SimpleTypeOf, ComplexTypeOf, UnionTypeOf, HydratableParameter, \
     ArrayTypeOf, Fields
 from serverlessworkflow.sdk.metadata import Metadata
+from serverlessworkflow.sdk.serializable import Serializable
 from serverlessworkflow.sdk.state import State
 from serverlessworkflow.sdk.state_data_filter import StateDataFilter
 from serverlessworkflow.sdk.transition import Transition
 
 
-class ForEachState(State):
+class ForEachState(State, Serializable):
     id: str = None
     name: str = None
     type: str = None
@@ -52,6 +53,7 @@ class ForEachState(State):
                  mode: str = None,
                  metadata: Metadata = None,
                  **kwargs):
+        Serializable.__init__(self)
         Fields(locals(), kwargs, ForEachState.f_hydration).set_to_object(self)
 
     @staticmethod

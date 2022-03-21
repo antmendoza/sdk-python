@@ -9,12 +9,13 @@ from serverlessworkflow.sdk.event_based_switch_state_timeout import EventBasedSw
 from serverlessworkflow.sdk.hydration import HydratableParameter, ComplexTypeOf, ArrayTypeOf, \
     Fields
 from serverlessworkflow.sdk.metadata import Metadata
+from serverlessworkflow.sdk.serializable import Serializable
 from serverlessworkflow.sdk.state import State
 from serverlessworkflow.sdk.state_data_filter import StateDataFilter
 from serverlessworkflow.sdk.transition_event_condition import TransitionEventCondition
 
 
-class EventBasedSwitchState(State):
+class EventBasedSwitchState(State, Serializable):
     id: str = None
     name: str = None
     type: str = None
@@ -40,6 +41,7 @@ class EventBasedSwitchState(State):
                  usedForCompensation: bool = None,
                  metadata: Metadata = None,
                  **kwargs):
+        Serializable.__init__(self)
         Fields(locals(), kwargs, EventBasedSwitchState.f_hydration).set_to_object(self)
 
     @staticmethod

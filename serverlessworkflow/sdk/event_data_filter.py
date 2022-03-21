@@ -1,7 +1,8 @@
 from serverlessworkflow.sdk.hydration import Fields
+from serverlessworkflow.sdk.serializable import Serializable
 
 
-class EventDataFilter:
+class EventDataFilter(Serializable):
     useData: bool = None
     data: str = None
     toStateData: str = None
@@ -11,4 +12,5 @@ class EventDataFilter:
                  data: str = None,
                  toStateData: str = None,
                  **kwargs):
+        Serializable.__init__(self)
         Fields(locals(), kwargs, Fields.default_hydration).set_to_object(self)

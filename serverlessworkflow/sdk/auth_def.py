@@ -6,9 +6,10 @@ from serverlessworkflow.sdk.basic_props_def import BasicPropsDef
 from serverlessworkflow.sdk.bearer_props_def import BearerPropsDef
 from serverlessworkflow.sdk.hydration import Fields
 from serverlessworkflow.sdk.oauth2props_def import Oauth2PropsDef
+from serverlessworkflow.sdk.serializable import Serializable
 
 
-class AuthDef:
+class AuthDef(Serializable):
     name: str = None
     scheme: str = None
     properties: (str | (BasicPropsDef | BearerPropsDef | Oauth2PropsDef)) = None
@@ -18,7 +19,8 @@ class AuthDef:
                  scheme: str = None,
                  properties: (str | (BasicPropsDef | BearerPropsDef | Oauth2PropsDef)) = None,
                  **kwargs):
-        Fields(locals(), kwargs, Fields.f_hydration).set_to_object(self)
+        Serializable.__init__(self)
+        Fields(locals(), kwargs, Fields.default_hydration).set_to_object(self)
 
     @staticmethod
     def f_hydration(p_key, p_value):
@@ -27,10 +29,10 @@ class AuthDef:
 
         if p_key == 'properties':
             if p_value["username"] and p_value["password"]:
-                return BasicPropsDef(p_value);
+                return BasicPropsDef(p_value)
             if p_value["token"]:
-                return BearerPropsDef(p_value);
+                return BearerPropsDef(p_value)
             if p_value["grantType"]:
-                return Oauth2PropsDef(p_value);
+                return Oauth2PropsDef(p_value)
 
         return result

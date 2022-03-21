@@ -1,10 +1,11 @@
 import copy
 
 from serverlessworkflow.sdk.hydration import ComplexTypeOf, HydratableParameter, Fields
+from serverlessworkflow.sdk.serializable import Serializable
 from serverlessworkflow.sdk.state_exec_timeout import StateExecTimeOut
 
 
-class OperationStateTimeOut:
+class OperationStateTimeOut(Serializable):
     stateExecTimeOut: StateExecTimeOut = None
     actionExecTimeOut: str = None  # ActionExecTimeOut
 
@@ -12,6 +13,7 @@ class OperationStateTimeOut:
                  stateExecTimeOut: StateExecTimeOut = None,
                  actionExecTimeOut: str = None,
                  **kwargs):
+        Serializable.__init__(self)
         Fields(locals(), kwargs, OperationStateTimeOut.f_hydration).set_to_object(self)
 
     @staticmethod

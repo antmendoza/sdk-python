@@ -3,9 +3,10 @@ import copy
 from serverlessworkflow.sdk.action import Action
 from serverlessworkflow.sdk.event_data_filter import EventDataFilter
 from serverlessworkflow.sdk.hydration import HydratableParameter, ArrayTypeOf, ComplexTypeOf, Fields
+from serverlessworkflow.sdk.serializable import Serializable
 
 
-class OnEvents:
+class OnEvents(Serializable):
     eventRefs: [str] = None
     actionMode: str = None
     actions: [Action] = None
@@ -17,6 +18,7 @@ class OnEvents:
                  actions: [Action] = None,
                  eventDataFilter: EventDataFilter = None,
                  **kwargs):
+        Serializable.__init__(self)
         Fields(locals(), kwargs, Fields.default_hydration).set_to_object(self)
 
     @staticmethod

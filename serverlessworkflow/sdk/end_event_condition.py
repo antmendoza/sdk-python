@@ -7,9 +7,10 @@ from serverlessworkflow.sdk.event_data_filter import EventDataFilter
 from serverlessworkflow.sdk.hydration import HydratableParameter, UnionTypeOf, ComplexTypeOf, SimpleTypeOf, \
     Fields
 from serverlessworkflow.sdk.metadata import Metadata
+from serverlessworkflow.sdk.serializable import Serializable
 
 
-class EndEventCondition:
+class EndEventCondition(Serializable):
     name: str = None
     eventRef: str = None
     end: (bool | End) = None
@@ -24,6 +25,7 @@ class EndEventCondition:
                  metadata: Metadata = None,
                  **kwargs):
 
+        Serializable.__init__(self)
         Fields(locals(), kwargs, EndEventCondition.f_hydration).set_to_object(self)
 
     @staticmethod

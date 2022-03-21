@@ -6,10 +6,11 @@ from serverlessworkflow.sdk.event_data_filter import EventDataFilter
 from serverlessworkflow.sdk.hydration import HydratableParameter, UnionTypeOf, SimpleTypeOf, ComplexTypeOf, \
     Fields
 from serverlessworkflow.sdk.metadata import Metadata
+from serverlessworkflow.sdk.serializable import Serializable
 from serverlessworkflow.sdk.transition import Transition
 
 
-class TransitionEventCondition:
+class TransitionEventCondition(Serializable):
     name: str = None
     eventRef: str = None
     transition: (str | Transition) = None
@@ -23,6 +24,7 @@ class TransitionEventCondition:
                  eventDataFilter: EventDataFilter = None,
                  metadata: Metadata = None,
                  **kwargs):
+        Serializable.__init__(self)
         Fields(locals(), kwargs, Fields.default_hydration).set_to_object(self)
 
     @staticmethod

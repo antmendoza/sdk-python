@@ -5,10 +5,11 @@ import copy
 from serverlessworkflow.sdk.end import End
 from serverlessworkflow.sdk.hydration import HydratableParameter, ArrayTypeOf, SimpleTypeOf, ComplexTypeOf, \
     UnionTypeOf, Fields
+from serverlessworkflow.sdk.serializable import Serializable
 from serverlessworkflow.sdk.transition import Transition
 
 
-class Error:
+class Error(Serializable):
     errorRef: str = None
     errorRefs: [str] = None
     transition: (str | Transition) = None
@@ -20,7 +21,7 @@ class Error:
                  transition: (str | Transition) = None,
                  end: (bool | End) = None,
                  **kwargs):
-
+        Serializable.__init__(self)
         Fields(locals(), kwargs, Error.f_hydration).set_to_object(self)
 
     @staticmethod

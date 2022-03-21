@@ -7,12 +7,13 @@ from serverlessworkflow.sdk.hydration import HydratableParameter, UnionTypeOf, S
     Fields
 from serverlessworkflow.sdk.inject_state_timeout import InjectStateTimeOut
 from serverlessworkflow.sdk.metadata import Metadata
+from serverlessworkflow.sdk.serializable import Serializable
 from serverlessworkflow.sdk.state import State
 from serverlessworkflow.sdk.state_data_filter import StateDataFilter
 from serverlessworkflow.sdk.transition import Transition
 
 
-class InjectState(State):
+class InjectState(State, Serializable):
     id: str = None
     name: str = None
     type: str = None
@@ -38,6 +39,7 @@ class InjectState(State):
                  usedForCompensation: bool = None,
                  metadata: Metadata = None,
                  **kwargs):
+        Serializable.__init__(self)
         Fields(locals(), kwargs, InjectState.f_hydration).set_to_object(self)
 
     @staticmethod
@@ -45,7 +47,7 @@ class InjectState(State):
 
         if p_key == 'end':
             return HydratableParameter(value=p_value).hydrateAs(UnionTypeOf([SimpleTypeOf(bool),
-                                                                            ComplexTypeOf(End)]))
+                                                                             ComplexTypeOf(End)]))
         if p_key == 'data':
             return HydratableParameter(value=p_value).hydrateAs(UnionTypeOf([SimpleTypeOf(str),
                                                                              ComplexTypeOf(dict)]))

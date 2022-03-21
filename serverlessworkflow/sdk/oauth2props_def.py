@@ -1,8 +1,9 @@
 from serverlessworkflow.sdk.hydration import Fields
 from serverlessworkflow.sdk.metadata import Metadata
+from serverlessworkflow.sdk.serializable import Serializable
 
 
-class Oauth2PropsDef:
+class Oauth2PropsDef(Serializable):
     authority: str = None
     grantType: str = None
     clientId: str = None
@@ -30,4 +31,5 @@ class Oauth2PropsDef:
                  requestedIssuer: str = None,
                  metadata: Metadata = None,
                  **kwargs):
+        Serializable.__init__(self)
         Fields(locals(), kwargs, Fields.default_hydration).set_to_object(self)

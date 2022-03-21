@@ -8,6 +8,7 @@ from serverlessworkflow.sdk.function import Function
 from serverlessworkflow.sdk.function_ref import FunctionRef
 from serverlessworkflow.sdk.operation_state import OperationState
 from serverlessworkflow.sdk.workflow import Workflow
+from serverlessworkflow.sdk.workflow_validator import WorkflowValidator
 
 
 class TestWorkflow(unittest.TestCase):
@@ -125,6 +126,7 @@ functions:
             with self.subTest(f"test_{example}"):
                 with open(examples_dir + "/" + example, "r") as swf_file:
                     workflow = Workflow.from_source(swf_file.read())
+                    print(workflow.to_json())
                     self.assertTrue(isinstance(workflow, Workflow))
 
     def test_instance_workflow_class(self):
@@ -145,6 +147,7 @@ functions:
     def assert_test_workflow_file(self, wf_file):
         with open(wf_file, "r") as swf_file:
             workflow = Workflow.from_source(swf_file.read())
+
 
             self.assertEqual("greeting", workflow.id)
             self.assertEqual("operation", workflow.states[0].type)

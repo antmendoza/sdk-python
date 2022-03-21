@@ -6,9 +6,10 @@ from serverlessworkflow.sdk.continue_as_def import ContinueAsDef
 from serverlessworkflow.sdk.hydration import HydratableParameter, ArrayTypeOf, UnionTypeOf, SimpleTypeOf, \
     ComplexTypeOf, Fields
 from serverlessworkflow.sdk.produce_event_def import ProduceEventDef
+from serverlessworkflow.sdk.serializable import Serializable
 
 
-class End:
+class End(Serializable):
     terminate: bool = None
     produceEvents: [ProduceEventDef] = None
     compensate: bool = None
@@ -20,6 +21,7 @@ class End:
                  compensate: bool = None,
                  continueAs: (str | ContinueAsDef) = None,
                  **kwargs):
+        Serializable.__init__(self)
         Fields(locals(), kwargs, End.f_hydration).set_to_object(self)
 
     @staticmethod

@@ -1,4 +1,3 @@
-import json
 import os
 import unittest
 from os import listdir
@@ -21,6 +20,18 @@ class TestWorkflowValidator(unittest.TestCase):
                 with open(examples_dir + "/" + example, "r") as swf_file:
                     workflow = Workflow.from_source(swf_file.read())
                     WorkflowValidator(workflow).validate()
+
+
+
+    def test_valid_wf(self):
+        wf_file = os.path.join(os.path.dirname(__file__), '../../examples', 'applicantrequest.json')
+        with open(wf_file, "r") as swf_file:
+
+
+            workflow = Workflow.from_source(swf_file.read())
+
+            WorkflowValidator(workflow).validate()
+
 
     def test_invalid_wf(self):
         wf_file = os.path.join(os.path.dirname(__file__), '../../examples', 'applicantrequest.json')
