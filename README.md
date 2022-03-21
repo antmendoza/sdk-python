@@ -30,7 +30,7 @@ python setup.py pytest
 
 ```
  workflow = Workflow(
-        id_="greeting",
+        id="greeting",
         name="Greeting Workflow",
         description="Greet Someone",
         version='1.0',

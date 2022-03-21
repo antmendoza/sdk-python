@@ -58,7 +58,7 @@ class Workflow(Serializable):
     states: [State] = None
 
     def __init__(self,
-                 id_: str = None,
+                 id: str = None,
                  key: str = None,
                  name: str = None,
                  version: str = None,

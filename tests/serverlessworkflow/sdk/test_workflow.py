@@ -12,7 +12,7 @@ from serverlessworkflow.sdk.workflow import Workflow
 
 class TestWorkflow(unittest.TestCase):
     workflow = Workflow(
-        id_="greeting",
+        id="greeting",
         name="Greeting Workflow",
         description="Greet Someone",
         version='1.0',

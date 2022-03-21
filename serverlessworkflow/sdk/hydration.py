@@ -91,6 +91,7 @@ class Fields:
                 continue
             if k.startswith("_"):
                 continue
+
             final_value = fields.get(k)
 
             if final_value == "true":
