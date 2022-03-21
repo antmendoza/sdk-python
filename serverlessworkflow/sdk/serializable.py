@@ -5,8 +5,8 @@ import traceback
 class Serializable:
 
     def __init__(self):
-        self.default_values = {}
-        self.initial_values = {}
+        self._default_values = {}
+        self._initial_values = {}
 
     def serialize(self):
 
@@ -26,14 +26,12 @@ class Serializable:
                 if isinstance(attribute_value, Serializable):
                     self_copy.__setattr__(k, attribute_value.serialize())
 
-            if hasattr(self_copy, 'default_values'):
-                for k in self_copy.default_values.keys():
-                    if self_copy.initial_values.get(k) is None:
-                        delattr(self_copy, k)
-                delattr(self_copy, 'default_values')
+            for k in self_copy._default_values.keys():
+                if self_copy._initial_values.get(k) is None:
+                    delattr(self_copy, k)
 
-            if hasattr(self_copy, 'initial_values'):
-                delattr(self_copy, 'initial_values')
+            delattr(self_copy, '_default_values')
+            delattr(self_copy, '_initial_values')
 
             return self_copy
 

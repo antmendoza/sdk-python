@@ -83,7 +83,7 @@ class Workflow(Serializable):
                  , **kwargs):
 
         Serializable.__init__(self)
-        # self.default_values = {"expressionLang": 'jq'}
+        # self._default_values = {"expressionLang": 'jq'}
 
         Fields(locals(), kwargs, Workflow.f_hydration, {"expressionLang": 'jq'}).set_to_object(self)
 
