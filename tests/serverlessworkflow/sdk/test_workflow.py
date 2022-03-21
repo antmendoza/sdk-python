@@ -125,7 +125,6 @@ functions:
             with self.subTest(f"test_{example}"):
                 with open(examples_dir + "/" + example, "r") as swf_file:
                     workflow = Workflow.from_source(swf_file.read())
-                    print(workflow.to_json())
                     self.assertTrue(isinstance(workflow, Workflow))
 
     def test_instance_workflow_class(self):
