@@ -96,9 +96,12 @@ class Fields:
             if final_value == "true":
                 final_value = True
 
+            if final_value == "false":
+                final_value = False
+
             _initial_values[k] = final_value
 
-            if final_value is None and _default_values.get(k):
+            if final_value is None and _default_values.get(k) is not None:
                 final_value = _default_values.get(k)
 
             if final_value is None:
@@ -116,12 +119,16 @@ class Fields:
 
         for k in kwargs.keys():
             final_value = kwargs[k]
+
             if final_value == "true":
                 final_value = True
 
+            if final_value == "false":
+                final_value = False
+
             _initial_values[k] = final_value
 
-            if final_value is None and _default_values.get(k):
+            if final_value is None and _default_values.get(k) is not None:
                 final_value = _default_values.get(k)
 
             if final_value is None:

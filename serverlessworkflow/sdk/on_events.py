@@ -19,7 +19,7 @@ class OnEvents(Serializable):
                  eventDataFilter: EventDataFilter = None,
                  **kwargs):
         Serializable.__init__(self)
-        Fields(locals(), kwargs, Fields.default_hydration).set_to_object(self)
+        Fields(locals(), kwargs, Fields.default_hydration, { 'actionMode': 'sequential' }).set_to_object(self)
 
     @staticmethod
     def f_hydration(p_key, p_value):

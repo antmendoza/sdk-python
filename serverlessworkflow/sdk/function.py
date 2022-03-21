@@ -19,4 +19,5 @@ class Function(Serializable):
                  **kwargs):
         Serializable.__init__(self)
 
-        Fields(locals(), kwargs, Fields.default_hydration).set_to_object(self)
+        Fields(locals(), kwargs, Fields.default_hydration,
+               { 'type': 'rest' }).set_to_object(self)

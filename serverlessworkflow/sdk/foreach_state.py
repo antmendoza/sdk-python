@@ -54,7 +54,8 @@ class ForEachState(State, Serializable):
                  metadata: Metadata = None,
                  **kwargs):
         Serializable.__init__(self)
-        Fields(locals(), kwargs, ForEachState.f_hydration).set_to_object(self)
+        Fields(locals(), kwargs, ForEachState.f_hydration,
+               {'type': 'foreach','usedForCompensation': False,'mode': 'parallel',}).set_to_object(self)
 
     @staticmethod
     def f_hydration(p_key, p_value):

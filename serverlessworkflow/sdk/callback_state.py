@@ -50,7 +50,10 @@ class CallbackState(State, Serializable):
                  **kwargs):
 
         Serializable.__init__(self)
-        Fields(locals(), kwargs, Fields.f_hydration).set_to_object(self)
+        Fields(locals(), kwargs, Fields.f_hydration, {
+            'type': 'callback',
+            'usedForCompensation': False,
+        }).set_to_object(self)
 
     @staticmethod
     def f_hydration(p_key, p_value):

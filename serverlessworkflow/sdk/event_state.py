@@ -45,7 +45,8 @@ class EventState(State, Serializable):
                  **kwargs):
 
         Serializable.__init__(self)
-        Fields(locals(), kwargs, EventState.f_hydration).set_to_object(self)
+        Fields(locals(), kwargs, EventState.f_hydration,
+               {'type': 'event','exclusive': True,}).set_to_object(self)
 
     @staticmethod
     def f_hydration(p_key, p_value):

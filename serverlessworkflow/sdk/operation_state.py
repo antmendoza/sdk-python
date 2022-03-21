@@ -47,7 +47,9 @@ class OperationState(State, Serializable):
                  **kwargs):
 
         Serializable.__init__(self)
-        Fields(locals(), kwargs, OperationState.f_hydration).set_to_object(self)
+        Fields(locals(), kwargs, OperationState.f_hydration,
+               {'type': 'operation', 'actionMode': 'sequential', 'usedForCompensation': False}
+               ).set_to_object(self)
 
     @staticmethod
     def f_hydration(p_key, p_value):

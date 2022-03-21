@@ -34,7 +34,8 @@ class EventDef(Serializable):
                  metadata: Metadata = None,
                  **kwargs):
         Serializable.__init__(self)
-        Fields(locals(), kwargs, EventDef.f_hydration).set_to_object(self)
+        Fields(locals(), kwargs, EventDef.f_hydration,
+               {'kind': 'consumed','dataOnly': True,}).set_to_object(self)
 
     @staticmethod
     def f_hydration(p_key, p_value):

@@ -41,8 +41,10 @@ class EventBasedSwitchState(State, Serializable):
                  usedForCompensation: bool = None,
                  metadata: Metadata = None,
                  **kwargs):
+
         Serializable.__init__(self)
-        Fields(locals(), kwargs, EventBasedSwitchState.f_hydration).set_to_object(self)
+        Fields(locals(), kwargs, EventBasedSwitchState.f_hydration,
+               {'type': 'switch', 'usedForCompensation': False}).set_to_object(self)
 
     @staticmethod
     def f_hydration(p_key, p_value):

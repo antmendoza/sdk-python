@@ -16,7 +16,9 @@ class Transition(Serializable):
                  compensate: bool = None,
                  **kwargs):
         Serializable.__init__(self)
-        Fields(locals(), kwargs, Transition.f_hydration).set_to_object(self)
+        Fields(locals(), kwargs, Transition.f_hydration,
+               {'compensate': False}
+               ).set_to_object(self)
 
     @staticmethod
     def f_hydration(p_key, p_value):

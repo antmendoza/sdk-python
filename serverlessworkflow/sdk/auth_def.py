@@ -20,7 +20,7 @@ class AuthDef(Serializable):
                  properties: (str | (BasicPropsDef | BearerPropsDef | Oauth2PropsDef)) = None,
                  **kwargs):
         Serializable.__init__(self)
-        Fields(locals(), kwargs, Fields.default_hydration).set_to_object(self)
+        Fields(locals(), kwargs, Fields.default_hydration, { 'scheme': 'basic' }).set_to_object(self)
 
     @staticmethod
     def f_hydration(p_key, p_value):

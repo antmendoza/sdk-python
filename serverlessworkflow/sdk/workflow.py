@@ -85,7 +85,9 @@ class Workflow(Serializable):
         Serializable.__init__(self)
         # self._default_values = {"expressionLang": 'jq'}
 
-        Fields(locals(), kwargs, Workflow.f_hydration, {"expressionLang": 'jq'}).set_to_object(self)
+        Fields(locals(), kwargs, Workflow.f_hydration,
+               {'expressionLang': 'jq', 'keepActive': True}
+               ).set_to_object(self)
 
     def to_json(self) -> str:
 

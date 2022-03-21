@@ -43,7 +43,8 @@ class DataBasedSwitchState(State, Serializable):
                  **kwargs):
 
         Serializable.__init__(self)
-        Fields(locals(), kwargs, DataBasedSwitchState.f_hydration).set_to_object(self)
+        Fields(locals(), kwargs, DataBasedSwitchState.f_hydration,
+               {'type': 'switch', 'usedForCompensation': False}).set_to_object(self)
 
     @staticmethod
     def f_hydration(p_key, p_value):
