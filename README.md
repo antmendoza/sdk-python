@@ -1,14 +1,15 @@
 # Serverless Workflow Specification - Python SDK
 
-Provides the Python API/SPI for the [Serverless Workflow Specification](https://github.com/serverlessworkflow/specification)
+Provides the Python API/SPI for
+the [Serverless Workflow Specification](https://github.com/serverlessworkflow/specification)
 
 With the SDK you can:
-* Programmatically build workflow definitions 
+
+* Programmatically build workflow definitions
 * Parse workflow JSON and YAML definitions
 * Validate workflow definitions
 
-
-## Install dependencies and run test 
+## Install dependencies and run test
 
 - Python 3 required
 
@@ -22,7 +23,7 @@ pipenv shell
 python setup.py pytest
 ```
 
-## Programmatically build workflow definitions 
+## Programmatically build workflow definitions
 
 ```
  workflow = Workflow(
@@ -58,6 +59,7 @@ python setup.py pytest
         ]
     )
 ```
+
 You can see a full example in the [test_workflow.py](tests/serverlessworkflow/sdk/test_workflow.py) file
 
 ## Parse workflow JSON and YAML definitions
@@ -91,7 +93,6 @@ functions:
 
 You can see a full example in the [test_workflow.py](tests/serverlessworkflow/sdk/test_workflow.py) file
 
-
 ### Parse workflow to JSON / YAML
 
 ```
@@ -110,7 +111,6 @@ print(workflow.to_yaml())
 
 You can see a full example in the [test_workflow.py](tests/serverlessworkflow/sdk/test_workflow.py) file
 
-
 ## Validate workflow definitions
 
 ```
@@ -126,6 +126,8 @@ workflow = Workflow(id_="greeting",
 WorkflowValidator(Workflow(workflow)).validate()
 
 ```
+
 The `validate` method will raise an exception if the provided workflow does not complaint specification.
 
-You can see a full example in the [test_workflow_validator](tests/serverlessworkflow/sdk/test_workflow_validator.py) file
+You can see a full example in the [test_workflow_validator](tests/serverlessworkflow/sdk/test_workflow_validator.py)
+file

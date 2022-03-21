@@ -111,7 +111,6 @@ class Fields:
                 # self.__setattr__(key_, final_value)
                 _attributes.append(Field(key_, final_value))
 
-
             _attributes.append(Field("initial_values", initial_values))
             _attributes.append(Field("default_values", default_values))
 
@@ -134,7 +133,6 @@ class Fields:
                 key_ = k.replace("_", "")
                 # self.__setattr__(key_, final_value)
                 _attributes.append(Field(key_, final_value))
-
 
             _attributes.append(Field("initial_values", initial_values))
             _attributes.append(Field("default_values", default_values))

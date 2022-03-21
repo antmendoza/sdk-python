@@ -1,7 +1,5 @@
 ---
-name: Enhancement Request
-about: Suggest an enhancement to the Serverless Workflow Python SDK
-labels: kind/feature
+name: Enhancement Request about: Suggest an enhancement to the Serverless Workflow Python SDK labels: kind/feature
 
 ---
 

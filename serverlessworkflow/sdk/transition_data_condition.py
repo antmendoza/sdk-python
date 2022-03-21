@@ -21,7 +21,6 @@ class TransitionDataCondition(Serializable):
                  transition: (str | Transition) = None,
                  metadata: Metadata = None,
                  **kwargs):
-
         Serializable.__init__(self)
         Fields(locals(), kwargs, TransitionDataCondition.f_hydration).set_to_object(self)
 
