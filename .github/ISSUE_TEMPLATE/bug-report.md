@@ -1,5 +1,7 @@
 ---
-name: Bug Report about: Report a bug encountered with the Serverless Workflow Python SDK labels: kind/bug
+name: Bug Report
+about: Report a bug encountered with the Serverless Workflow Python SDK
+labels: kind/bug
 
 ---
 

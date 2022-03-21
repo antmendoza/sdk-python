@@ -1,15 +1,14 @@
 # Serverless Workflow Specification - Python SDK
 
-Provides the Python API/SPI for
-the [Serverless Workflow Specification](https://github.com/serverlessworkflow/specification)
+Provides the Python API/SPI for the [Serverless Workflow Specification](https://github.com/serverlessworkflow/specification)
 
 With the SDK you can:
-
-* Programmatically build workflow definitions
+* Programmatically build workflow definitions 
 * Parse workflow JSON and YAML definitions
 * Validate workflow definitions
 
-## Install dependencies and run test
+
+## Install dependencies and run test 
 
 - Python 3 required
 
