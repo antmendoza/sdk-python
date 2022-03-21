@@ -20,4 +20,4 @@ class Function(Serializable):
         Serializable.__init__(self)
 
         Fields(locals(), kwargs, Fields.default_hydration,
-               { 'type': 'rest' }).set_to_object(self)
+               {'type': 'rest'}).set_to_object(self)
