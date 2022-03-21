@@ -6,6 +6,7 @@ import json
 import yaml
 
 from serverlessworkflow.sdk.auth_def import AuthDef
+from serverlessworkflow.sdk.serializable import Serializable
 from serverlessworkflow.sdk.callback_state import CallbackState
 from serverlessworkflow.sdk.databased_switch_state import DataBasedSwitchState
 from serverlessworkflow.sdk.error_def import ErrorDef
@@ -32,7 +33,7 @@ class DataInputSchema:
     failOnValidationErrors: bool
 
 
-class Workflow:
+class Workflow(Serializable):
     id: str = None
     key: str = None
     name: str = None
@@ -81,16 +82,22 @@ class Workflow:
                  functions: (str | [Function]) = None
                  , **kwargs):
 
-        Fields(locals(), kwargs, Workflow.f_hydration).set_to_object(self)
+        self._default_values = {"expressionLang": 'jq'}
+
+        Fields(locals(), kwargs, Workflow.f_hydration, self._default_values).set_to_object(self)
 
     def to_json(self) -> str:
-        return json.dumps(self,
+
+        selfcopy = self.serialize()
+        return json.dumps(selfcopy,
                           default=lambda o: o.__dict__,
                           indent=4)
 
     def to_yaml(self):
+
+        selfcopy = self.serialize()
         yaml.emitter.Emitter.process_tag = lambda x: None
-        return yaml.dump(self,
+        return yaml.dump(selfcopy,
                          sort_keys=False,
                          # , default_flow_style=False,
                          allow_unicode=True,
@@ -142,7 +149,7 @@ class Workflow:
                                                                              ArrayTypeOf(AuthDef)]))
 
         if p_key == 'states':
-            return [Workflow.hydrate_state(v) if not isinstance(v,State) else v for v in p_value]
+            return [Workflow.hydrate_state(v) if not isinstance(v, State) else v for v in p_value]
 
         if p_key == 'functions':
             return HydratableParameter(value=p_value).hydrateAs(UnionTypeOf([SimpleTypeOf(str),

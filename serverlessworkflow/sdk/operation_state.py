@@ -3,6 +3,7 @@ from __future__ import annotations
 import copy
 
 from serverlessworkflow.sdk.action import Action
+from serverlessworkflow.sdk.serializable import Serializable
 from serverlessworkflow.sdk.end import End
 from serverlessworkflow.sdk.error import Error
 from serverlessworkflow.sdk.hydration import HydratableParameter, ComplexTypeOf, ArrayTypeOf, UnionTypeOf, \
@@ -14,7 +15,7 @@ from serverlessworkflow.sdk.state_data_filter import StateDataFilter
 from serverlessworkflow.sdk.transition import Transition
 
 
-class OperationState(State):
+class OperationState(State, Serializable):
     id: str = None
     name: str = None
     type: str = None

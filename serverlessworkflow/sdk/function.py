@@ -1,8 +1,9 @@
+from serverlessworkflow.sdk.serializable import Serializable
 from serverlessworkflow.sdk.hydration import Fields
 from serverlessworkflow.sdk.metadata import Metadata
 
 
-class Function:
+class Function(Serializable):
     name: str = None
     operation: str = None
     type: str = None
