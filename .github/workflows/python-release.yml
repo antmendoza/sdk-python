@@ -26,6 +26,10 @@ jobs:
           pip install pipenv
           pip install build
 
+      - name: Test
+        run: |
+          pipenv run pytest
+
       - name: Build a binary wheel and a source tarball
         run: >-
           python -m
