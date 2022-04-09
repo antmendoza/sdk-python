@@ -8,34 +8,34 @@ name: Publish Python 🐍 distributions 📦 to PyPI and TestPyPI
 
 on:
   push:
-    branches: ["0.0.x"]
+    branches: [ "0.0.x" ]
 
 jobs:
   build-n-publish:
-    name: Build and publish Python 🐍 distributions 📦 to PyPI and TestPyPI
+    name: Build and publish Python 🐍 distributions 📦 to PyPI
     runs-on: "ubuntu-latest"
 
     steps:
-    - uses: "actions/checkout@v2"
-    - uses: "actions/setup-python@v2"
-      with:
-        python-version: 3.9
+      - uses: "actions/checkout@v2"
+      - uses: "actions/setup-python@v2"
+        with:
+          python-version: 3.9
 
-    - name: Install dependencies
-      run: |
-        pip install pipenv
-        pip install build
+      - name: Install dependencies
+        run: |
+          pip install pipenv
+          pip install build
 
-    - name: Build a binary wheel and a source tarball
-      run: >-
-        python -m
-        build
-        --sdist
-        --wheel
-        --outdir dist/
+      - name: Build a binary wheel and a source tarball
+        run: >-
+          python -m
+          build
+          --sdist
+          --wheel
+          --outdir dist/
 
-    - name: Publish distribution 📦 to Test PyPI
-      uses: pypa/gh-action-pypi-publish@master
-      with:
-        password: ${{ secrets.TEST_PYPI_API_TOKEN }}
-        repository_url: https://test.pypi.org/legacy/
+      - name: Publish distribution 📦 to PyPI
+        uses: pypa/gh-action-pypi-publish@master
+        with:
+          password: ${{ secrets.PYPI_API_TOKEN }}
+          repository_url: https://test.pypi.org/legacy/
